@@ -14,7 +14,7 @@ class CreateDetallesTratamientoTable extends Migration
     public function up()
     {
         Schema::create('detalles_tratamiento', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
         });
     }

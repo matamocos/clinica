@@ -14,7 +14,7 @@ class CreateTipoTratamientoTable extends Migration
     public function up()
     {
         Schema::create('tipo_tratamiento', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
         });
     }
