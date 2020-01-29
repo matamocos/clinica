@@ -10,4 +10,8 @@ class Expediente extends Model
 		return $this->belongsTo('App\Paciente');
 	}//fin paciente
 	
+	public function cita(){
+		return $this->hasMany('App\Cita');
+	}//fin cita
+	
 }//fin clase Expediente

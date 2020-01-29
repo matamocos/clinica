@@ -10,4 +10,13 @@ class Paciente extends Model
 		return $this->hasOne('App\Expediente');
 	}//fin expediente
 	
+	
+	public function cita(){
+		return $this->hasMany('App\Cita');
+	}//fin cita
+	
+	public function tratamiento(){
+		return $this->belongsToMany('App\Tratamiento');
+	}//fin tratamiento
+	
 }//fin clase Paciente

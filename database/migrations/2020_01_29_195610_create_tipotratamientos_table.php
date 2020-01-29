@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateExpedientesTable extends Migration
+class CreateTipotratamientosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateExpedientesTable extends Migration
      */
     public function up()
     {
-        Schema::create('expedientes', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('tipotratamientos', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
-			$table->integer('paciente_id');
         });
     }
 
@@ -27,6 +26,6 @@ class CreateExpedientesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('expedientes');
+        Schema::dropIfExists('tipotratamientos');
     }
 }
