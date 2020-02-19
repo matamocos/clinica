@@ -18,8 +18,9 @@ class CreateCitasTable extends Migration
 			$table->dateTime('fecha');
 			$table->string('comentario');
 			$table->integer('paciente_id');
-			//$table->integer('medico_id');
-			//$table->integer('expediente_id');
+			$table->foreign('paciente_id')->references('id')->on('pacientes');
+			$table->integer('medico_id');
+			$table->foreign('medico_id')->references('id')->on('medicos');
             $table->timestamps();
         });
     }

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model{
 	
+	protected $table = 'citas';
+	
     public function paciente(){
 		return $this->belongsTo('App\Paciente');
 	}//fin paciente

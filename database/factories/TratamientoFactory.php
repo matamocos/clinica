@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Model::class, function (Faker $faker) {
     return [
-        //
+        'tratamiento'=>$faker->word,
+		'descripcion'=>$faker->text($maxNbChars = 200) ,
     ];
 });

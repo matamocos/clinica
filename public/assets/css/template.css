@@ -1,0 +1,70 @@
+
+/* BASIC STRUCTURE */
+
+.wrapper{
+	display: grid;
+	font-family: 'Open Sans';
+}
+
+.banner{
+	height: 300px;
+	width: 100%;
+}
+
+.navbar{
+}
+
+.content-wrapper{
+	padding: 0em 2em 2em 2em;
+}
+
+.footer{
+	text-align: center;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+/* CSS */
+
+.section-title{
+	background: -webkit-linear-gradient(black, #5d49be);
+	-webkit-background-clip: text;
+  	-webkit-text-fill-color: transparent;
+}
+
+.round-circle-right{
+	position: absolute;
+	height: 120px;
+	right: -60px;
+	top: 300px;
+	z-index: -1;
+	width: 25%;
+	border-radius: 10em;
+	text-align: center;
+	line-height: 120px;
+	background-image: linear-gradient(to right, black, #5d49be);
+}
+
+.round-circle-left{
+	position: absolute;
+	height: 120px;
+	left: -60px;
+	top: 700px;
+	z-index: -1;
+	width: 10%;
+	border-radius: 10em;
+	text-align: center;
+	line-height: 120px;
+	background-image: linear-gradient(to left, black, #5d49be);
+}
+
+thead{
+	background-image: linear-gradient(to right, black, #5d49be);
+}
+
+tbody{
+	background-image: linear-gradient(to right, lightgrey, lightgrey);
+	color: #5d49be;
+}

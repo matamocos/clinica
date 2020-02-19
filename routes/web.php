@@ -14,7 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-//Rutas autenticación
-Auth::routes();
 
+//Rutas autenticaciรณn
+Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Página
+Route::get('/inicio', 'ClinicaController@index');

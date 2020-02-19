@@ -15,7 +15,6 @@ $factory->define(Paciente::class, function (Faker $faker) {
 		'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '2000-01-01', $timezone = null),
 		'direccion' => $faker->address,
 		'genero'=>$faker->title(),
-		'telefono'=>$faker->phoneNumber(),
-		
+		'telefono'=>$faker->phoneNumber(),	
     ];
 });
