@@ -2,9 +2,9 @@
 
 @section('content')
 
-	<h2 class="section-title">Registro de las citas</h2>
+	<h2 class="section-title">Registro de los tipos de tratamientos</h2>
 	<div class="table-options">
-		<a href="/citas/create"><button class="ui button left">Insertar un nuevo registro</button></a>
+		<a href="/tratamientos_tipos/create"><button class="ui button left">Insertar un nuevo registro</button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
 			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
@@ -15,23 +15,15 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Fecha</th>
-				<th>Motivos de la consulta</th>
-				<th>Observaciones</th>
-				<th>Paciente (id)</th>
-				<th>Medico (id)</th>
+				<th>Tipo de tratamiento</th>
 				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($citas as $c)
-				<tr data-id="{{$c->id}}">
-					<td>{{$c->id}}</td>
-					<td>{{$c->fecha}}</td>
-					<td>{{$c->motivo}}</td>
-					<td>{{$c->observaciones}}</td>
-					<td>{{$c->paciente_id}}</td>
-					<td>{{$c->medico_id}}</td>
+			@foreach($tipos as $t)
+				<tr data-id="{{$t->id}}">
+					<td style="width: 10%;">{{$t->id}}</td>
+					<td>{{$t->tipo}}</td>
 					<td><img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar"></td>
 				</tr>
 			@endforeach

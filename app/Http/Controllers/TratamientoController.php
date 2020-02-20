@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Tratamiento;
+use App\Medico;
+use App\Paciente;
+use App\Tipotratamiento;
 use Illuminate\Http\Request;
 
 class TratamientoController extends Controller
@@ -25,7 +28,10 @@ class TratamientoController extends Controller
      */
     public function create()
     {
-        //
+		$tipos = Tipotratamiento::All();
+		$medicos = Medico::All();
+		$pacientes = Paciente::All();
+        return view('clinica.tratamientos.create-tratamientos', compact('medicos','pacientes','tipos'));
     }
 
     /**
@@ -79,8 +85,9 @@ class TratamientoController extends Controller
      * @param  \App\Tratamiento  $tratamiento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tratamiento $tratamiento)
+    public function destroy($id)
     {
-        //
+        Tratamiento::find($id)->delete();
+		echo "success";
     }
 }

@@ -12,7 +12,7 @@ $factory->define(Paciente::class, function (Faker $faker) {
 		'apellido_2'=>$faker->lastName(),
 		'pais'=>$faker->country(),
 		'ciudad'=>$faker->city(),
-		'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '2000-01-01', $timezone = null),
+		'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '2020-01-01', $timezone = null),
 		'direccion' => $faker->address,
 		'email' =>$faker->freeEmail,
 		'dni' =>$faker->dni,

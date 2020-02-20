@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h2 class="section-title">Registro de los tipos de tratamientos</h2>
+	<h2 class="section-title">Registro de las especialidades de los médicos</h2>
 	<div class="table-options">
 		<button class="ui button left">Insertar un nuevo registro</button>
 		<div class="ui icon input right">
@@ -15,14 +15,16 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Tipo de tratamiento</th>
+				<th>Médico (id)</th>
+				<th>Especialidad (id)</th>
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($tipos as $t)
-				<tr data-paciente="{{$t->id}}">
-					<td>{{$t->id}}</td>
-					<td>{{$t->tipo}}</td>
+			@foreach($especialidades as $e)
+				<tr data-id="{{$p->id}}">
+					<td>{{$e->id}}</td>
+					<td>{{$e->medico_id}}</td>
+					<td>{{$e->especialidade_id}}</td>
 				</tr>
 			@endforeach
 		</tbody>

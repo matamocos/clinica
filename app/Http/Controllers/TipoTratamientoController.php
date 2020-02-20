@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tipotratamiento;
+use App\Tratamiento;
 use Illuminate\Http\Request;
 
 class TipoTratamientoController extends Controller
@@ -15,7 +16,7 @@ class TipoTratamientoController extends Controller
     public function index()
     {
         $tipos = Tipotratamiento::All();
-		return view('clinica.tipos_tratamientos', compact('tipos'));
+		return view('clinica.tipos_de_tratamientos.tipos_tratamientos', compact('tipos'));
     }
 
     /**
@@ -25,7 +26,7 @@ class TipoTratamientoController extends Controller
      */
     public function create()
     {
-        //
+        return view('clinica.tipos_de_tratamientos.create-tipos_tratamientos');
     }
 
     /**
@@ -79,8 +80,15 @@ class TipoTratamientoController extends Controller
      * @param  \App\Tipotratamiento  $tipotratamiento
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipotratamiento $tipotratamiento)
+    public function destroy($id)
     {
-        //
+		$cant = Tratamiento::where("tipo_tratamiento_id", $id)->count();
+		
+		if($cant > 0){
+			echo "error";
+		}else{
+        	Tipotratamiento::find($id)->delete();
+			echo "success";
+		}
     }
 }

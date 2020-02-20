@@ -27,11 +27,12 @@
 				<th>Email</th>
 				<th>Género</th>
 				<th>Teléfono</th>
+				<th>Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($pacientes as $p)
-				<tr data-paciente="{{$p->id}}">
+				<tr data-id="{{$p->id}}">
 					<td>{{$p->id}}</td>
 					<td>{{$p->nombre}}</td>
 					<td>{{$p->apellido_1}}</td>
@@ -45,6 +46,7 @@
 					<td>{{$p->email}}</td>
 					<td>{{$p->genero}}</td>
 					<td>{{$p->telefono}}</td>
+					<td><img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar"></td>
 				</tr>
 			@endforeach
 		</tbody>

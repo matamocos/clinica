@@ -16,6 +16,8 @@ class CreateTratamientosTable extends Migration
         Schema::create('tratamientos', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('descripcion');
+			$table->date('fecha_inicio');
+			$table->date('fecha_fin');
 			$table->integer('medico_id')->unsigned();
 			//$table->foreign('medico_id')->references('id')->on('medicos');
 			$table->integer('paciente_id')->unsigned();

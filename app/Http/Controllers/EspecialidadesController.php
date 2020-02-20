@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Especialidade;
+use App\Especialidade_medico;
 use Illuminate\Http\Request;
 
 class EspecialidadesController extends Controller
@@ -15,7 +16,7 @@ class EspecialidadesController extends Controller
     public function index()
     {
         $especialidades = Especialidade::All();
-		return view('clinica.especialidades', compact('especialidades'));
+		return view('clinica.especialidades.especialidades', compact('especialidades'));
     }
 
     /**
@@ -25,7 +26,7 @@ class EspecialidadesController extends Controller
      */
     public function create()
     {
-        //
+        return view('clinica.especialidades.create-especialidades');
     }
 
     /**
@@ -79,8 +80,15 @@ class EspecialidadesController extends Controller
      * @param  \App\Especialidade  $especialidade
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Especialidade $especialidade)
+    public function destroy($id)
     {
-        //
+		$cant = Especialidade_medico::where("especialidade_id", $id)->count();
+		
+		if($cant > 0){
+			echo "error";
+		}else{
+			Especialidad::find($id)->delete();
+			echo "success";
+		}
     }
 }

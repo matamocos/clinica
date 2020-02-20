@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<title>Clínica</title>
 </head>
 
@@ -14,11 +15,15 @@
 	<!-- SCRIPTS -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 	<script src="{{ asset('/assets/js/redirecciones.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/scroll.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/search.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/clear.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/delete.js',true)}}"></script>
 
 	<!-- VANTA JS ASSETS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
@@ -42,8 +47,8 @@
 						<a class="item" href="{{url('/tratamientos')}}">Tratamientos</a>
 					    <a class="item" href="{{url('/tratamientos_tipos')}}">Tipos de tratamientos</a>
 						<a class="item" href="{{url('/especialidades')}}">Especialidades</a>
-						<a class="item" href="{{url('/especialidades_medicos')}}">Especialidades de los médicos</a>
-						<a class="item" href="{{url('/expedientes')}}">Expedientes</a>	    
+						<!--<a class="item" href="{{url('/especialidades_medicos')}}">Especialidades de los médicos</a>-->
+						<!--<a class="item" href="{{url('/expedientes')}}">Expedientes</a>-->
 						<div class="item right">
 							<div class="ui dropdown">
 								<input type="hidden" name="gender">

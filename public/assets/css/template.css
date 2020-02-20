@@ -86,4 +86,10 @@ tbody{
 	color: #5d49be;
 }
 
+td img{
+	cursor: pointer;
+}
 
+#table > tbody > tr > td:last-child{
+	text-align: center;
+}

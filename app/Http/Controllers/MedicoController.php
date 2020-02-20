@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Medico;
+use App\Cita;
+use App\Especialidade_medico;
+use App\Tratamiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\MedicoRequest;
 
 class MedicoController extends Controller
 {
@@ -34,9 +39,10 @@ class MedicoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MedicoRequest $request)
     {
-        //
+		Session::flash('mensaje_confirmacion', 'El médico [ ] se ha creado correctamente.');
+        return redirect('medicos');
     }
 
     /**
@@ -45,7 +51,7 @@ class MedicoController extends Controller
      * @param  \App\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function show(Medico $medico)
+    public function show($id)
     {
         //
     }
@@ -56,7 +62,7 @@ class MedicoController extends Controller
      * @param  \App\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function edit(Medico $medico)
+    public function edit($id)
     {
         //
     }
@@ -68,7 +74,7 @@ class MedicoController extends Controller
      * @param  \App\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Medico $medico)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,8 +85,18 @@ class MedicoController extends Controller
      * @param  \App\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Medico $medico)
+    public function destroy($id)
     {
-        //
+        $citas = Cita::where("medico_id", $id)->count();
+		$tratamientos = Tratamiento::where("medico_id", $id)->count();
+		$especialidades = Especialidade_medico::where("medico_id", $id)->count();
+		$cant = $citas + $tratamientos;
+		
+		if($cant > 0){
+			echo "error";
+		}else{
+			Medico::find($id)->delete();
+			echo "success";
+		}
     }
 }

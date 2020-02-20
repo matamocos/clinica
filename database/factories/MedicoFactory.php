@@ -10,7 +10,7 @@ $factory->define(Medico::class, function (Faker $faker) {
         'nombre'=>$faker->firstName(),
 		'apellido_1'=>$faker->lastName(),
 		'apellido_2'=>$faker->lastName(),
-		'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '2000-01-01', $timezone = null),
+		'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '1990-01-01', $timezone = null),
 		'telefono'=>$faker->phoneNumber(),	
     ];
 });

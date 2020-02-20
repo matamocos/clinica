@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Cita;
+use App\Medico;
+use App\Paciente;
 use Illuminate\Http\Request;
 
 class CitasController extends Controller
@@ -25,7 +27,9 @@ class CitasController extends Controller
      */
     public function create()
     {
-        return view('clinica.citas.create-citas');
+		$medicos = Medico::All();
+		$pacientes = Paciente::All();
+        return view('clinica.citas.create-citas', compact('medicos','pacientes'));
     }
 
     /**
@@ -79,8 +83,9 @@ class CitasController extends Controller
      * @param  \App\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cita $cita)
+    public function destroy($id)
     {
-        //
+        Cita::find($id)->delete();
+		echo "success";
     }
 }

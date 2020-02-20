@@ -32,4 +32,8 @@ $(document).ready(function(){
 			break;
 	}
 	
+	$('body > div > div.content-wrapper > div.ui.success.message > i').click(function(){
+		$(this).parent().remove();
+	});
+	
 });

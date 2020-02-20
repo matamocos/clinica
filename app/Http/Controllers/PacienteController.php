@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Paciente;
+use App\Cita;
+use App\Expediente;
+use App\Tratamiento;
 use Illuminate\Http\Request;
 
 class PacienteController extends Controller
@@ -45,7 +48,7 @@ class PacienteController extends Controller
      * @param  \App\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function show(Paciente $paciente)
+    public function show($id)
     {
         //
     }
@@ -56,7 +59,7 @@ class PacienteController extends Controller
      * @param  \App\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paciente $paciente)
+    public function edit($id)
     {
         //
     }
@@ -79,8 +82,17 @@ class PacienteController extends Controller
      * @param  \App\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Paciente $paciente)
+    public function destroy($id)
     {
-        //
+        $citas = Cita::where("paciente_id", $id)->count();
+		$tratamientos = Tratamiento::where("paciente_id", $id)->count();
+		$cant = $citas + $tratamientos;
+		
+		if($cant > 0){
+			echo "error";
+		}else{
+			Paciente::find($id)->delete();
+			echo "success";
+		}
     }
 }

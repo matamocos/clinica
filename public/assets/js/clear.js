@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	$('.clear-form').click(function(e){
 		e.preventDefault();
-		document.getElementById("form").reset();
+		
+		$('#form input').val('');
+		//document.getElementById("form").reset();
 	});
 });
