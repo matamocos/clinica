@@ -11,6 +11,6 @@ class EspecialidadesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Especialidade::class,5)->create();
+        factory(App\Especialidade::class,19)->create();
     }
 }

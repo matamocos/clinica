@@ -11,6 +11,6 @@ class MedicosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Medico::class,5)->create();
+        factory(App\Medico::class,10)->create();
     }
 }

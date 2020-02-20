@@ -11,6 +11,6 @@ class TipotratamientoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Tipotratamiento::class,5)->create();
+        factory(App\Tipotratamiento::class,16)->create();
     }
 }

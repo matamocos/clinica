@@ -17,7 +17,8 @@ $factory->define(Cita::class, function (Faker $faker) {
 		'paciente_id' => random_int(\DB::table('pacientes')->min('id'), \DB::table('pacientes')->max('id')),
 		'medico_id' => random_int(\DB::table('medicos')->min('id'), \DB::table('medicos')->max('id')),
         'fecha'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '2000-01-01', $timezone = null),
-		'comentario'=>$faker->paragraph(),	
+		'motivo'=>$faker->text($maxNbChars = 100),	
+		'observaciones'=>$faker->text($maxNbChars = 100),	
 		//'paciente_id' => $faker->randomDigit(),
     ];
 });

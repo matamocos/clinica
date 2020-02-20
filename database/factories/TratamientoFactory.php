@@ -2,12 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Tratamiento;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Tratamiento::class, function (Faker $faker) {
     return [
-        'tratamiento'=>$faker->word,
-		'descripcion'=>$faker->text($maxNbChars = 200) ,
+        'medico_id'=>$faker->numberBetween($min = 1, $max = 10),
+		'paciente_id'=>$faker->numberBetween($min = 1, $max = 50),
+		'tipo_tratamiento_id'=>$faker->numberBetween($min = 1, $max = 20),
+		'descripcion'=>$faker->text($maxNbChars = 100),
     ];
 });

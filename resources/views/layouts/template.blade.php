@@ -15,6 +15,10 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
+	<script src="{{ asset('/assets/js/redirecciones.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/scroll.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/search.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/clear.js',true)}}"></script>
 
 	<!-- VANTA JS ASSETS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
@@ -31,10 +35,15 @@
 			<div class="navbar">
 				<div class="ui inverted segment" style="border-radius: 0; background-image: linear-gradient(to right, black, #5d49be);">
 				  	<div class="ui inverted secondary pointing menu">
-				    	<a class="active item">Inicio</a>
-					    <a class="item">Pacientes</a>
-					    <a class="item">Médicos</a>
-					    <a class="item">Citas</a>
+				    	<a class="item" href="{{url('/inicio')}}">Inicio</a>
+					    <a class="item" href="{{url('/pacientes')}}">Pacientes</a>
+					    <a class="item" href="{{url('/medicos')}}">Médicos</a>
+					    <a class="item" href="{{url('/citas')}}">Citas</a>
+						<a class="item" href="{{url('/tratamientos')}}">Tratamientos</a>
+					    <a class="item" href="{{url('/tratamientos_tipos')}}">Tipos de tratamientos</a>
+						<a class="item" href="{{url('/especialidades')}}">Especialidades</a>
+						<a class="item" href="{{url('/especialidades_medicos')}}">Especialidades de los médicos</a>
+						<a class="item" href="{{url('/expedientes')}}">Expedientes</a>	    
 						<div class="item right">
 							<div class="ui dropdown">
 								<input type="hidden" name="gender">
@@ -54,9 +63,10 @@
 						</div> <!-- Final usuario -->
 					</div> <!-- Final menu -->
 				</div>
-				<div class="round-circle-right"></div>
-				<div class="round-circle-left"></div>
 			</div>
+		
+			<div class="round-circle-right"></div>
+			<div class="round-circle-left"></div>
 			
 			<!-- CONTENT -->
 			<div class="content-wrapper">

@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model;
+use App\Medico;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Medico::class, function (Faker $faker) {
     return [
         'nombre'=>$faker->firstName(),
 		'apellido_1'=>$faker->lastName(),

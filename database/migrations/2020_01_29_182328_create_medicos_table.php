@@ -19,8 +19,7 @@ class CreateMedicosTable extends Migration
 			$table->string('apellido_1', 50);
 			$table->string('apellido_2', 50);
 			$table->date('fecha_nacimiento');
-			$table->string('telefono', 12);
-		
+			$table->string('telefono', 15);
             $table->timestamps();
         });
     }

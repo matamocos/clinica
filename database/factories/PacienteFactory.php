@@ -14,7 +14,9 @@ $factory->define(Paciente::class, function (Faker $faker) {
 		'ciudad'=>$faker->city(),
 		'fecha_nacimiento'=>$faker->dateTimeBetween($startDate = '-50 years', $endDate = '2000-01-01', $timezone = null),
 		'direccion' => $faker->address,
-		'genero'=>$faker->title(),
+		'email' =>$faker->freeEmail,
+		'dni' =>$faker->dni,
+		'genero'=>$faker->randomElement($array = array ('Hombre', 'Mujer')) ,
 		'telefono'=>$faker->phoneNumber(),	
     ];
 });
