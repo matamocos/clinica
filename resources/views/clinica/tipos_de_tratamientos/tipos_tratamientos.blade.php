@@ -1,6 +1,14 @@
 @extends('layouts.template')
 
 @section('content')
+	
+	@if(Session::has('mensaje_confirmacion'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="header">Nuevo registro creado. </div>
+  			<p>{{Session::get('mensaje_confirmacion')}}</p>
+		</div>
+	@endif
 
 	<h2 class="section-title">Registro de los tipos de tratamientos</h2>
 	<div class="table-options">

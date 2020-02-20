@@ -44,12 +44,12 @@
 
 				<div class="eight wide required field">
 					<label>Fecha de nacimiento</label>
-					<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required>
+					<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required value={{old("fecha_nacimiento")}} >
 				</div>
 				
 				<div class="eight wide required field">
 					<label>Teléfono</label>
-					<input type="text" name="telefono" placeholder="Email" required>
+					<input type="number" name="telefono" placeholder="Teléfono" required value={{old("telefono")}} >
 				</div>
 
 			</div> <!-- End fields -->	

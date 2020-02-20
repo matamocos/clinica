@@ -3,6 +3,5 @@ $(document).ready(function(){
 		e.preventDefault();
 		
 		$('#form input').val('');
-		//document.getElementById("form").reset();
 	});
 });

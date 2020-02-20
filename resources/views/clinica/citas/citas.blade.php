@@ -2,6 +2,14 @@
 
 @section('content')
 
+	@if(Session::has('mensaje_confirmacion'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="header">Nuevo registro creado. </div>
+  			<p>{{Session::get('mensaje_confirmacion')}}</p>
+		</div>
+	@endif
+
 	<h2 class="section-title">Registro de las citas</h2>
 	<div class="table-options">
 		<a href="/citas/create"><button class="ui button left">Insertar un nuevo registro</button></a>

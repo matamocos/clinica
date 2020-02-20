@@ -146,6 +146,10 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+		'nombre' => '"Nombre"',
+		'apellido_1' => '"Primer apellido"',
+		'apellido_2' => '"Segundo apellido"',
+	],
 
 ];

@@ -24,9 +24,12 @@ $(document).ready(function(){
 		});
 	}); //fin función
 	
-	//hace desaparecer el mesaje flass de confirmación de registro creado
+	
 	$('.close').click(function(){
+		//hace desaparecer el mesaje flass de confirmación de registro creado
 		$('.success').css('display', 'none');
+		//en los formularios hace desaparecer los mensajes que avisan de datos introducidos incorrectamente
+		$('.negative').css('display', 'none');
 	});//fin close
 	
 });

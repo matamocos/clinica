@@ -25,9 +25,9 @@ class MedicoRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|max:20|min:2',
-			'apellido_1' => 'required|max:20|min:2',
-			'apellido_2' => 'required|max:20|min:2',
+            'nombre' => 'required|max:20|min:2|alpha',
+			'apellido_1' => 'required|max:20|min:2|alpha',
+			'apellido_2' => 'required|max:20|min:2|alpha',
         ];
     }//end rules
 	
