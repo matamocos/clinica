@@ -94,5 +94,6 @@ class PacienteController extends Controller
 			Paciente::find($id)->delete();
 			echo "success";
 		}
+		
     }
 }

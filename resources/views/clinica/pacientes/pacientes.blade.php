@@ -59,5 +59,22 @@
 			@endforeach
 		</tbody>
 	</table>
+
+	<!--
+	<div class="ui mini modal">
+ 		<div class="header">Borrar registro</div>
+  		<div class="content">
+    		<p>¿Está seguro de que decea borrar este registro?</p>
+  		</div>
+		<div class="actions">
+			<div class="ui cancel negative button">Cancelar</div>
+			<div class="ui approve positive ok button">Aceptar</div>
+		 </div>
+	</div>
+	-->
+
+	<div class="ventana_modal">
+		
+	</div>
 	
 @endsection
