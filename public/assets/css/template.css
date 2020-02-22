@@ -36,6 +36,16 @@
   	-webkit-text-fill-color: transparent;
 }
 
+#table > tbody > tr > td:last-child{
+	display: flex;
+	text-align: center;
+}
+
+#table > tbody > tr > td:last-child img{
+	maring-right: 5px;
+	margin-left: 5px;
+}
+
 .table-options{
 	display: flex;
 }
@@ -88,8 +98,4 @@ tbody{
 
 td img{
 	cursor: pointer;
-}
-
-#table > tbody > tr > td:last-child{
-	text-align: center;
 }

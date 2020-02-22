@@ -18,8 +18,8 @@
 	<h2 class="section-title">Insertar un nuevo registro en Citas</h2>
 	
 	<div class="form-container">
-		<form id="form" class="ui form" action="" method="POST">
-
+		<form id="form" class="ui form" action="/citas/store" method="POST">
+			@csrf
 			<div class="sixteen wide required field">
 				<label>Motivo de asistencia</label>
 				<input type="text" name="motivo" placeholder="Motivo de asistencia" required value={{old('motivo')}} >

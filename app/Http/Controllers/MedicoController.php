@@ -41,7 +41,7 @@ class MedicoController extends Controller
      */
     public function store(MedicoRequest $request)
     {
-		Session::flash('mensaje_confirmacion', 'El médico [ ] se ha creado correctamente.');
+		Session::flash('mensaje_confirmacion', 'El médico se ha creado correctamente.');
         return redirect('medicos');
     }
 

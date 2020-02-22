@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Paciente;
 use App\Cita;
 use App\Expediente;
@@ -39,7 +40,8 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Session::flash('mensaje_confirmacion', 'El paciente se ha creado correctamente.');
+        return redirect('pacientes');
     }
 
     /**
@@ -61,7 +63,8 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $paciente = Paciente::find($id);
+		return view('clinica.pacientes.edit-pacientes', compact('paciente'));
     }
 
     /**
@@ -71,9 +74,12 @@ class PacienteController extends Controller
      * @param  \App\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paciente $paciente)
+    public function update(Request $request, Paciente $paciente, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		Paciente::where('id',$id)->update($request);
+		Session::flash('mensaje_editado', 'El paciente se ha actualizado correctamente.');
+        return redirect('pacientes');
     }
 
     /**

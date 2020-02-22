@@ -25,8 +25,12 @@ class Telefono implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
-    }
+        if (preg_match("/^[9|8|6|7][0-9]{8}$/", $value) || (preg_match("/^6[0-9]{8}$/", $value)) ) {
+			return true;
+		}else{
+			return false;
+		}
+    }//
 
     /**
      * Get the validation error message.
@@ -35,6 +39,6 @@ class Telefono implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'El número de telefono introducido no es correcto';
     }
 }

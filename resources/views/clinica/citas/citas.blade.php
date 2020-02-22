@@ -40,28 +40,15 @@
 					<td>{{$c->observaciones}}</td>
 					<td>{{$c->paciente_id}}</td>
 					<td>{{$c->medico_id}}</td>
-					<td><img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar"></td>
+					<td>
+						<img class="edit-button" src="{{ asset('/assets/img/edit.png',true)}}" alt="Editar">
+						<img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar">
+					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
 
-	<!--
-	<div class="ui mini modal">
- 		<div class="header">Borrar registro</div>
-  		<div class="content">
-    		<p>¿Está seguro de que decea borrar este registro?</p>
-  		</div>
-		<div class="actions">
-			<div class="ui cancel negative button">Cancelar</div>
-			<div class="ui approve positive ok button">Aceptar</div>
-		 </div>
-	</div>
-	-->
-
-	<div class="ventana_modal">
-		
-	</div>
-
+	<div class="ventana_modal"></div>
 
 @endsection

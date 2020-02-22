@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Cita;
 use App\Medico;
 use App\Paciente;
 use Illuminate\Http\Request;
+use App\Http\Requests\CitasRequest;
 
 class CitasController extends Controller
 {
@@ -38,9 +40,10 @@ class CitasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CitasRequest $request)
     {
-        //
+        Session::flash('mensaje_confirmacion', 'La cita ha creado correctamente.');
+        return redirect('citas');
     }
 
     /**
@@ -49,7 +52,7 @@ class CitasController extends Controller
      * @param  \App\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function show(Cita $cita)
+    public function show($id)
     {
         //
     }
@@ -60,7 +63,7 @@ class CitasController extends Controller
      * @param  \App\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cita $cita)
+    public function edit($id)
     {
         //
     }

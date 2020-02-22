@@ -32,7 +32,10 @@
 				<tr data-id="{{$e->id}}">
 					<td style="width: 10%;">{{$e->id}}</td>
 					<td>{{$e->especialidad}}</td>
-					<td><img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar"></td>
+					<td>
+						<img class="edit-button" src="{{ asset('/assets/img/edit.png',true)}}" alt="Editar">
+						<img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar">
+					</td>
 				</tr>
 			@endforeach
 		</tbody>

@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Medico;
+use App\Rules\Telefono;
 
 class MedicoRequest extends FormRequest
 {
@@ -28,12 +29,14 @@ class MedicoRequest extends FormRequest
             'nombre' => 'required|max:20|min:2|alpha',
 			'apellido_1' => 'required|max:20|min:2|alpha',
 			'apellido_2' => 'required|max:20|min:2|alpha',
+			'telefono' => ['required','max:9','min:9', new Telefono],
+			'fecha_nacimiento' => 'required|date|before:1/1/1995',
         ];
     }//end rules
 	
 	public function messages(){
 		return [
-			'nombre.required' => 'Prueba',
+			//
 		];
 	}
 }

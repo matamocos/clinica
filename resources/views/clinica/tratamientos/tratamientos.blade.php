@@ -42,7 +42,10 @@
 					<td>{{$t->medico_id}}</td>
 					<td>{{$t->paciente_id}}</td>
 					<td>{{$t->tipo_tratamiento_id}}</td>
-					<td><img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar"></td>
+					<td>
+						<img class="edit-button" src="{{ asset('/assets/img/edit.png',true)}}" alt="Editar">
+						<img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar">
+					</td>
 				</tr>
 			@endforeach
 		</tbody>

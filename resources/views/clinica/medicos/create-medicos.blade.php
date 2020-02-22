@@ -15,7 +15,6 @@
 		</div>
 	@endif
 
-
 	<h2 class="section-title">Insertar un nuevo registro en Médicos</h2>
 	
 	<div class="form-container">
