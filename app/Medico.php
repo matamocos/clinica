@@ -7,6 +7,9 @@ use Carbon\Carbon;
 
 class Medico extends Model
 {
+	//especifica qué campos se desean guardar en la base de datos usando este modelo
+	protected $fillable = ['nombre','apellido_1', 'apellido_2','fecha_nacimiento','telefono'];
+	
 	protected $table = 'medicos';
 	
     public function cita(){

@@ -8,6 +8,7 @@ use App\Cita;
 use App\Expediente;
 use App\Tratamiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\PacientesRequest;
 
 class PacienteController extends Controller
 {
@@ -38,8 +39,9 @@ class PacienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PacientesRequest $request)
     {
+		Paciente::create($request->all());
         Session::flash('mensaje_confirmacion', 'El paciente se ha creado correctamente.');
         return redirect('pacientes');
     }

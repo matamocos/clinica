@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Especialidade;
 use App\Especialidade_medico;
 use Illuminate\Http\Request;
+use App\Http\Requests\EspecialidadesRequest;
 
 class EspecialidadesController extends Controller
 {
@@ -35,9 +37,11 @@ class EspecialidadesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EspecialidadesRequest $request)
     {
-        //
+        Especialidade::create($request->all());
+        Session::flash('mensaje_confirmacion', 'La especialidad médica se ha creado correctamente.');
+        return redirect('especialidades');
     }
 
     /**

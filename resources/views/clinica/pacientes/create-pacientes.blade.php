@@ -29,12 +29,12 @@
 
 				<div class="six wide required field">
 					<label>Primer Apellido</label>
-					<input type="text" name="1apellido" placeholder="Primer Apellido" required value={{old('1apellido')}} >
+					<input type="text" name="apellido_1" placeholder="Primer Apellido" required value={{old('apellido_1')}} >
 				</div>
 
 				<div class="six wide required field">
 					<label>Segundo Apellido</label>
-					<input type="text" name="2apellido" placeholder="Segundo Apellido" required value={{old('2apellido')}} >
+					<input type="text" name="apellido_2" placeholder="Segundo Apellido" required value={{old('apellido_2')}} >
 				</div>
 
 			</div> <!-- End fields -->	
@@ -65,7 +65,7 @@
 					<input type="text" name="direccion" placeholder="Dirección" value={{old('direccion')}}>
 				</div>
 
-				<div class="six wide required field">
+				<div class="six wide required field {{ $errors->has('dni') ? 'has-error' : '' }}">
 					<label>Dni</label>
 					<input type="text" name="dni" placeholder="Dni" required value={{old('dni')}}>
 				</div>

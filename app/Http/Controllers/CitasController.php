@@ -42,6 +42,7 @@ class CitasController extends Controller
      */
     public function store(CitasRequest $request)
     {
+		Cita::create($request->all());
         Session::flash('mensaje_confirmacion', 'La cita ha creado correctamente.');
         return redirect('citas');
     }

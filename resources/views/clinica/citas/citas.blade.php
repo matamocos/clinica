@@ -23,7 +23,8 @@
 		<thead>
 			<tr>
 				<th>Id</th>
-				<th>Fecha</th>
+				<th>Día</th>
+				<th>Hora</th>
 				<th>Motivos de la consulta</th>
 				<th>Observaciones</th>
 				<th>Paciente (id)</th>
@@ -36,6 +37,7 @@
 				<tr data-id="{{$c->id}}">
 					<td>{{$c->id}}</td>
 					<td>{{$c->fecha}}</td>
+					<td>{{$c->hora}}</td>
 					<td>{{$c->motivo}}</td>
 					<td>{{$c->observaciones}}</td>
 					<td>{{$c->paciente_id}}</td>

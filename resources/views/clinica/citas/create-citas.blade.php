@@ -20,6 +20,17 @@
 	<div class="form-container">
 		<form id="form" class="ui form" action="/citas/store" method="POST">
 			@csrf
+			
+			<div class="six wide required field">
+					<label>Día de la cita</label>
+					<input type="date" name="fecha" placeholder="Fecha" required value={{old('fecha')}}>
+			</div>
+			
+			<div class="six wide required field">
+					<label>Hora de la cita</label>
+					<input type="time" name="hora" placeholder="Hora" step="3600" required value={{old('hora')}}>
+			</div>
+			
 			<div class="sixteen wide required field">
 				<label>Motivo de asistencia</label>
 				<input type="text" name="motivo" placeholder="Motivo de asistencia" required value={{old('motivo')}} >

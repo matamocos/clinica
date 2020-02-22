@@ -2,11 +2,24 @@
 
 @section('content')
 
+	@if (count($errors) > 0)
+		<div class="ui negative message">
+			<i class="close icon"></i>
+			<div class="header">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li>{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		</div>
+	@endif
+
 	<h2 class="section-title">Insertar un nuevo registro en Tratamientos</h2>
 	
 	<div class="form-container">
-		<form id="form" class="ui form" action="" method="POST">
-
+		<form id="form" class="ui form" action="/tratamientos/store" method="POST">
+			@csrf
 			<div class="sixteen wide required field">
 				<label>Descripción</label>
 				<input type="text" name="descripcion" placeholder="Descripción" required value={{old('descripcion')}} >
@@ -16,12 +29,12 @@
 
 				<div class="eight wide required field">
 					<label>Fecha de inicio</label>
-					<input type="text" name="fecha_inicio" placeholder="Fecha de inicio" required value={{old('fecha_inicio')}} >
+					<input type="date" name="fecha_inicio" placeholder="Fecha de inicio" required value={{old('fecha_inicio')}} >
 				</div>
 
 				<div class="eight wide field">
 					<label>Fecha de finalización</label>
-					<input type="text" name="fecha_fin" placeholder="Fecha de finalización" value={{old('fecha_fin')}} >
+					<input type="date" name="fecha_fin" placeholder="Fecha de finalización" value={{old('fecha_fin')}} >
 				</div>
 
 			</div> <!-- End fields -->	

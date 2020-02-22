@@ -50,18 +50,21 @@ Route::delete('/citas/destroy/{id}', 'CitasController@destroy');
 Route::get('/tratamientos', 'TratamientoController@index');
 Route::get('/tratamientos/create', 'TratamientoController@create');
 Route::get('/tratamientos/edit/{id}', 'TratamientoController@edit');
+Route::post('/tratamientos/store', 'TratamientoController@store');
 Route::delete('/tratamientos/destroy/{id}', 'TratamientoController@destroy');
 
 //Tipos de tratamientos
 Route::get('/tratamientos_tipos', 'TipoTratamientoController@index');
 Route::get('/tratamientos_tipos/create', 'TipoTratamientoController@create');
 Route::get('/tratamientos_tipos/edit/{id}', 'TipoTratamientoController@edit');
+Route::post('/tratamientos_tipos/store', 'TipoTratamientoController@store');
 Route::delete('/tratamientos_tipos/destroy/{id}', 'TipoTratamientoController@destroy');
 
 //Especialidades
 Route::get('/especialidades', 'EspecialidadesController@index');
 Route::get('/especialidades/create', 'EspecialidadesController@create');
 Route::get('/especialidades/edit/{id}', 'EspecialidadesController@edit');
+Route::post('/especialidades/store', 'EspecialidadesController@store');
 Route::delete('/especialidades/destroy/{id}', 'EspecialidadesController@destroy');
 
 //Especialidades medicos

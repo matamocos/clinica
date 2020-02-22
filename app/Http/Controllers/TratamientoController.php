@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Tratamiento;
 use App\Medico;
 use App\Paciente;
 use App\Tipotratamiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\TratamientosRequest;
 
 class TratamientoController extends Controller
 {
@@ -40,9 +42,11 @@ class TratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TratamientosRequest $request)
     {
-        //
+		Tratamiento::create($request->all());
+        Session::flash('mensaje_confirmacion', 'El tratamiento se ha creado correctamente.');
+        return redirect('tratamientos');
     }
 
     /**

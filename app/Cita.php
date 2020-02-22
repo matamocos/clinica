@@ -8,6 +8,8 @@ class Cita extends Model{
 	
 	protected $table = 'citas';
 	
+	protected $fillable = ['fecha', 'hora','motivo', 'observaciones', 'paciente_id', 'medico_id'];
+	
     public function paciente(){
 		return $this->belongsTo('App\Paciente');
 	}//fin paciente

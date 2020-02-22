@@ -4,7 +4,7 @@ namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-class Telefono implements Rule
+class Email implements Rule
 {
     /**
      * Create a new rule instance.
@@ -25,12 +25,12 @@ class Telefono implements Rule
      */
     public function passes($attribute, $value)
     {
-        if (preg_match("/^[9|8|6|7][0-9]{8}$/", $value) || (preg_match("/^6[0-9]{8}$/", $value)) ) {
-			return true;
+        if (filter_var($value, FILTER_VALIDATE_EMAIL)) {
+    		return true;
 		}else{
 			return false;
 		}
-    }//
+    }
 
     /**
      * Get the validation error message.
@@ -39,6 +39,6 @@ class Telefono implements Rule
      */
     public function message()
     {
-        return 'El número de teléfono introducido no es válido';
+        return 'El formato de la dirección de correo de no es válido.';
     }
 }

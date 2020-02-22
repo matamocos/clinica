@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Tipotratamiento;
 use App\Tratamiento;
 use Illuminate\Http\Request;
@@ -37,7 +38,9 @@ class TipoTratamientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Tipotratamiento::create($request->all());
+        Session::flash('mensaje_confirmacion', 'El tipo de tratamiento se ha creado correctamente.');
+        return redirect('tratamientos_tipos');
     }
 
     /**

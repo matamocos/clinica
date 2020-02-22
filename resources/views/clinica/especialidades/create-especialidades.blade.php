@@ -18,8 +18,8 @@
 	<h2 class="section-title">Insertar un nuevo registro en Especialidades</h2>
 	
 	<div class="form-container">
-		<form id="form" class="ui form" action="" method="POST">
-
+		<form id="form" class="ui form" action="/especialidades/store" method="POST">
+		@csrf
 			<div class="sixteen wide required field">
 				<label>Nombre de la nueva especialidad</label>
 				<input type="text" name="especialidad" placeholder="Especialidad" required value={{old('especialidad')}} >
