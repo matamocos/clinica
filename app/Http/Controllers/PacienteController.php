@@ -76,7 +76,7 @@ class PacienteController extends Controller
      * @param  \App\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paciente $paciente, $id)
+    public function update(PacientesRequest $request, $id)
     {
         $request = request()->except('_token','_method');
 		Paciente::where('id',$id)->update($request);

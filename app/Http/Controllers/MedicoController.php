@@ -65,7 +65,8 @@ class MedicoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $medico = Medico::find($id);
+		return view('clinica.medicos.edit-medicos', compact('medico'));
     }
 
     /**
@@ -75,9 +76,12 @@ class MedicoController extends Controller
      * @param  \App\Medico  $medico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MedicoRequest $request, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		Medico::where('id',$id)->update($request);
+		Session::flash('mensaje_editado', 'El médico se ha actualizado correctamente.');
+        return redirect('medicos');
     }
 
     /**

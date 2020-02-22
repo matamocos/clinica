@@ -55,7 +55,7 @@ class TratamientoController extends Controller
      * @param  \App\Tratamiento  $tratamiento
      * @return \Illuminate\Http\Response
      */
-    public function show(Tratamiento $tratamiento)
+    public function show($id)
     {
         //
     }
@@ -66,9 +66,13 @@ class TratamientoController extends Controller
      * @param  \App\Tratamiento  $tratamiento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tratamiento $tratamiento)
+    public function edit($id)
     {
-        //
+        $tratamiento = Tratamiento::find($id);
+		$medicos = Medico::All();
+		$pacientes = Paciente::All();
+		$tipos = Tipotratamiento::All();
+		return view('clinica.tratamientos.edit-tratamientos', compact('tratamiento','medicos','pacientes','tipos'));
     }
 
     /**
@@ -78,9 +82,12 @@ class TratamientoController extends Controller
      * @param  \App\Tratamiento  $tratamiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tratamiento $tratamiento)
+    public function update(TratamientosRequest $request, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		Tratamiento::where('id',$id)->update($request);
+		Session::flash('mensaje_editado', 'El tratamiento se ha actualizado correctamente.');
+        return redirect('tratamientos');
     }
 
     /**

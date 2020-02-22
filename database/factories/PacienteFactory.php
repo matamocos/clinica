@@ -17,6 +17,6 @@ $factory->define(Paciente::class, function (Faker $faker) {
 		'email' =>$faker->freeEmail,
 		'dni' =>$faker->dni,
 		'genero'=>$faker->randomElement($array = array ('Hombre', 'Mujer')) ,
-		'telefono'=>$faker->phoneNumber(),	
+		'telefono'=>$faker->unique()->numberBetween(700000000, 999999999),
     ];
 });

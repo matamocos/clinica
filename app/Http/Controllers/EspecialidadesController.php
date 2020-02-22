@@ -50,7 +50,7 @@ class EspecialidadesController extends Controller
      * @param  \App\Especialidade  $especialidade
      * @return \Illuminate\Http\Response
      */
-    public function show(Especialidade $especialidade)
+    public function show($id)
     {
         //
     }
@@ -61,9 +61,10 @@ class EspecialidadesController extends Controller
      * @param  \App\Especialidade  $especialidade
      * @return \Illuminate\Http\Response
      */
-    public function edit(Especialidade $especialidade)
+    public function edit($id)
     {
-        //
+        $cita = Cita::find($id);
+		return view('clinica.citas.edit-citas', compact('cita'));
     }
 
     /**
@@ -73,9 +74,12 @@ class EspecialidadesController extends Controller
      * @param  \App\Especialidade  $especialidade
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Especialidade $especialidade)
+    public function update(EspecialidadesRequest $request, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		Especialidade::where('id',$id)->update($request);
+		Session::flash('mensaje_editado', 'La especialidad se ha actualizado correctamente.');
+        return redirect('especialidades');
     }
 
     /**

@@ -36,7 +36,7 @@ class TipoTratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TipotratamientoRequest $request)
     {
         Tipotratamiento::create($request->all());
         Session::flash('mensaje_confirmacion', 'El tipo de tratamiento se ha creado correctamente.');
@@ -49,7 +49,7 @@ class TipoTratamientoController extends Controller
      * @param  \App\Tipotratamiento  $tipotratamiento
      * @return \Illuminate\Http\Response
      */
-    public function show(Tipotratamiento $tipotratamiento)
+    public function show($id)
     {
         //
     }
@@ -60,9 +60,10 @@ class TipoTratamientoController extends Controller
      * @param  \App\Tipotratamiento  $tipotratamiento
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipotratamiento $tipotratamiento)
+    public function edit($id)
     {
-        //
+        $tipo = Tipotratamiento::find($id);
+		return view('clinica.tipos_de_tratamientos.edit-tipos_tratamientos', compact('tipo'));
     }
 
     /**
@@ -72,9 +73,12 @@ class TipoTratamientoController extends Controller
      * @param  \App\Tipotratamiento  $tipotratamiento
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipotratamiento $tipotratamiento)
+    public function update(TipotratamientoRequest $request, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		Tipotratamiento::where('id',$id)->update($request);
+		Session::flash('mensaje_editado', 'El tipo de tratamiento se ha actualizado correctamente.');
+        return redirect('tratamientos_tipos');
     }
 
     /**

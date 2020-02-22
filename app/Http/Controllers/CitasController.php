@@ -43,7 +43,7 @@ class CitasController extends Controller
     public function store(CitasRequest $request)
     {
 		Cita::create($request->all());
-        Session::flash('mensaje_confirmacion', 'La cita ha creado correctamente.');
+        Session::flash('mensaje_confirmacion', 'La cita se ha creado correctamente.');
         return redirect('citas');
     }
 
@@ -66,7 +66,10 @@ class CitasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cita = Cita::find($id);
+		$medicos = Medico::All();
+		$pacientes = Paciente::All();
+		return view('clinica.citas.edit-citas', compact('cita','medicos','pacientes'));
     }
 
     /**
@@ -76,9 +79,12 @@ class CitasController extends Controller
      * @param  \App\Cita  $cita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cita $cita)
+    public function update(CitasRequest $request, $id)
     {
-        //
+        $request = request()->except('_token','_method');
+		Cita::where('id',$id)->update($request);
+		Session::flash('mensaje_editado', 'La cita se ha actualizado correctamente.');
+        return redirect('citas');
     }
 
     /**

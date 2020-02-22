@@ -147,9 +147,9 @@ return [
     */
 
     'attributes' => [
-		'nombre' => '"Nombre"',
-		'apellido_1' => '"Primer apellido"',
-		'apellido_2' => '"Segundo apellido"',
+		'apellido_1' => 'primer apellido',
+		'apellido_2' => 'segundo apellido',
+		'fecha_nacimiento' => 'fecha de nacimiento',
 	],
 
 ];
