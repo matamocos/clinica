@@ -55,8 +55,27 @@ class CitasController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+		$cita = Cita::select('medicos.nombre AS nombre_medico',
+							 'medicos.apellido_1 AS apellido_1_medico',
+							 'medicos.apellido_2 AS apellido_2_medico',
+							 'medicos.fecha_nacimiento AS fecha_nacimiento_medico',
+							 'medicos.telefono AS telefono_medico', 
+							 'pacientes.nombre AS nombre_paciente',
+							 'pacientes.apellido_1 AS apellido_1_paciente',
+							 'pacientes.apellido_2 AS apellido_2_paciente',
+							 'pacientes.telefono AS telefono_paciente',
+							 'citas.id AS id_citas',
+							 'pais','ciudad', 'email', 'dni', 'genero', 'direccion', 'fecha', 'hora', 'motivo', 'observaciones' )
+						->join('pacientes', 'citas.paciente_id', '=', 'pacientes.id')
+						->join('medicos', 'citas.medico_id', '=', 'medicos.id')
+						->find($id);
+		if($cita){
+			return $cita;	
+		}else{
+			echo "error";
+		}
+        
+    }//fin show
 
     /**
      * Show the form for editing the specified resource.

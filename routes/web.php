@@ -47,6 +47,7 @@ Route::get('/citas/edit/{id}', 'CitasController@edit');
 Route::put('/citas/update/{id}', 'CitasController@update');
 Route::delete('/citas/destroy/{id}', 'CitasController@destroy');
 Route::post('/citas/store', 'CitasController@store');
+Route::get('/citas/show/{id}', 'CitasController@show');
 
 //Tratamientos
 Route::get('/tratamientos', 'TratamientoController@index');
@@ -74,3 +75,33 @@ Route::post('/especialidades/store', 'EspecialidadesController@store');
 
 //Especialidades medicos
 //Route::get('/especialidades_medicos', 'EspecialidadesMedicosController@index');
+
+
+
+
+
+Route::get('/pruebas', function () {
+ 
+	/*
+	$prueba = \App\Cita::join('pacientes', 'citas.paciente_id', '=', 'pacientes.id')
+						->join('medicos', 'citas.medico_id', '=', 'medico.id')
+						->selectRaw("*")
+						->get();
+	*/	
+	
+	$prueba = \App\Cita::select('medicos.nombre AS nombre_medico',
+								'medicos.apellido_1 AS apellido_1_medico',
+								'medicos.apellido_2 AS apellido_2_medico',
+								'medicos.fecha_nacimiento AS fecha_nacimiento_medico',
+								'medicos.telefono AS telefono_medico',
+								'pais','ciudad', 'email', 'dni', 'genero', 'direccion')
+						->join('pacientes', 'citas.paciente_id', '=', 'pacientes.id')
+						->join('medicos', 'citas.medico_id', '=', 'medicos.id')
+						->get()[0];
+	
+		return $prueba;
+});
+
+
+
+

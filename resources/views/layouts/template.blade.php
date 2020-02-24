@@ -25,6 +25,7 @@
 	<script src="{{ asset('/assets/js/clear.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/delete.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/edit.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/show-citas.js',true)}}"></script>
 
 	<!-- VANTA JS ASSETS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>

@@ -43,14 +43,15 @@
 					<td>{{$c->paciente_id}}</td>
 					<td>{{$c->medico_id}}</td>
 					<td>
-						<img class="edit-button" src="{{ asset('/assets/img/edit.png',true)}}" alt="Editar">
-						<img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar">
+						<i class="search large circular icon show-button"></i>
+						<i class="edit large circular icon edit-button"></i>
+						<i class="trash large circular alternate outline icon delete-button"></i>
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
 
-	<div class="ventana_modal"></div>
-
+	<div class="modal-delete"></div>
+	<div class="modal-show"></div>
 @endsection

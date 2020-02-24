@@ -43,8 +43,8 @@
 					<td>{{$t->paciente_id}}</td>
 					<td>{{$t->tipo_tratamiento_id}}</td>
 					<td>
-						<img class="edit-button" src="{{ asset('/assets/img/edit.png',true)}}" alt="Editar">
-						<img class="delete-button" src="{{ asset('/assets/img/delete.png',true)}}" alt="Borrar">
+						<i class="edit large circular icon edit-button"></i>
+						<i class="trash large circular alternate outline icon delete-button"></i>
 					</td>
 				</tr>
 			@endforeach

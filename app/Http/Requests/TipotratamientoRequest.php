@@ -24,7 +24,7 @@ class TipotratamientoRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'tipo' => 'required|alpha',
         ];
     }
 }

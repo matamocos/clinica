@@ -24,7 +24,7 @@ class EspecialidadesRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'especialidad' => 'required|alpha',
         ];
     }
 }

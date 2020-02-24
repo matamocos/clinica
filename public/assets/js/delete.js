@@ -10,25 +10,25 @@ $(document).ready(function(){
 	/*la ventana modal se crea aquí, porque si está en el blade se guarda en la memoria o algo similar, y se duplica
 	  el evento de borrar*/
 	var ventanaModal = `
-			<div class="ui mini modal">
- 				<div class="header"><span class="section-title">Borrar registro</span></div>
-  				<div class="content">
-    				<p>¿Está seguro de que decea borrar este registro?</p>
-  				</div>
-				<div class="actions">
-					<div class="ui cancel negative button">Cancelar</div>
-					<div class="ui approve positive ok button">Aceptar</div>
-				</div>
-			</div>`;
+		<div class="ui mini modal modal-delete">
+			<div class="header"><span class="section-title">Borrar registro</span></div>
+			<div class="content">
+				<p>¿Está seguro de que decea borrar este registro?</p>
+			</div>
+			<div class="actions">
+				<div class="ui cancel negative button">Cancelar</div>
+				<div class="ui approve positive ok button">Aceptar</div>
+			</div>
+		</div>`;
 		
-	$('.ventana_modal').append(ventanaModal);
+	$('.modal-delete').append(ventanaModal);
 	
 	$(".delete-button").click(function(){	
-		$('.modal').modal('show');
+		$('.modal-delete').modal('show');
 		tr = $(this).closest('tr');
 	}); //fin función
 	
-	$(document).on('click', '.approve', function(e){
+	$(document).on('click', '.modal-delete .approve', function(e){
 		$.ajax({                
 			url: window.location.href + '/destroy/' + $(tr).attr('data-id'),  
 			type: 'DELETE',              

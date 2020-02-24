@@ -22,4 +22,5 @@ class Cita extends Model{
 		return $this->belongsTo('App\Cita');
 	}//fin cita
 	
+	
 }//fin clase cita
