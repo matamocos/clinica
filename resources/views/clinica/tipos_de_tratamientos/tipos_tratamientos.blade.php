@@ -13,6 +13,7 @@
 	<h2 class="section-title">Registro de los tipos de tratamientos</h2>
 	<div class="table-options">
 		<a href="/tratamientos_tipos/create"><button class="ui button left">Insertar un nuevo registro</button></a>
+		<a id="borrar"><button class="ui button left" style="height: 36px;">Borrar seleccionados</button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
 			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
@@ -22,6 +23,7 @@
 	<table id="table" class="ui selectable inverted table">
 		<thead>
 			<tr>
+				<th><div class="ui checkbox"><input type="checkbox" class="check_all"><label></label></div></th>
 				<th>Id</th>
 				<th>Tipo de tratamiento</th>
 				<th>Acciones</th>
@@ -30,8 +32,9 @@
 		<tbody>
 			@foreach($tipos as $t)
 				<tr data-id="{{$t->id}}">
-					<td style="width: 10%;">{{$t->id}}</td>
-					<td>{{$t->tipo}}</td>
+					<td><div class="ui radio checkbox"><input type="checkbox" class="check"><label></label></div></td>
+					<td style="width: 1%">{{$t->id}}</td>
+					<td style="width: 90%">{{$t->tipo}}</td>
 					<td>
 						<i class="edit large circular icon edit-button"></i>
 						<i class="trash large circular alternate outline icon delete-button"></i>
@@ -41,21 +44,6 @@
 		</tbody>
 	</table>
 
-	<!--
-	<div class="ui mini modal">
- 		<div class="header">Borrar registro</div>
-  		<div class="content">
-    		<p>¿Está seguro de que decea borrar este registro?</p>
-  		</div>
-		<div class="actions">
-			<div class="ui cancel negative button">Cancelar</div>
-			<div class="ui approve positive ok button">Aceptar</div>
-		 </div>
-	</div>
-	-->
-
-	<div class="ventana_modal">
-		
-	</div>
+	<div class="modal-delete"></div>
 	
 @endsection

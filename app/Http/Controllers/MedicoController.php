@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+use Auth;
 use Session;
 use App\Medico;
 use App\Cita;
 use App\Especialidade_medico;
+use App\Especialidade;
 use App\Tratamiento;
 use Illuminate\Http\Request;
 use App\Http\Requests\MedicoRequest;
@@ -30,7 +33,13 @@ class MedicoController extends Controller
      */
     public function create()
     {
-        return view('clinica.medicos.create-medicos');
+		if(Gate::allows('administradores', Auth::user())){
+			return view('clinica.medicos.create-medicos');
+		}else{
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir nuevos médicos.');
+			return redirect('medicos');
+		}
+        
     }
 
     /**
@@ -54,7 +63,16 @@ class MedicoController extends Controller
      */
     public function show($id)
     {
-        //
+        $medico = Medico::find($id);
+		
+		$especialidades = Especialidade_medico::select('especialidades.id AS especialidad_id','especialidades.especialidad')
+												->join('especialidades', 'especialidade_medico.especialidade_id', '=', 'especialidades.id')
+												->where('especialidade_medico.medico_id', $id)
+												->get();
+		
+		$especialidades_select = Especialidade::All();
+		
+		return view('clinica.medicos.especialidades_medicos', compact('medico', 'especialidades','especialidades_select'));
     }
 
     /**
@@ -65,8 +83,13 @@ class MedicoController extends Controller
      */
     public function edit($id)
     {
-        $medico = Medico::find($id);
-		return view('clinica.medicos.edit-medicos', compact('medico'));
+		if(Gate::allows('administradores', Auth::user())){
+			$medico = Medico::find($id);
+			return view('clinica.medicos.edit-medicos', compact('medico'));
+		}else{
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar médicos.');
+			return redirect('medicos');
+		}
     }
 
     /**

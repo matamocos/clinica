@@ -25,7 +25,7 @@
 				<input type="text" name="tipo" placeholder="Tratamiento" required value={{old('tipo')}}>
 			</div>
 
-			<a href="/tratamientos/store"><button class="ui button left">Insertar registro</button></a>
+			<button class="ui button left">Insertar registro</button>
 			<button class="ui button left clear-form">Vaciar formulario</button>
 			
 		</form>

@@ -10,9 +10,26 @@
 		</div>
 	@endif
 
+	@if(Session::has('mensaje_editado'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="header">Registro editado.</div>
+  			<p>{{Session::get('mensaje_editado')}}</p>
+		</div>
+	@endif
+
+	@if(Session::has('mensaje_autorizacion'))
+		<div class="ui negative message">
+  			<i class="close icon"></i>
+			<div class="header">Usuario no autorizado.</div>
+  			<p>{{Session::get('mensaje_autorizacion')}}</p>
+		</div>
+	@endif
+
 	<h2 class="section-title">Registro de los medicos</h2>
 	<div class="table-options">
 		<a href="/medicos/create"><button class="ui button left">Insertar un nuevo registro</button></a>
+		<a id="borrar"><button class="ui button left" style="height: 36px;">Borrar seleccionados</button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
 			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
@@ -22,6 +39,7 @@
 	<table id="table" class="ui selectable inverted table">
 		<thead>
 			<tr>
+				<th><div class="ui checkbox"><input type="checkbox" class="check_all"><label></label></div></th>
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>1er Apellido</th>
@@ -29,13 +47,14 @@
 				<th>Fecha de nacimiento</th>
 				<th>Edad</th>
 				<th>Teléfono</th>
-				<th>Acciones</th>
+				<th style="width:10%;">Acciones</th>
 			</tr>
 		</thead>
 		<tbody>
 			@foreach($medicos as $m)
 				<tr data-id="{{$m->id}}">
-					<td>{{$m->id}}</td>
+					<td><div class="ui radio checkbox"><input type="checkbox" class="check"><label></label></div></td>
+					<td style="width: 1%">{{$m->id}}</td>
 					<td>{{$m->nombre}}</td>
 					<td>{{$m->apellido_1}}</td>
 					<td>{{$m->apellido_2}}</td>
@@ -43,6 +62,7 @@
 					<td>{{$m->edad_medico}}</td>
 					<td>{{$m->telefono}}</td>
 					<td>
+						<i class="search large circular icon show-medicos"></i>
 						<i class="edit large circular icon edit-button"></i>
 						<i class="trash large circular alternate outline icon delete-button"></i>
 					</td>
@@ -50,22 +70,7 @@
 			@endforeach
 		</tbody>
 	</table>
-
-<!--
-	<div class="ui mini modal">
- 		<div class="header">Borrar registro</div>
-  		<div class="content">
-    		<p>¿Está seguro de que decea borrar este registro?</p>
-  		</div>
-		<div class="actions">
-			<div class="ui cancel negative button">Cancelar</div>
-			<div class="ui approve positive ok button">Aceptar</div>
-		 </div>
-	</div>
-	-->
-
-	<div class="ventana_modal">
-		
-	</div>
 	
+	<div class="modal-delete"></div>
+
 @endsection

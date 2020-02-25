@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
+use Gate;
+use Auth;
 use Session;
 use App\Paciente;
 use App\Cita;
 use App\Expediente;
 use App\Tratamiento;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\PacientesRequest;
 
 class PacienteController extends Controller
@@ -30,7 +34,14 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('clinica.pacientes.create-pacientes');
+		
+		if(Gate::allows('administradores', Auth::user())){
+			return view('clinica.pacientes.create-pacientes');
+		}else{
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevos pacientes.');
+			return redirect('pacientes');
+		}
+
     }
 
     /**
@@ -65,8 +76,13 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
-        $paciente = Paciente::find($id);
-		return view('clinica.pacientes.edit-pacientes', compact('paciente'));
+		if(Gate::allows('administradores', Auth::user())){
+			$paciente = Paciente::find($id);
+			return view('clinica.pacientes.edit-pacientes', compact('paciente'));
+		}else{
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estáก autorizada para editar pacientes.');
+			return redirect('pacientes');
+		}
     }
 
     /**
@@ -92,15 +108,20 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-        $citas = Cita::where("paciente_id", $id)->count();
-		$tratamientos = Tratamiento::where("paciente_id", $id)->count();
-		$cant = $citas + $tratamientos;
-		
-		if($cant > 0){
-			echo "error";
+
+		if(Gate::allows('administradores', Auth::user())){
+			$citas = Cita::where("paciente_id", $id)->count();
+			$tratamientos = Tratamiento::where("paciente_id", $id)->count();
+			$cant = $citas + $tratamientos;
+
+			if($cant > 0){
+				echo "error";
+			}else{
+				Paciente::find($id)->delete();
+				echo "success";
+			}
 		}else{
-			Paciente::find($id)->delete();
-			echo "success";
+			
 		}
 		
     }

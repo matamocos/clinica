@@ -15,17 +15,18 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Insertar un nuevo registro en Tipos de tratamientos</h2>
+	<h2 class="section-title">Editar un tipo de tratamiento</h2>
 	
 	<div class="form-container">
-		<form id="form" class="ui form" action="/tratamientos_tipos/store" method="POST">
+		<form id="form" class="ui form" action="/tratamientos_tipos/update/{{$tipo->id}}" method="POST">
 			@csrf
+			<input name="_method" type="hidden" value="PUT">
 			<div class="sixteen wide required field">
-				<label>Nombre del nuevo tratamiento</label>
-				<input type="text" name="tipo" placeholder="Tratamiento" required value={{old('tipo')}}>
+				<label>Nombre del tratamiento</label>
+				<input type="text" name="tipo" placeholder="Tratamiento" required value="{{$tipo->tipo}}">
 			</div>
 
-			<a href="/tratamientos/store"><button class="ui button left">Insertar registro</button></a>
+			<button class="ui button left">Actualizar registro</button>
 			<button class="ui button left clear-form">Vaciar formulario</button>
 			
 		</form>

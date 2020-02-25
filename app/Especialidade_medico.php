@@ -8,6 +8,8 @@ class Especialidade_medico extends Model
 {
     protected $table = 'especialidade_medico';
 	
+	protected $fillable = ['medico_id','especialidade_id'];
+	
 	public function especialidades(){
 		return $this->belongsTo('App\Especialidade');
 	}//fin especialidades

@@ -10,6 +10,10 @@
 		}
 	</style>
 
-	<h2 class="section-title">Página de inicio</h2>
+	<h2 class="section-title" style="margin-top: 0">P&aacute;gina de inicio</h2>
+
+	<div>
+		
+	</div>
 
 @endsection

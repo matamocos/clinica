@@ -53,7 +53,7 @@
 
 			</div> <!-- End fields -->	
 
-			<a href="/medicos/create"><button class="ui button left">Insertar registro</button></a>
+			<button class="ui button left">Insertar registro</button>
 			<button class="ui button left clear-form">Vaciar formulario</button>
 			
 		</form>

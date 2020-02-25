@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+use Auth;
 use App\Especialidade_medico;
 use Illuminate\Http\Request;
+use Session;
 
 class EspecialidadesMedicosController extends Controller
 {
@@ -36,7 +39,21 @@ class EspecialidadesMedicosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$count = Especialidade_medico::where('especialidade_id', $request->especialidad)->where('medico_id', $request->medico_id)->count();
+		
+		if($count == 0){
+			$object = new Especialidade_medico;
+			$object->medico_id = $request->medico_id;
+			$object->especialidade_id = $request->especialidad;
+			$object->save();
+
+			Session::flash('mensaje_confirmacion', 'Se ha añadido correctamente la especialidad.');
+			return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
+		}else{
+			Session::flash('mensaje_error', 'El médico ya posee esa especialidad.');
+			return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
+		}
+        
     }
 
     /**
@@ -45,7 +62,7 @@ class EspecialidadesMedicosController extends Controller
      * @param  \App\Especialidade_medico  $especialidade_medico
      * @return \Illuminate\Http\Response
      */
-    public function show(Especialidade_medico $especialidade_medico)
+    public function show($id)
     {
         //
     }
@@ -56,7 +73,7 @@ class EspecialidadesMedicosController extends Controller
      * @param  \App\Especialidade_medico  $especialidade_medico
      * @return \Illuminate\Http\Response
      */
-    public function edit(Especialidade_medico $especialidade_medico)
+    public function edit($id)
     {
         //
     }
@@ -68,7 +85,7 @@ class EspecialidadesMedicosController extends Controller
      * @param  \App\Especialidade_medico  $especialidade_medico
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Especialidade_medico $especialidade_medico)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,8 +96,9 @@ class EspecialidadesMedicosController extends Controller
      * @param  \App\Especialidade_medico  $especialidade_medico
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Especialidade_medico $especialidade_medico)
+    public function destroy($id, $medico)
     {
-        //
+        Especialidade_medico::where('especialidade_id', $id)->where('medico_id', $medico)->delete();
+		echo "success";
     }
 }

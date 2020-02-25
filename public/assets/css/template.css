@@ -28,7 +28,14 @@
 	bottom: 0;
 }
 
-/* CSS */
+.grid-especialidades-medicos{
+	display: grid;
+	grid-template-columns: 70% 30%;
+}
+
+.grid-especialidades-medicos div{
+	margin: 0;
+}
 
 .section-title{
 	background: -webkit-linear-gradient(black, #5d49be);
@@ -41,6 +48,14 @@
 	text-align: center;
 	height: 60px;
 	align-items: center;
+}
+
+#table > thead > tr > th > div, #table > tbody > tr > td > div{
+	transform: translate(7.5px, 2.5px);
+}
+
+#table > thead > tr > th:nth-child(1){
+	width: 1%;
 }
 
 #loader{
@@ -57,11 +72,6 @@ i{
 	cursor: pointer;
 	boder-color: #4f3ea1;
 }
-
-/*#table > tbody > tr > td:last-child img{
-	maring-right: 5px;
-	margin-left: 5px;
-}*/
 
 .table-options{
 	display: flex;

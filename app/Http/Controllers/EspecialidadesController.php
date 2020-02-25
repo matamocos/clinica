@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+use Auth;
 use Session;
 use App\Especialidade;
 use App\Especialidade_medico;
@@ -63,8 +65,8 @@ class EspecialidadesController extends Controller
      */
     public function edit($id)
     {
-        $cita = Cita::find($id);
-		return view('clinica.citas.edit-citas', compact('cita'));
+        $especialidad = Especialidade::find($id);
+		return view('clinica.especialidades.edit-especialidades', compact('especialidad'));
     }
 
     /**

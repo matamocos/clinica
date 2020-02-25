@@ -11,6 +11,6 @@ class Especialidade_medicoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Especialidade_medico::class,100)->create();
+        factory(App\Especialidade_medico::class,50)->create();
     }
 }

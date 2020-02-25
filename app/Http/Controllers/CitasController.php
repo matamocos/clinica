@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+use Auth;
 use Session;
 use App\Cita;
 use App\Medico;
@@ -18,6 +20,7 @@ class CitasController extends Controller
      */
     public function index()
     {
+		//dd($request);
         $citas = Cita::All();
 		return view('clinica.citas.citas', compact('citas'));
     }

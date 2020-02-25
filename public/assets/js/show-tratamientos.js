@@ -7,8 +7,7 @@ $(document).ready(function(){
 	
 	//PROBLEMA: Se multiplica el número de ventanas modales que se generan exponencialmente a medida que vas clickeando en mostrar.
 	
-	$('.show-citas').click(function(){
-			
+	$('.show-tratamientos').click(function(){
 		var id = $(this).closest('tr').attr('data-id');
 		//$('.modal-show').html('');
 		$.ajax({
@@ -20,7 +19,7 @@ $(document).ready(function(){
 					$('.ui.dimmer.modals.page.transition').remove();
 					
 					var ventanaModal = `
-						<div class="ui mini modal modal-show" style="width:60%;">
+						<div class="ui mini modal modal-show-3" style="width:60%;">
 							<div class="header"><span class="section-title">Mostrando la cita con ID: ${data.id_citas}</span></div>
 							<div class="content">
 								<p>
@@ -34,9 +33,9 @@ $(document).ready(function(){
 							</div>
 						</div>`;
 					
-					$('.modal-show').html(ventanaModal);
+					$('.modal-show-3').html(ventanaModal);
 					
-					$('.ui.mini.modal.modal-show')
+					$('.ui.mini.modal.modal-show-3')
   						.modal('show')
 					;
 				

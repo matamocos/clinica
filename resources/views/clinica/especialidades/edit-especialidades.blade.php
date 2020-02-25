@@ -15,17 +15,18 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Insertar un nuevo registro en Especialidades</h2>
+	<h2 class="section-title">Editar Especialidad</h2>
 	
 	<div class="form-container">
-		<form id="form" class="ui form" action="/especialidades/store" method="POST">
-		@csrf
+		<form id="form" class="ui form" action="/especialidades/update/{{$especialidad->id}}" method="POST">
+			@csrf
+			<input name="_method" type="hidden" value="PUT">
 			<div class="sixteen wide required field">
-				<label>Nombre de la nueva especialidad</label>
-				<input type="text" name="especialidad" placeholder="Especialidad" required value={{old('especialidad')}} >
+				<label>Nombre de la especialidad</label>
+				<input type="text" name="especialidad" placeholder="Especialidad" required value="{{$especialidad->especialidad}}" >
 			</div>
 
-			<a href="/tratamientos/store"><button class="ui button left">Insertar registro</button></a>
+			<button class="ui button left">Actualizar registro</button>
 			<button class="ui button left clear-form">Vaciar formulario</button>
 			
 		</form>

@@ -24,8 +24,11 @@
 	<script src="{{ asset('/assets/js/search.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/clear.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/delete.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/delete-checkbox.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/edit.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-citas.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/show-medicos.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/show-tratamientos.js',true)}}"></script>
 
 	<!-- VANTA JS ASSETS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>

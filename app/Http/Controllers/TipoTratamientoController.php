@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+use Auth;
 use Session;
 use App\Tipotratamiento;
 use App\Tratamiento;
 use Illuminate\Http\Request;
+use App\Http\Requests\TipotratamientoResquest;
 
 class TipoTratamientoController extends Controller
 {
@@ -36,7 +39,7 @@ class TipoTratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TipotratamientoRequest $request)
+    public function store(TipotratamientoResquest $request)
     {
         Tipotratamiento::create($request->all());
         Session::flash('mensaje_confirmacion', 'El tipo de tratamiento se ha creado correctamente.');
@@ -73,7 +76,7 @@ class TipoTratamientoController extends Controller
      * @param  \App\Tipotratamiento  $tipotratamiento
      * @return \Illuminate\Http\Response
      */
-    public function update(TipotratamientoRequest $request, $id)
+    public function update(TipotratamientoResquest $request, $id)
     {
         $request = request()->except('_token','_method');
 		Tipotratamiento::where('id',$id)->update($request);

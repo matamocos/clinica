@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Gate;
+use Auth;
 use Session;
 use App\Tratamiento;
 use App\Medico;
@@ -57,7 +59,7 @@ class TratamientoController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
