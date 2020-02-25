@@ -39,20 +39,28 @@ class EspecialidadesMedicosController extends Controller
      */
     public function store(Request $request)
     {
-		$count = Especialidade_medico::where('especialidade_id', $request->especialidad)->where('medico_id', $request->medico_id)->count();
-		
-		if($count == 0){
-			$object = new Especialidade_medico;
-			$object->medico_id = $request->medico_id;
-			$object->especialidade_id = $request->especialidad;
-			$object->save();
 
-			Session::flash('mensaje_confirmacion', 'Se ha añadido correctamente la especialidad.');
-			return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
+		
+		if(Gate::allows('administradores', Auth::user())){
+			$count = Especialidade_medico::where('especialidade_id', $request->especialidad)->where('medico_id', $request->medico_id)->count();
+		
+			if($count == 0){
+				$object = new Especialidade_medico;
+				$object->medico_id = $request->medico_id;
+				$object->especialidade_id = $request->especialidad;
+				$object->save();
+
+				Session::flash('mensaje_confirmacion', 'Se ha añadido correctamente la especialidad.');
+				return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
+			}else{
+				Session::flash('mensaje_error', 'El médico ya posee esa especialidad.');
+				return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
+			}
 		}else{
-			Session::flash('mensaje_error', 'El médico ya posee esa especialidad.');
-			return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
-		}
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir una nueva especialidad.');
+			return redirect('/medicos/show/'.$request->medico_id);
+		} 
+		
         
     }
 
@@ -98,7 +106,11 @@ class EspecialidadesMedicosController extends Controller
      */
     public function destroy($id, $medico)
     {
-        Especialidade_medico::where('especialidade_id', $id)->where('medico_id', $medico)->delete();
-		echo "success";
+		if(Gate::allows('administradores', Auth::user())){
+			Especialidade_medico::where('especialidade_id', $id)->where('medico_id', $medico)->delete();
+			echo "success";
+		}else{
+			return "desautorizado";
+		}	
     }
 }

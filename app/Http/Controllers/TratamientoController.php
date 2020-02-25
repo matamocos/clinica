@@ -38,7 +38,7 @@ class TratamientoController extends Controller
 			$pacientes = Paciente::All();
         	return view('clinica.tratamientos.create-tratamientos', compact('medicos','pacientes','tipos'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir nuevos tratamientos.');
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevos tratamientos.');
 			return redirect('tratamientos');
 		}  
     }
@@ -64,13 +64,14 @@ class TratamientoController extends Controller
      */
     public function show($id)
     {
-        $tratamiento = Tratamiento::select('tratamientos.id AS tratamiento_id','tratamientos.fecha_inicio','tratamientos.fecha_fin','tipotratamientos.tipo',
+        $tratamiento = Tratamiento::select('tratamientos.id AS tratamiento_id','tratamientos.descripcion','tratamientos.fecha_inicio','tratamientos.fecha_fin','tipotratamientos.tipo',
 										   'pacientes.nombre AS p_nombre','pacientes.apellido_1 AS p_apellido1','pacientes.apellido_2 AS p_apellido2',
 										   'medicos.nombre AS m_nombre','medicos.apellido_1 AS m_apellido1','medicos.apellido_2 AS m_apellido2',)
 									->join('pacientes', 'tratamientos.paciente_id', '=', 'pacientes.id')
-									->join('medicos', 'tratamientos.paciente_id', '=', 'medicos.id')
+									->join('medicos', 'tratamientos.medico_id', '=', 'medicos.id')
 									->join('tipotratamientos', 'tratamientos.tipo_tratamiento_id', '=', 'tipotratamientos.id')
-									->where('tratamientos.id', $id)->get();
+									->where('tratamientos.id', $id)
+									->get();
 		if($tratamiento){
 			return $tratamiento;
 		}else{
@@ -93,7 +94,7 @@ class TratamientoController extends Controller
 			$tipos = Tipotratamiento::All();
 			return view('clinica.tratamientos.edit-tratamientos', compact('tratamiento','medicos','pacientes','tipos'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar tratamientos.');
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar tratamientos.');
 			return redirect('tratamientos');
 		}
     }
@@ -121,7 +122,11 @@ class TratamientoController extends Controller
      */
     public function destroy($id)
     {
-        Tratamiento::find($id)->delete();
-		echo "success";
+		if(Gate::allows('administradores', Auth::user())){
+			Tratamiento::find($id)->delete();
+			echo "success";
+		}else{
+			return "desautorizado";
+		}
     }
 }

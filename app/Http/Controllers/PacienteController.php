@@ -108,7 +108,6 @@ class PacienteController extends Controller
      */
     public function destroy($id)
     {
-
 		if(Gate::allows('administradores', Auth::user())){
 			$citas = Cita::where("paciente_id", $id)->count();
 			$tratamientos = Tratamiento::where("paciente_id", $id)->count();
@@ -121,8 +120,7 @@ class PacienteController extends Controller
 				echo "success";
 			}
 		}else{
-			
-		}
-		
+			return "desautorizado";
+		}	
     }
 }

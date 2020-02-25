@@ -33,6 +33,14 @@
 		</div>
 	@endif
 
+	@if(Session::has('mensaje_autorizacion'))
+		<div class="ui negative message">
+  			<i class="close icon"></i>
+			<div class="header">Usuario no autorizado.</div>
+  			<p>{{Session::get('mensaje_autorizacion')}}</p>
+		</div>
+	@endif
+
 	<h2 class="section-title" style="margin-top: 0">Registro de las especialidades del médico {{$medico->nombre}} {{$medico->apellido_1}} {{$medico->apellido_2}}</h2>
 	
 	<div class="grid-especialidades-medicos">	

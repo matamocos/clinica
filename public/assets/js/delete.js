@@ -36,9 +36,15 @@ $(document).ready(function(){
 				"_token": $("meta[name='csrf-token']").attr("content")
 			},
 			success: function(message) {
+				
+				console.log(message)
+				
 				if(message == "success"){
 					toastr.success(`El registro se borró correctamente.`, "Éxito");
 					$(tr).fadeOut();
+					$('.modal').css('display', 'none');
+				}else if(message == "desautorizado"){
+					toastr.warning(`Su cuenta de usuario no está autorazada para borrar registros.`, "Usuario no autorizado");
 					$('.modal').css('display', 'none');
 				}else{
 					toastr.warning(`No se puede borrar el registro debido a la integridad referencial`, "Error");

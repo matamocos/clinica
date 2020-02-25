@@ -52,8 +52,6 @@
 						<a class="item" href="{{url('/tratamientos')}}">Tratamientos</a>
 					    <a class="item" href="{{url('/tratamientos_tipos')}}">Tipos de tratamientos</a>
 						<a class="item" href="{{url('/especialidades')}}">Especialidades</a>
-						<!--<a class="item" href="{{url('/especialidades_medicos')}}">Especialidades de los médicos</a>-->
-						<!--<a class="item" href="{{url('/expedientes')}}">Expedientes</a>-->
 						<div class="item right">
 							<div class="ui dropdown">
 								<input type="hidden" name="gender">

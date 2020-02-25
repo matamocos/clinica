@@ -33,7 +33,7 @@ class TipoTratamientoController extends Controller
 		if(Gate::allows('administradores', Auth::user())){
 			return view('clinica.tipos_de_tratamientos.create-tipos_tratamientos');
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir un nuevo tipo de tratamiento.');
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir un nuevo tipo de tratamiento.');
 			return redirect('tratamientos_tipos');
 		} 
     }
@@ -74,7 +74,7 @@ class TipoTratamientoController extends Controller
 			$tipo = Tipotratamiento::find($id);
 			return view('clinica.tipos_de_tratamientos.edit-tipos_tratamientos', compact('tipo'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar un tipo de tratamiento.');
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar un tipo de tratamiento.');
 			return redirect('tratamientos_tipos');
 		} 
     }
@@ -102,13 +102,18 @@ class TipoTratamientoController extends Controller
      */
     public function destroy($id)
     {
-		$cant = Tratamiento::where("tipo_tratamiento_id", $id)->count();
+		if(Gate::allows('administradores', Auth::user())){
+			$cant = Tratamiento::where("tipo_tratamiento_id", $id)->count();
 		
-		if($cant > 0){
-			echo "error";
+			if($cant > 0){
+				echo "error";
+			}else{
+				Tipotratamiento::find($id)->delete();
+				echo "success";
+			}
 		}else{
-        	Tipotratamiento::find($id)->delete();
-			echo "success";
+			return "desautorizado";
 		}
+		
     }
 }

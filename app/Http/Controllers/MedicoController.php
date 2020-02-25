@@ -114,16 +114,21 @@ class MedicoController extends Controller
      */
     public function destroy($id)
     {
-        $citas = Cita::where("medico_id", $id)->count();
-		$tratamientos = Tratamiento::where("medico_id", $id)->count();
-		$especialidades = Especialidade_medico::where("medico_id", $id)->count();
-		$cant = $citas + $tratamientos;
-		
-		if($cant > 0){
-			echo "error";
+		if(Gate::allows('administradores', Auth::user())){
+			$citas = Cita::where("medico_id", $id)->count();
+			$tratamientos = Tratamiento::where("medico_id", $id)->count();
+			$especialidades = Especialidade_medico::where("medico_id", $id)->count();
+			$cant = $citas + $tratamientos;
+
+			if($cant > 0){
+				echo "error";
+			}else{
+				Medico::find($id)->delete();
+				echo "success";
+			}
 		}else{
-			Medico::find($id)->delete();
-			echo "success";
+			return "desautorizado";
 		}
     }
 }
+

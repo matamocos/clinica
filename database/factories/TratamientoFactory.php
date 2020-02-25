@@ -10,8 +10,8 @@ $factory->define(Tratamiento::class, function (Faker $faker) {
 		'fecha_inicio' =>$faker->dateTimeBetween($startDate = '-49', $endDate = '2025-01-01', $timezone = null),
 		'fecha_fin' =>$faker->dateTimeBetween($startDate = '-48', $endDate = '2030-01-01', $timezone = null),
         'medico_id'=>$faker->numberBetween($min = 1, $max = 10),
-		'paciente_id'=>$faker->numberBetween($min = 1, $max = 50),
-		'tipo_tratamiento_id'=>$faker->numberBetween($min = 1, $max = 20),
+		'paciente_id'=>$faker->numberBetween($min = 1, $max = 30),
+		'tipo_tratamiento_id'=>$faker->numberBetween($min = 1, $max = 16),
 		'descripcion'=>$faker->text($maxNbChars = 100),
     ];
 });

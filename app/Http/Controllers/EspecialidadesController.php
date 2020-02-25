@@ -102,13 +102,17 @@ class EspecialidadesController extends Controller
      */
     public function destroy($id)
     {
-		$cant = Especialidade_medico::where("especialidade_id", $id)->count();
+		if(Gate::allows('administradores', Auth::user())){
+			$cant = Especialidade_medico::where("especialidade_id", $id)->count();
 		
-		if($cant > 0){
-			echo "error";
+			if($cant > 0){
+				echo "error";
+			}else{
+				Especialidad::find($id)->delete();
+				echo "success";
+			}
 		}else{
-			Especialidad::find($id)->delete();
-			echo "success";
-		}
+			return "desautorizado";
+		}		
     }
 }

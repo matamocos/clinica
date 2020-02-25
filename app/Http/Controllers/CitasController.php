@@ -37,7 +37,7 @@ class CitasController extends Controller
 			$pacientes = Paciente::All();
         	return view('clinica.citas.create-citas', compact('medicos','pacientes'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para crear nuevas citas.');
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para crear nuevas citas.');
 			return redirect('citas');
 		}
     }
@@ -100,7 +100,7 @@ class CitasController extends Controller
 			$pacientes = Paciente::All();
 			return view('clinica.citas.edit-citas', compact('cita','medicos','pacientes'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar citas.');
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar citas.');
 			return redirect('citas');
 		}
 
@@ -129,7 +129,11 @@ class CitasController extends Controller
      */
     public function destroy($id)
     {
-        Cita::find($id)->delete();
-		echo "success";
+		if(Gate::allows('administradores', Auth::user())){
+			Cita::find($id)->delete();
+			echo "success";
+		}else{
+			return "desautorizado";
+		}	
     }
 }

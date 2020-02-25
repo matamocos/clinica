@@ -11,6 +11,6 @@ class TratamientosTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Tratamiento::class,30)->create();
+        factory(App\Tratamiento::class,200)->create();
     }
 }
