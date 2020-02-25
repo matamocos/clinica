@@ -30,7 +30,12 @@ class TipoTratamientoController extends Controller
      */
     public function create()
     {
-        return view('clinica.tipos_de_tratamientos.create-tipos_tratamientos');
+		if(Gate::allows('administradores', Auth::user())){
+			return view('clinica.tipos_de_tratamientos.create-tipos_tratamientos');
+		}else{
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir un nuevo tipo de tratamiento.');
+			return redirect('tratamientos_tipos');
+		} 
     }
 
     /**
@@ -65,8 +70,13 @@ class TipoTratamientoController extends Controller
      */
     public function edit($id)
     {
-        $tipo = Tipotratamiento::find($id);
-		return view('clinica.tipos_de_tratamientos.edit-tipos_tratamientos', compact('tipo'));
+		if(Gate::allows('administradores', Auth::user())){
+			$tipo = Tipotratamiento::find($id);
+			return view('clinica.tipos_de_tratamientos.edit-tipos_tratamientos', compact('tipo'));
+		}else{
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar un tipo de tratamiento.');
+			return redirect('tratamientos_tipos');
+		} 
     }
 
     /**

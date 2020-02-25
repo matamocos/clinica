@@ -10,6 +10,22 @@
 		</div>
 	@endif
 
+	@if(Session::has('mensaje_editado'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="header">Registro editado.</div>
+  			<p>{{Session::get('mensaje_editado')}}</p>
+		</div>
+	@endif
+
+	@if(Session::has('mensaje_autorizacion'))
+		<div class="ui negative message">
+  			<i class="close icon"></i>
+			<div class="header">Usuario no autorizado.</div>
+  			<p>{{Session::get('mensaje_autorizacion')}}</p>
+		</div>
+	@endif
+
 	<h2 class="section-title">Registro de las especialidades</h2>
 	<div class="table-options">
 		<a href="/especialidades/create"><button class="ui button left">Insertar un nuevo registro</button></a>

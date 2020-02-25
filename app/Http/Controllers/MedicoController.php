@@ -38,8 +38,7 @@ class MedicoController extends Controller
 		}else{
 			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir nuevos médicos.');
 			return redirect('medicos');
-		}
-        
+		}  
     }
 
     /**
