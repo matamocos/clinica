@@ -32,4 +32,24 @@ class Medico extends Model
 		
 		return $edad;
     }
+	
+	public function getFechaNacimientoAttribute($value) {
+		$value = new Carbon($value);
+        return $value->format('d-m-Y');
+    }
+	
+		public function setNombreAttribute($value)
+    {
+        $this->attributes['nombre'] = ucwords($value);
+    }
+	
+	public function setApellido1Attribute($value)
+    {
+        $this->attributes['apellido_1'] = ucwords($value);
+    }
+	
+	public function setApellido2Attribute($value)
+    {
+        $this->attributes['apellido_2'] = ucwords($value);
+    }
 }

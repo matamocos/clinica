@@ -39,11 +39,10 @@ class EspecialidadesMedicosController extends Controller
      */
     public function store(Request $request)
     {
-
 		
 		if(Gate::allows('administradores', Auth::user())){
 			$count = Especialidade_medico::where('especialidade_id', $request->especialidad)->where('medico_id', $request->medico_id)->count();
-		
+			
 			if($count == 0){
 				$object = new Especialidade_medico;
 				$object->medico_id = $request->medico_id;
@@ -60,8 +59,7 @@ class EspecialidadesMedicosController extends Controller
 			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir una nueva especialidad.');
 			return redirect('/medicos/show/'.$request->medico_id);
 		} 
-		
-        
+		        
     }
 
     /**

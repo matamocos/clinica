@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Cita extends Model{
@@ -21,6 +22,11 @@ class Cita extends Model{
 	public function cita(){
 		return $this->belongsTo('App\Cita');
 	}//fin cita
+	
+	public function getFechaAttribute($value) {
+		$value = new Carbon($value);
+        return $value->format('d-m-Y');
+    }
 	
 	
 }//fin clase cita

@@ -52,9 +52,27 @@
 						<a class="item" href="{{url('/tratamientos')}}">Tratamientos</a>
 					    <a class="item" href="{{url('/tratamientos_tipos')}}">Tipos de tratamientos</a>
 						<a class="item" href="{{url('/especialidades')}}">Especialidades</a>
+						
 						<div class="item right">
+							
+							<!-- IDIOMA -->
 							<div class="ui dropdown">
-								<input type="hidden" name="gender">
+								<input type="hidden">
+								<i class="dropdown icon"></i>
+								<div class="default text">Idioma</div>
+								<div class="menu">
+									<div class="item">
+										<select class="ui dropdown" name="idioma" value="es" placeholder="Español">
+											<option value="es">Español</option>
+											<option value="en">Inglés</option>
+										</select>
+									</div>
+								</div>
+							</div> <!-- Final idioma -->
+								
+							<!-- USUARIO -->
+							<div class="ui dropdown">
+								<input type="hidden">
 								<i class="dropdown icon"></i>
 								<div class="default text">{{ Auth::user()->name }}</div>
 								<div class="menu">
@@ -67,8 +85,10 @@
 										</form>	
 									</div>
 								</div>
-							</div> <!-- Final dropdown -->
-						</div> <!-- Final usuario -->
+							</div> <!-- Final usuario -->
+							
+						</div> <!-- Final div contenedor --> 	
+						
 					</div> <!-- Final menu -->
 				</div>
 			</div>

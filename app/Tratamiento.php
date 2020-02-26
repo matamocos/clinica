@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Tratamiento extends Model{
@@ -21,5 +22,15 @@ class Tratamiento extends Model{
 	public function tipo_tratamiento(){
 		return $this->hasOne('App\Tipotratamiento');
 	}//fin tipotratamiento
+	
+	public function getFechaInicioAttribute($value) {
+		$value = new Carbon($value);
+        return $value->format('d-m-Y');
+    }
+	
+	public function getFechaFinAttribute($value) {
+		$value = new Carbon($value);
+        return $value->format('d-m-Y');
+	}
 	
 }//fin clase
