@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 
 use Gate;
+use Carbon\Carbon;
 use Auth;
 use Session;
 use App\Paciente;
+use App\Medico;
 use App\Cita;
 use App\Expediente;
 use App\Tratamiento;
+use App\Tipotratamiento;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\PacientesRequest;
@@ -27,6 +30,32 @@ class PacienteController extends Controller
 		return view('clinica.pacientes.pacientes', compact('pacientes'));
     }
 
+	/**
+	 * Method used to return the simulation form.
+	 * 
+	 * @return \Illuminate\Http\Response
+	 */
+	public function simular()
+	{
+		$pacientes = Paciente::All();
+		$medicos = Medico::All();
+		$tratamientos = Tipotratamiento::All();
+		return view('clinica.simular.formulario', compact('pacientes','medicos','tratamientos'));
+	}
+	
+	public function pdf(Request $request)
+	{
+		$cita = new Cita;
+		$cita->medico_id = $request->medico_id;
+		$cita->paciente_id = $request->paciente_id;
+		$cita->motivo = $request->motivo;
+		
+		$tratamiento = new Tratamiento;
+		$tratamiento->medico_id = $request->medico_id;
+		$tratamiento->paciente_id = $request->paciente_id;
+		
+	}
+	
     /**
      * Show the form for creating a new resource.
      *

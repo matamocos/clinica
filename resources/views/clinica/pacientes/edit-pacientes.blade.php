@@ -15,7 +15,7 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Editar paciente {{$paciente->nombre}} {{$paciente->apellido_1}} {{$paciente->apellido_2}}</h2>
+	<h2 class="section-title">{{ trans('pacientes.editar') }} {{$paciente->nombre}} {{$paciente->apellido_1}} {{$paciente->apellido_2}}</h2>
 	
 	<div class="form-container">
 		<form id="form" class="ui form" action="/pacientes/update/{{$paciente->id}}" method="POST">
@@ -24,17 +24,17 @@
 			<div class="fields">
 
 				<div class="six wide required field">
-					<label>Nombre</label>
+					<label>{{ trans('pacientes.nombre') }}</label>
 					<input type="text" name="nombre" placeholder="Nombre" required value="{{$paciente->nombre}}" >
 				</div>
 
 				<div class="six wide required field">
-					<label>Primer Apellido</label>
+					<label>{{ trans('pacientes.apellido_1') }}</label>
 					<input type="text" name="apellido_1" placeholder="Primer Apellido" required value="{{$paciente->apellido_1}}" >
 				</div>
 
 				<div class="six wide required field">
-					<label>Segundo Apellido</label>
+					<label>{{ trans('pacientes.apellido_2') }}</label>
 					<input type="text" name="apellido_2" placeholder="Segundo Apellido" required value="{{$paciente->apellido_2}}" >
 				</div>
 
@@ -43,17 +43,17 @@
 			<div class="fields">
 
 				<div class="six wide required field">
-					<label>País</label>
+					<label>{{ trans('pacientes.pais') }}</label>
 					<input type="text" name="pais" placeholder="País" required value="{{$paciente->pais}}" >
 				</div>
 
 				<div class="six wide required field">
-					<label>Ciudad</label>
+					<label>{{ trans('pacientes.ciudad') }}</label>
 					<input type="text" name="ciudad" placeholder="Ciudad" required value="{{$paciente->ciudad}}" >
 				</div>
 
 				<div class="six wide required field">
-					<label>Fecha de nacimiento</label>
+					<label>{{ trans('pacientes.f_nacimiento') }}</label>
 					<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required value="{{$paciente->fecha_nacimiento}}" >
 				</div>
 
@@ -62,12 +62,12 @@
 			<div class="fields">
 
 				<div class="twelve wide field">
-					<label>Dirección</label>
+					<label>{{ trans('pacientes.direccion') }}</label>
 					<input type="text" name="direccion" placeholder="Dirección" value="{{$paciente->direccion}}" >
 				</div>
 
 				<div class="six wide required field">
-					<label>Dni</label>
+					<label>{{ trans('pacientes.dni') }}</label>
 					<input type="text" name="dni" placeholder="Dni" required value="{{$paciente->dni}}" >
 				</div>
 
@@ -81,7 +81,7 @@
 				</div>
 
 				<div class="six wide required field">
-					<label>Género</label>
+					<label>{{ trans('pacientes.genero') }}</label>
 					<select class="ui search dropdown" name="genero" required value="{{$paciente->genero}}" >
 						<option value="Hombre">Hombre</option>
 						<option value="Mujer">Mujer</option>
@@ -91,13 +91,12 @@
 			</div> <!-- End fields -->
 
 			<div class="sixteen wide required field">
-				<label>Teléfono</label>
+				<label>{{ trans('pacientes.telefono') }}</label>
 				<input type="text" name="telefono" placeholder="Teléfono" required value="{{$paciente->telefono}}" >
 			</div>
 
-			<button class="ui button left">Actualizar registro</button>
-			<button class="ui button left clear-form">Vaciar formulario</button>
-				
+			<button class="ui button left">{{ trans('pacientes.actualizar_registro') }}</button>
+			<button class="ui button left clear-form">{{ trans('pacientes.vaciar') }}</button>	
 		</form>
 	</div>
 

@@ -63,12 +63,12 @@
 							<option value="{{$p->id}}">{{$p->nombre}} {{$p->apellido_1}} {{$p->apellido_2}}</option>
 						@endforeach
 					</select>
-			</div>
+				</div>
 				
 			</div>
 
 			<a href="/citas/store"><button class="ui button left">{{ trans('citas.insertar_registro') }}</button></a>
-			<button class="ui button left clear-form">{{ trans('citas.vaciar') }}o</button>
+			<button class="ui button left clear-form">{{ trans('citas.vaciar') }}</button>
 			
 		</form>
 	</div>

@@ -81,7 +81,11 @@ Route::group(['middleware' => ['idioma']], function () {
 	Route::post('/especialidades_medicos/store', 'EspecialidadesMedicosController@store');
 	Route::delete('/especialidades_medicos/destroy/{id}/{medico_id}', 'EspecialidadesMedicosController@destroy');
 	
-	//ruta para cambio de idioma
+	//Ruta simular cita (email y pdf)
+	Route::get('/simular','PacienteController@simular');
+	Route::get('/simular/pdf','PacienteController@pdf');
+	
+	//Ruta para cambio de idioma
 	Route::get('lang/{lang}', function ($lang) {
     session(['lang' => $lang]);
         return \Redirect::back();

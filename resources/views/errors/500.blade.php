@@ -48,7 +48,7 @@ body {
 	padding-top: 60px;
 	position: relative;
   z-index: 9;
-  line-height: 100%;
+  line-height: 100%;true
 }
 
 .circles p small { 
@@ -151,10 +151,10 @@ body {
 </style>
 	<body>
   <section id="not-found">
-    <div id="title">Error 404</div>
+    <div id="title">Error 500</div>
     <div class="circles">
-      <p style="min-height:400px">404<br>
-       <small>PAGE NOT FOUND</small>
+      <p style="min-height:400px">500<br>
+       <small>SERVER ERROR</small>
       </p>
       <span class="circle big"></span>
       <span class="circle med"></span>

@@ -5,7 +5,7 @@
 	@if(Session::has('mensaje_confirmacion'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Nuevo registro creado. </div>
+			<div class="header">{{ trans('pacientes.paciente_creado') }}</div>
   			<p>{{Session::get('mensaje_confirmacion')}}</p>
 		</div>
 	@endif
@@ -13,7 +13,7 @@
 	@if(Session::has('mensaje_editado'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Registro editado.</div>
+			<div class="header">{{ trans('pacientes.paciente_editado') }}</div>
   			<p>{{Session::get('mensaje_editado')}}</p>
 		</div>
 	@endif
@@ -21,18 +21,18 @@
 	@if(Session::has('mensaje_autorizacion'))
 		<div class="ui negative message">
   			<i class="close icon"></i>
-			<div class="header">Usuario no autorizado.</div>
+			<div class="header">{{ trans('pacientes.paciente_autorizado') }}</div>
   			<p>{{Session::get('mensaje_autorizacion')}}</p>
 		</div>
 	@endif
 
-	<h2 class="section-title">Registro de los pacientes</h2>
+	<h2 class="section-title">{{ trans('pacientes.paciente') }}</h2>
 	<div class="table-options">
-		<a href="/pacientes/create"><button class="ui button left">Insertar un nuevo registro</button></a>
-		<a id="borrar"><button class="ui button left" style="height: 36px;">Borrar seleccionados</button></a>
+		<a href="/pacientes/create"><button class="ui button left">{{ trans('pacientes.insertar') }}</button></a>
+		<a id="borrar"><button class="ui button left" style="height: 36px;">{{ trans('pacientes.borrar') }}</button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
-			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
+			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="{{ trans('pacientes.buscar') }}">
 		</div>
 	</div>
 
@@ -41,19 +41,19 @@
 			<tr>
 				<th><div class="ui checkbox"><input type="checkbox" class="check_all"><label></label></div></th>
 				<th>Id</th>
-				<th>Nombre</th>
-				<th>1er Apellido</th>
-				<th>2do Apellido</th>
-				<th style="width: 10%;">País</th>
-				<th>Ciudad</th>
-				<th>Fecha de nacimiento</th>
-				<th>Edad</th>
-				<th>Dirección</th>
-				<th>Dni</th>
+				<th>{{ trans('pacientes.nombre') }}</th>
+				<th>{{ trans('pacientes.apellido_1') }}</th>
+				<th>{{ trans('pacientes.apellido_2') }}</th>
+				<th style="width: 10%;">{{ trans('pacientes.pais') }}</th>
+				<th>{{ trans('pacientes.ciudad') }}</th>
+				<th>{{ trans('pacientes.f_nacimiento') }}</th>
+				<th>{{ trans('pacientes.edad') }}</th>
+				<th>{{ trans('pacientes.direccion') }}</th>
+				<th>{{ trans('pacientes.dni') }}</th>
 				<th>Email</th>
-				<th>Género</th>
-				<th>Teléfono</th>
-				<th>Acciones</th>
+				<th>{{ trans('pacientes.genero') }}</th>
+				<th>{{ trans('pacientes.telefono') }}</th>
+				<th>{{ trans('pacientes.accion') }}</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -74,7 +74,6 @@
 					<td>{{$p->genero}}</td>
 					<td>{{$p->telefono}}</td>
 					<td>
-						<i class="search large circular icon show-pacientes"></i>
 						<i class="edit large circular icon edit-button"></i>
 						<i class="trash large circular alternate outline icon delete-button"></i>
 					</td>

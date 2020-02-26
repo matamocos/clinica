@@ -1,0 +1,27 @@
+<?php
+
+return [
+	'paciente' => 'Patient Records',
+	'insertar' => 'Insert new record',
+	'borrar' => 'Delete selected',
+	'nombre' => 'Name',
+	'apellido_1' => 'Surname',
+	'apellido_2' => 'Last name',
+	'pais' => 'País',
+	'ciudad' => 'Country',
+	'f_nacimiento' => 'Birthday',
+	'edad' => 'Age',
+	'buscar' => 'Search',
+	'direccion' => 'Dirección',
+	'dni' => 'DNI',
+	'genero' => 'Gender',
+	'telefono' => 'Phone',
+	'accion' => 'Actions',
+	'editar' => 'Edit Patient',
+	'insertar_registro' => 'Insert record',
+	'actualizar_registro' => 'Update records',
+	'vaciar' => 'Clean form',
+	'paciente_creado' => 'New record created.',
+	'paciente_editado' => 'Edited Record',
+	'paciente_autorizado' => 'Unauthorized User',
+];
