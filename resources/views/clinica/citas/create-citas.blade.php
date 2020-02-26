@@ -15,7 +15,7 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Insertar un nuevo registro en Citas</h2>
+	<h2 class="section-title">{{ trans('citas.insertar_cita') }}</h2>
 	
 	<div class="form-container">
 		<form id="form" class="ui form" action="/citas/store" method="POST">
@@ -24,31 +24,31 @@
 			<div class="fields">
 			
 				<div class="eight wide required field">
-						<label>Día de la cita</label>
+						<label>{{ trans('citas.dia_cita') }}</label>
 						<input type="date" name="fecha" placeholder="Fecha" required value={{old('fecha')}}>
 				</div>
 
 				<div class="eight wide required field">
-						<label>Hora de la cita</label>
+						<label>{{ trans('citas.hora_cita') }}</label>
 						<input type="time" name="hora" placeholder="Hora" step="3600" required value={{old('hora')}}>
 				</div>
 				
 			</div>
 			
 			<div class="sixteen wide required field">
-				<label>Motivo de asistencia</label>
+				<label>{{ trans('citas.motivo_asistencia') }}</label>
 				<input type="text" name="motivo" placeholder="Motivo de asistencia" required value={{old('motivo')}} >
 			</div>
 			
 			<div class="sixteen wide field">
-				<label>Observaciones</label>
+				<label>{{ trans('citas.observacion') }}</label>
 				<input type="text" name="observaciones" placeholder="Observaciones" value={{old('observaciones')}} >
 			</div>
 			
 			<div class="fields">
 			
 				<div class="eight wide required field">
-					<label>Médico</label>
+					<label>{{ trans('citas.medico') }}</label>
 					<select class="ui search dropdown" name="medico_id" required value={{old('medico_id')}}>
 						@foreach($medicos as $m)
 							<option value="{{$m->id}}">{{$m->nombre}} {{$m->apellido_1}} {{$m->apellido_2}}</option>
@@ -57,7 +57,7 @@
 				</div>
 
 				<div class="eight wide required field">
-					<label>Paciente</label>
+					<label>{{ trans('citas.paciente') }}</label>
 					<select class="ui search dropdown" name="paciente_id" required value={{old('paciente_id')}}>
 						@foreach($pacientes as $p)
 							<option value="{{$p->id}}">{{$p->nombre}} {{$p->apellido_1}} {{$p->apellido_2}}</option>
@@ -67,8 +67,8 @@
 				
 			</div>
 
-			<a href="/citas/store"><button class="ui button left">Insertar registro</button></a>
-			<button class="ui button left clear-form">Vaciar formulario</button>
+			<a href="/citas/store"><button class="ui button left">{{ trans('citas.insertar_registro') }}</button></a>
+			<button class="ui button left clear-form">{{ trans('citas.vaciar') }}o</button>
 			
 		</form>
 	</div>

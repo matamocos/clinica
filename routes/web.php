@@ -93,28 +93,6 @@ Route::group(['middleware' => ['idioma']], function () {
 	
 	
 
-//////////////////////PREUBA////////////////////////
-	
-Route::group(['middleware' => ['idioma']], function () {
-	
-
-Route::get('/prueba', function () {
-    return view('pruebastraduccion');
-});
-	
-	
-Route::get('lang/{lang}', function ($lang) {
-    session(['lang' => $lang]);
-        return \Redirect::back();
-})->where([
-        'lang' => 'en|es'
-]);//fin lang
-
-
-});
-
-
-
 
 
 

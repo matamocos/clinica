@@ -5,7 +5,7 @@
 	@if(Session::has('mensaje_confirmacion'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Nuevo registro creado. </div>
+			<div class="header">{{ trans('citas.cita_creado') }}</div>
   			<p>{{Session::get('mensaje_confirmacion')}}</p>
 		</div>
 	@endif
@@ -13,7 +13,7 @@
 	@if(Session::has('mensaje_editado'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Registro editado.</div>
+			<div class="header">{{ trans('citas.cita_editado') }}</div>
   			<p>{{Session::get('mensaje_editado')}}</p>
 		</div>
 	@endif
@@ -21,18 +21,18 @@
 	@if(Session::has('mensaje_autorizacion'))
 		<div class="ui negative message">
   			<i class="close icon"></i>
-			<div class="header">Usuario no autorizado.</div>
+			<div class="header">{{ trans('citas.cita_autorizado') }}</div>
   			<p>{{Session::get('mensaje_autorizacion')}}</p>
 		</div>
 	@endif
 
-	<h2 class="section-title">Registro de las citas</h2>
+	<h2 class="section-title">{{ trans('citas.cita') }}</h2>
 	<div class="table-options">
-		<a href="/citas/create"><button class="ui button left">Insertar un nuevo registro</button></a>
-		<a id="borrar"><button class="ui button left" style="height: 36px;">Borrar seleccionados</button></a>
+		<a href="/citas/create"><button class="ui button left">{{ trans('citas.insertar') }}</button></a>
+		<a id="borrar"><button class="ui button left" style="height: 36px;">{{ trans('citas.borrar') }}</button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
-			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
+			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="{{ trans('citas.buscar') }}">
 		</div>
 	</div>
 
@@ -41,13 +41,13 @@
 			<tr>
 				<th><div class="ui checkbox"><input type="checkbox" class="check_all"><label></label></div></th>
 				<th>Id</th>
-				<th>Día</th>
-				<th>Hora</th>
-				<th>Motivos de la consulta</th>
-				<th>Observaciones</th>
-				<th>Paciente (id)</th>
-				<th>Medico (id)</th>
-				<th>Acciones</th>
+				<th>{{ trans('citas.dia') }}</th>
+				<th>{{ trans('citas.hora') }}</th>
+				<th>{{ trans('citas.motivo') }}</th>
+				<th>{{ trans('citas.observacion') }}</th>
+				<th>{{ trans('citas.paciente') }} (id)</th>
+				<th>{{ trans('citas.medico') }} (id)</th>
+				<th>{{ trans('citas.accion') }}</th>
 			</tr>
 		</thead>
 		<tbody>
