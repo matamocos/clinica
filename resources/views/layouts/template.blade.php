@@ -45,30 +45,37 @@
 			<div class="navbar">
 				<div class="ui inverted segment" style="border-radius: 0; background-image: linear-gradient(to right, black, #5d49be);">
 				  	<div class="ui inverted secondary pointing menu">
-				    	<a class="item" href="{{url('/inicio')}}">Inicio</a>
-					    <a class="item" href="{{url('/pacientes')}}">Pacientes</a>
-					    <a class="item" href="{{url('/medicos')}}">Médicos</a>
-					    <a class="item" href="{{url('/citas')}}">Citas</a>
-						<a class="item" href="{{url('/tratamientos')}}">Tratamientos</a>
-					    <a class="item" href="{{url('/tratamientos_tipos')}}">Tipos de tratamientos</a>
-						<a class="item" href="{{url('/especialidades')}}">Especialidades</a>
+				    	<a class="item" href="{{url('/inicio')}}">{{ trans('template.inicio') }}</a>
+					    <a class="item" href="{{url('/pacientes')}}">{{ trans('template.paciente') }}</a>
+					    <a class="item" href="{{url('/medicos')}}">{{ trans('template.medico') }}</a>
+					    <a class="item" href="{{url('/citas')}}">{{ trans('template.cita') }}</a>
+						<a class="item" href="{{url('/tratamientos')}}">{{ trans('template.tratamiento') }}</a>
+					    <a class="item" href="{{url('/tratamientos_tipos')}}">{{ trans('template.t_tratamiento') }}</a>
+						<a class="item" href="{{url('/especialidades')}}">{{ trans('template.especialidad') }}</a>
 						
 						<div class="item right">
 							
+	
 							<!-- IDIOMA -->
 							<div class="ui dropdown">
-								<input type="hidden">
+								<input class="test" type="hidden">
 								<i class="dropdown icon"></i>
-								<div class="default text">Idioma</div>
+								<div class="default text">{{ trans('template.idioma') }}</div>
 								<div class="menu">
 									<div class="item">
-										<select class="ui dropdown" name="idioma" value="es" placeholder="Español">
-											<option value="es">Español</option>
-											<option value="en">Inglés</option>
-										</select>
+										<a class="dropdown-item" href="{{ url('lang', ['es']) }}" >
+											<span style="color: #5d49be;">{{ trans('template.es') }}</span>
+										</a>
+										<br>
+										<br>
+										<a class="dropdown-item" href="{{ url('lang', ['en']) }}">
+											<span style="color: #5d49be;">{{ trans('template.en') }}</span>
+										</a>
 									</div>
 								</div>
 							</div> <!-- Final idioma -->
+							
+						
 								
 							<!-- USUARIO -->
 							<div class="ui dropdown">
@@ -104,7 +111,7 @@
 			<!-- FOOTER -->
 			<div class="footer">
 				<div class="ui inverted segment" style="border-radius: 0; background-image: linear-gradient(to right, black, #5d49be); bottom: 0%">
-					&copy;Proyecto realizado por Carlos Satizabal y Daniel Merino
+					&copy;{{ trans('template.autores') }} Carlos Satizabal {{ trans('template.y') }} Daniel Merino
 				</div>
 			</div>
 		</div>
