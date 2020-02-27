@@ -15,19 +15,19 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Editar Especialidad</h2>
+	<h2 class="section-title">{{trans('especialidades.editar')}}</h2>
 	
 	<div class="form-container">
 		<form id="form" class="ui form" action="/especialidades/update/{{$especialidad->id}}" method="POST">
 			@csrf
 			<input name="_method" type="hidden" value="PUT">
 			<div class="sixteen wide required field">
-				<label>Nombre de la especialidad</label>
-				<input type="text" name="especialidad" placeholder="Especialidad" required value="{{$especialidad->especialidad}}" >
+				<label>{{trans('especialidades.nombre_especialidad')}}</label>
+				<input type="text" name="especialidad" placeholder="{{trans('especialidades.nombre_especialidad')}}" required value="{{$especialidad->especialidad}}" >
 			</div>
 
-			<button class="ui button left">Actualizar registro</button>
-			<button class="ui button left clear-form">Vaciar formulario</button>
+			<button class="ui button left">{{trans('especialidades.actualizar_registro')}}</button>
+			<button class="ui button left clear-form">{{trans('especialidades.vaciar')}}</button>
 			
 		</form>
 	</div>
