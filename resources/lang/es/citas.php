@@ -24,4 +24,10 @@ return [
 	'cita_creado' => 'Nuevo registro creado.',
 	'cita_editado' => 'Registro editado.',
 	'cita_autorizado' => 'Usuario no autorizado.',
+	'simular_cita' => 'Simular cita',
+	'tratamiento' => 'Tratamiento',
+	'descripcion' => 'Descripción',
+	'f_inicio' => 'Fecha de inicio',
+	'f_fin' => 'Fecha de finalizacion',
+	'finalizar_cita' => 'Finalizar cita',
 ];

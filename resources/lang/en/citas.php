@@ -24,4 +24,10 @@ return [
 	'cita_creado' => 'New record created.',
 	'cita_editado' => 'Edited Record',
 	'cita_autorizado' => 'Unauthorized User',
+	'simular_cita' => 'Simulate appointment',
+	'tratamiento' => 'Treatment',
+	'descripcion' => 'Description',
+	'f_inicio' => 'Start date',
+	'f_fin' => 'Finish date',
+	'finalizar_cita' => 'End appointment',
 ];

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h2 class="section-title">Simular una cita</h2>
+	<h2 class="section-title">{{ trans('citas.simular_cita') }}</h2>
 	
 	<div class="form-container">
 		<form id="form" class="ui form" action="/simular/pdf" method="POST">
@@ -31,17 +31,17 @@
 			
 			<div class="sixteen wide required field">
 				<label>{{ trans('citas.motivo_asistencia') }}</label>
-				<input type="text" name="motivo" placeholder="Motivo de asistencia" required value={{old('motivo')}} >
+				<input type="text" name="motivo" placeholder="{{ trans('citas.motivo_asistencia') }}" required value={{old('motivo')}} >
 			</div>
 			
 			<div class="sixteen wide required field">
 				<label>{{ trans('citas.observacion') }}</label>
-				<input type="text" name="observaciones" placeholder="Observaciones" required value={{old('observaciones')}} >
+				<input type="text" name="observaciones" placeholder="{{ trans('citas.observacion') }}" required value={{old('observaciones')}} >
 			</div>
 			
 			<div class="six wide required field">
-				<label>Tratamiento</label>
-				<select class="ui search dropdown" name="tipo_tratamiento_id" required value={{old('tipo_tratamiento_id')}} >
+				<label>{{ trans('citas.tratamiento') }}</label>
+				<select class="ui search dropdown" name="{{ trans('citas.tratamiento') }}" required value={{old('tipo_tratamiento_id')}} >
 						<option value="ninguno">Ninguno</option>
 					@foreach($tratamientos as $t)
 						<option value="{{$t->id}}">{{$t->tipo}}</option>
@@ -50,24 +50,24 @@
 			</div>
 			
 			<div class="sixteen wide field">
-				<label>Descripci&oacute;n</label>
-				<input type="text" name="descripcion" placeholder="Descripciรณn" value={{old('descripcion')}} >
+				<label>{{ trans('citas.descripcion') }}</label>
+				<input type="text" name="descripcion" placeholder="{{ trans('citas.descripcion') }}" value={{old('descripcion')}} >
 			</div>
 			
 			<div class="fields">
 
 				<div class="eight wide field">
-					<label>Fecha de inicio</label>
-					<input type="date" name="fecha_inicio" placeholder="Fecha de inicio" value={{old('fecha_inicio')}} >
+					<label>{{ trans('citas.f_inicio') }}</label>
+					<input type="date" name="fecha_inicio" placeholder="{{ trans('citas.f_inicio') }}" value={{old('fecha_inicio')}} >
 				</div>
 
 				<div class="eight wide field">
-					<label>Fecha de finalizaci&oacute;n</label>
-					<input type="date" name="fecha_fin" placeholder="Fecha de finalizaciรณn" value={{old('fecha_fin')}} >
+					<label>{{ trans('citas.f_fin') }}</label>
+					<input type="date" name="fecha_fin" placeholder="{{ trans('citas.f_fin') }}" value={{old('fecha_fin')}} >
 				</div>
 
 			</div> <!-- End fields -->	
-			<button class="ui button left" style="margin-top: 1em;">Finalizar cita</button>
+			<button class="ui button left" style="margin-top: 1em;">{{ trans('citas.finalizar_cita') }}</button>
 		</form>
 		
 	</div>
