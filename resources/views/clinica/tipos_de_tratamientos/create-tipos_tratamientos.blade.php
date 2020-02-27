@@ -15,18 +15,18 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Insertar un nuevo registro en Tipos de tratamientos</h2>
+	<h2 class="section-title">{{trans('tipo-tratamientos.insertar_t_tratamiento')}}</h2>
 	
 	<div class="form-container">
 		<form id="form" class="ui form" action="/tratamientos_tipos/store" method="POST">
 			@csrf
 			<div class="sixteen wide required field">
-				<label>Nombre del nuevo tratamiento</label>
-				<input type="text" name="tipo" placeholder="Tratamiento" required value={{old('tipo')}}>
+				<label>{{trans('tipo-tratamientos.t_nombre')}}</label>
+				<input type="text" name="tipo" placeholder="{{trans('tipo-tratamientos.t_nombre')}}" required value={{old('tipo')}}>
 			</div>
 
-			<button class="ui button left">Insertar registro</button>
-			<button class="ui button left clear-form">Vaciar formulario</button>
+			<button class="ui button left">{{trans('tipo-tratamientos.insertar_registro')}}</button>
+			<button class="ui button left clear-form">{{trans('tipo-tratamientos.vaciar')}}</button>
 			
 		</form>
 	</div>
