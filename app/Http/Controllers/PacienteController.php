@@ -16,6 +16,8 @@ use App\Tipotratamiento;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\PacientesRequest;
+use PDF;
+use Mail;
 
 class PacienteController extends Controller
 {
@@ -46,14 +48,72 @@ class PacienteController extends Controller
 	public function pdf(Request $request)
 	{
 		$cita = new Cita;
-		$cita->medico_id = $request->medico_id;
-		$cita->paciente_id = $request->paciente_id;
-		$cita->motivo = $request->motivo;
+		$cita->paciente_id = $request->input('paciente_id');
+		$cita->medico_id = $request->input('medico_id');
+		$cita->motivo = $request->input('motivo');
+		if($request->input('observaciones')){
+			$cita->observaciones = $request->input('observaciones');
+		}
 		
-		$tratamiento = new Tratamiento;
-		$tratamiento->medico_id = $request->medico_id;
-		$tratamiento->paciente_id = $request->paciente_id;
+		$cita->save();
 		
+		if($request->tipo_tratamiento_id != 'ninguno'){
+			$tratamiento = new Tratamiento;
+			$tratamiento->medico_id = $request->input('medico_id');
+			$tratamiento->paciente_id = $request->input('paciente_id');
+			$tratamiento->tipo_tratamiento_id = $request->input('tipo_tratamiento_id');
+			if($request->input('descripcion')){
+				$tratamiento->descripcion = $request->input('descripcion');
+			}
+			if($request->input('fecha_inicio')){
+				$tratamiento->fecha_inicio = $request->input('fecha_inicio');
+			}
+			if($request->input('fecha_fin')){
+				$tratamiento->fecha_fin = $request->input('fecha_fin');
+			}
+			$tratamiento->save();
+		}
+		
+		$paciente = Paciente::find($request->input('paciente_id'));
+		$medico = Medico::find($request->input('medico_id'));
+		$tipo = $request->input('tipo_tratamiento_id');
+		
+		if($tipo != 'ninguno'){ 
+			$tipo = Tipotratamiento::select('tipo')->find($request->input('tipo_tratamiento_id'));; 
+			$tipo = $tipo->tipo;
+		}
+		
+		date_default_timezone_set('Europe/London');
+		$hora = date('G:i:s', time());
+		
+		$data = array (
+			"p_nombre" => $paciente->nombre,
+			"p_apellido1" => $paciente->apellido_1,
+			"p_apellido2" => $paciente->apellido_2,
+			"dni" => $paciente->dni,
+			"telefono" => $paciente->telefono,
+			"m_nombre" => $medico->nombre,
+			"m_apellido1" => $medico->apellido_1,
+			"m_apellido2" => $medico->apellido_2,
+			"motivo" => $request->input('motivo'),
+			"observaciones" => $request->input('observaciones'),
+			"tipo" => $tipo,
+			"descripcion" => $request->input('descripcion'),
+			"fecha_inicio" => $request->input('fecha_inicio'),
+			"fecha_fin" => $request->input('fecha_fin'),
+			"fecha_cita" => "Día ".Carbon::now('UTC')->format('d-m-20y')." a las ".$hora." horas.",
+		);
+		
+		$pdf = PDF::loadView('clinica.simular.pdf', $data);
+		$nombre = $paciente->nombre." ".$paciente->apellido_1." ".$paciente->apellido_2;
+		
+		Mail::send('clinica.simular.mail', $data, function($message) use ($nombre, $paciente, $pdf){
+            $message->from('carlosydanieldaw@gmail.com', 'Clínica Dalos')
+					->to($paciente->email, $nombre)->subject("Cíta clínica")
+					->attachData($pdf->output(), "Cita.pdf");
+        });  
+		
+		return redirect('citas');
 	}
 	
     /**

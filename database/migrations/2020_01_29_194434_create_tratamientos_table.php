@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateTratamientosTable extends Migration
 {
@@ -16,14 +17,11 @@ class CreateTratamientosTable extends Migration
         Schema::create('tratamientos', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('descripcion')->nullable();
-			$table->date('fecha_inicio')->nullable();
+			$table->date('fecha_inicio')->default(Carbon::now('UTC')->format('20y-m-d'));
 			$table->date('fecha_fin')->nullable();
 			$table->integer('medico_id')->unsigned();
-			//$table->foreign('medico_id')->references('id')->on('medicos');
 			$table->integer('paciente_id')->unsigned();
-			//$table->foreign('paciente_id')->references('id')->on('pacientes');
 			$table->integer('tipo_tratamiento_id')->unsigned();
-			//$table->foreign('tipo_tratamiento_id')->references('id')->on('tipotratamientos');
             $table->timestamps();
         });
     }

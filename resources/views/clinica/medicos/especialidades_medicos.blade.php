@@ -20,7 +20,7 @@
 	@if(Session::has('mensaje_confirmacion'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Nuevo registro creado. </div>
+			<div class="header">{{trans('medicos.medico_creado')}} </div>
   			<p>{{Session::get('mensaje_confirmacion')}}</p>
 		</div>
 	@endif
@@ -36,29 +36,29 @@
 	@if(Session::has('mensaje_autorizacion'))
 		<div class="ui negative message">
   			<i class="close icon"></i>
-			<div class="header">Usuario no autorizado.</div>
+			<div class="header">{{trans('medicos.medico_autorizado')}}</div>
   			<p>{{Session::get('mensaje_autorizacion')}}</p>
 		</div>
 	@endif
 
-	<h2 class="section-title" style="margin-top: 0">Registro de las especialidades del médico {{$medico->nombre}} {{$medico->apellido_1}} {{$medico->apellido_2}}</h2>
+	<h2 class="section-title" style="margin-top: 0">{{trans('medicos.r_especialidad')}} {{$medico->nombre}} {{$medico->apellido_1}} {{$medico->apellido_2}}</h2>
 	
 	<div class="grid-especialidades-medicos">	
 		
 		<div style="padding-right: 1em;">	
 			
-			<h3 class="section-title">Buscar y eliminar especialidades</h3>
+			<h3 class="section-title">{{trans('medicos.b_eliminar')}}</h3>
 			
 			<div class="ui icon input right">
 				<i class="search icon"></i>
-				<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
+				<input id="search-input" style="border-color: lightgrey" type="text" placeholder="{{trans('medicos.buscar')}}">
 			</div>
 			
 			<table id="table" class="ui selectable inverted table" style="width: 100%;" data-medico="{{$medico->id}}">
 				<thead>
 					<tr>
-						<th style="width: 90%;">Especialidades</th>
-						<th style="width: 10%; text-align: center;">Acciones</th>
+						<th style="width: 90%;">{{trans('medicos.especialidad')}}</th>
+						<th style="width: 10%; text-align: center;">{{trans('medicos.accion')}}</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -77,7 +77,7 @@
 		
 		<div style="padding-left: 1em;">
 			
-			<h3 class="section-title">Añadir especialidades</h3>
+			<h3 class="section-title">{{trans('medicos.a_especialidad')}}</h3>
 			
 			<form action="/especialidades_medicos/store" method="POST">
 				@csrf
@@ -87,7 +87,7 @@
 						<option value="{{$e->id}}">{{$e->especialidad}}</option>
 					@endforeach
 				</select>
-				<button class="ui button" style="margin-top: 1em;">Añadir especialidad</button>
+				<button class="ui button" style="margin-top: 1em;">{{trans('medicos.a_especialidad')}}</button>
 			</form>
 		</div> <!-- fin formulario -->
 	
@@ -109,13 +109,13 @@
 			  el evento de borrar*/
 			var ventanaModal = `
 				<div class="ui mini modal modal-delete-2">
-					<div class="header"><span class="section-title">Borrar registro</span></div>
+					<div class="header"><span class="section-title">{{trans('medicos.modal_borrar')}}</span></div>
 					<div class="content">
-						<p>¿Está seguro de que decea borrar este registro?</p>
+						<p>{{trans('medicos.modal_seguro')}}</p>
 					</div>
 					<div class="actions">
-						<div class="ui cancel negative button">Cancelar</div>
-						<div class="ui approve positive ok button">Aceptar</div>
+						<div class="ui cancel negative button">{{trans('medicos.modal_cancelar')}}</div>
+						<div class="ui approve positive ok button">{{trans('medicos.modal_aceptar')}}</div>
 					</div>
 				</div>`;
 

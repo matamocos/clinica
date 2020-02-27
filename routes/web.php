@@ -83,7 +83,7 @@ Route::group(['middleware' => ['idioma']], function () {
 	
 	//Ruta simular cita (email y pdf)
 	Route::get('/simular','PacienteController@simular');
-	Route::get('/simular/pdf','PacienteController@pdf');
+	Route::post('/simular/pdf','PacienteController@pdf');
 	
 	//Ruta para cambio de idioma
 	Route::get('lang/{lang}', function ($lang) {

@@ -15,26 +15,26 @@
 		</div>
 	@endif
 
-	<h2 class="section-title">Insertar un nuevo registro en Médicos</h2>
+	<h2 class="section-title">{{trans('medicos.insertar_registro')}}</h2>
 	
 	<div class="form-container">
 		<form id="form" class="ui form" action="/medicos/store" method="POST">
 			@csrf
 			<div class="sixteen wide required field">
-				<label>Nombre</label>
-				<input type="text" name="nombre" placeholder="Nombre" required value={{old('nombre')}} >
+				<label>{{trans('medicos.nombre')}}</label>
+				<input type="text" name="nombre" placeholder="{{trans('medicos.nombre')}}" required value={{old('nombre')}} >
 			</div>
 			
 			<div class="fields">
 			
 				<div class="eight wide required field">
-					<label>Primer Apellido</label>
-					<input type="text" name="apellido_1" placeholder="Primer Apellido" required value={{old("apellido_1")}} >
+					<label>{{trans('medicos.apellido_1')}}</label>
+					<input type="text" name="apellido_1" placeholder="{{trans('medicos.apellido_1')}}" required value={{old("apellido_1")}} >
 				</div>
 
 				<div class="eight wide required field">
-					<label>Segundo Apellido</label>
-					<input type="text" name="apellido_2" placeholder="Segundo Apellido" required value={{old("apellido_2")}} >
+					<label>{{trans('medicos.apellido_2')}}</label>
+					<input type="text" name="apellido_2" placeholder="{{trans('medicos.apellido_2')}}" required value={{old("apellido_2")}} >
 				</div>
 
 			</div> <!-- End fields -->	
@@ -42,19 +42,19 @@
 			<div class="fields">
 
 				<div class="eight wide required field">
-					<label>Fecha de nacimiento</label>
-					<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required value={{old("fecha_nacimiento")}} >
+					<label>{{trans('medicos.f_nacimiento')}}</label>
+					<input type="date" name="fecha_nacimiento" placeholder="{{trans('medicos.f_nacimiento')}}" required value={{old("fecha_nacimiento")}} >
 				</div>
 				
 				<div class="eight wide required field">
-					<label>Teléfono</label>
-					<input type="number" name="telefono" placeholder="Teléfono" required value={{old("telefono")}} >
+					<label>{{trans('medicos.telefono')}}</label>
+					<input type="number" name="telefono" placeholder="{{trans('medicos.telefono')}}" required value={{old("telefono")}} >
 				</div>
 
 			</div> <!-- End fields -->	
 
-			<button class="ui button left">Insertar registro</button>
-			<button class="ui button left clear-form">Vaciar formulario</button>
+			<button class="ui button left">{{trans('medicos.insertar_registro')}}</button>
+			<button class="ui button left clear-form">{{trans('medicos.vaciar')}}</button>
 			
 		</form>
 	</div>

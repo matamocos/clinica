@@ -75,9 +75,9 @@
 
 			<div class="fields">
 
-				<div class="twelve wide field">
+				<div class="twelve wide required field">
 					<label>Email</label>
-					<input type="text" name="email" placeholder="Email" value="{{$paciente->email}}" >
+					<input type="text" name="email" placeholder="Email" required value="{{$paciente->email}}" >
 				</div>
 
 				<div class="six wide required field">

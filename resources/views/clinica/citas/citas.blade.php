@@ -30,6 +30,7 @@
 	<div class="table-options">
 		<a href="/citas/create"><button class="ui button left">{{ trans('citas.insertar') }}</button></a>
 		<a id="borrar"><button class="ui button left" style="height: 36px;">{{ trans('citas.borrar') }}</button></a>
+		<a href="/simular"><button class="ui button">Simular cita</button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
 			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="{{ trans('citas.buscar') }}">

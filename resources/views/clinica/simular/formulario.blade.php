@@ -5,7 +5,7 @@
 	<h2 class="section-title">Simular una cita</h2>
 	
 	<div class="form-container">
-		<form id="form" class="ui form" action="/citas/store" method="POST">
+		<form id="form" class="ui form" action="/simular/pdf" method="POST">
 			@csrf
 			<div class="fields">
 			
@@ -34,15 +34,15 @@
 				<input type="text" name="motivo" placeholder="Motivo de asistencia" required value={{old('motivo')}} >
 			</div>
 			
-			<div class="sixteen wide field">
+			<div class="sixteen wide required field">
 				<label>{{ trans('citas.observacion') }}</label>
-				<input type="text" name="observaciones" placeholder="Observaciones" value={{old('observaciones')}} >
+				<input type="text" name="observaciones" placeholder="Observaciones" required value={{old('observaciones')}} >
 			</div>
 			
 			<div class="six wide required field">
 				<label>Tratamiento</label>
 				<select class="ui search dropdown" name="tipo_tratamiento_id" required value={{old('tipo_tratamiento_id')}} >
-						<option value="0">Ninguno</option>
+						<option value="ninguno">Ninguno</option>
 					@foreach($tratamientos as $t)
 						<option value="{{$t->id}}">{{$t->tipo}}</option>
 					@endforeach
@@ -50,8 +50,8 @@
 			</div>
 			
 			<div class="sixteen wide field">
-				<label>Descripc&oacute;in</label>
-				<input type="text" name="descripcion" placeholder="Descripción" value={{old('descripcion')}} >
+				<label>Descripci&oacute;n</label>
+				<input type="text" name="descripcion" placeholder="Descripciรณn" value={{old('descripcion')}} >
 			</div>
 			
 			<div class="fields">
@@ -63,13 +63,13 @@
 
 				<div class="eight wide field">
 					<label>Fecha de finalizaci&oacute;n</label>
-					<input type="date" name="fecha_fin" placeholder="Fecha de finalización" value={{old('fecha_fin')}} >
+					<input type="date" name="fecha_fin" placeholder="Fecha de finalizaciรณn" value={{old('fecha_fin')}} >
 				</div>
 
 			</div> <!-- End fields -->	
-			
+			<button class="ui button left" style="margin-top: 1em;">Finalizar cita</button>
 		</form>
-		<a href="/simular/pdf"><button class="ui button left" style="margin-top: 1em;">Finalizar cita</button></a>
+		
 	</div>
 
 @endsection

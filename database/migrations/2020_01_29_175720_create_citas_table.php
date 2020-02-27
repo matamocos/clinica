@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Carbon\Carbon;
 
 class CreateCitasTable extends Migration
 {
@@ -13,20 +14,26 @@ class CreateCitasTable extends Migration
      */
     public function up()
     {
+		function hora(){
+			date_default_timezone_set('Europe/London');
+			$hora = date('G:i:s', time());
+			return $hora;
+		}
+		
         Schema::create('citas', function (Blueprint $table) {
             $table->increments('id');
-			$table->date('fecha');
-			$table->time('hora');
+			$table->date('fecha')->default(Carbon::now('UTC')->format('20y-m-d'));
+			$table->time('hora')->default(hora());
 			$table->string('motivo');
 			$table->string('observaciones')->nullable();
 			$table->integer('paciente_id')->unsigned();
-			//$table->foreign('paciente_id')->references('id')->on('pacientes');
 			$table->integer('medico_id')->unsigned();	
-			//$table->foreign('medico_id')->references('id')->on('medicos');
-            $table->timestamps();
-        });
+            $table->timestamps();	
+			
+        });	
+		
     }
-
+	
     /**
      * Reverse the migrations.
      *
