@@ -94,7 +94,7 @@
 				<input type="text" name="telefono" placeholder="{{ trans('pacientes.telefono') }}" required value={{old('telefono')}}>
 			</div>
 
-			<button class="ui button left">{{ trans('pacientes.actualizar_registro') }}</button>
+			<button class="ui button left">{{ trans('pacientes.insertar_registro') }}</button>
 			<button class="ui button left clear-form">{{ trans('pacientes.vaciar') }}</button>
 				
 		</form>

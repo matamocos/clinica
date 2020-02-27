@@ -12,8 +12,9 @@
 */
 
 
-Route::group(['middleware' => ['idioma']], function () {
 
+Route::group(['middleware' => ['idioma']], function () {
+	
 	Route::get('/', function () {
 		return view('welcome');
 	});
@@ -92,7 +93,7 @@ Route::group(['middleware' => ['idioma']], function () {
 	})->where([
         'lang' => 'en|es'
 	]);//fin lang
-
+	
 });//fin middleware idioma
 	
 	

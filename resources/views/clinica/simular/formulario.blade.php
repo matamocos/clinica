@@ -41,7 +41,7 @@
 			
 			<div class="six wide required field">
 				<label>{{ trans('citas.tratamiento') }}</label>
-				<select class="ui search dropdown" name="{{ trans('citas.tratamiento') }}" required value={{old('tipo_tratamiento_id')}} >
+				<select class="ui search dropdown" name="tipo_tratamiento_id" required value={{old('tipo_tratamiento_id')}} >
 						<option value="ninguno">Ninguno</option>
 					@foreach($tratamientos as $t)
 						<option value="{{$t->id}}">{{$t->tipo}}</option>
