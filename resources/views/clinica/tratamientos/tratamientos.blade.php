@@ -5,7 +5,7 @@
 	@if(Session::has('mensaje_confirmacion'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Nuevo registro creado. </div>
+			<div class="header">{{trans('tratamientos.tratamiento_creado')}} </div>
   			<p>{{Session::get('mensaje_confirmacion')}}</p>
 		</div>
 	@endif
@@ -13,7 +13,7 @@
 	@if(Session::has('mensaje_editado'))
 		<div class="ui success message">
   			<i class="close icon"></i>
-			<div class="header">Registro editado.</div>
+			<div class="header">{{trans('tratamientos.tratamiento_editado')}} </div>
   			<p>{{Session::get('mensaje_editado')}}</p>
 		</div>
 	@endif
@@ -21,18 +21,18 @@
 	@if(Session::has('mensaje_autorizacion'))
 		<div class="ui negative message">
   			<i class="close icon"></i>
-			<div class="header">Usuario no autorizado.</div>
+			<div class="header">{{trans('tratamientos.tratamiento_autorizado')}} </div>
   			<p>{{Session::get('mensaje_autorizacion')}}</p>
 		</div>
 	@endif
 
-	<h2 class="section-title">Registro de los tratamientos</h2>
+	<h2 class="section-title">{{trans('tratamientos.tratamiento')}} </h2>
 	<div class="table-options">
-		<a href="/tratamientos/create"><button class="ui button left">Insertar un nuevo registro</button></a>
-		<a id="borrar"><button class="ui button left" style="height: 36px;">Borrar seleccionados</button></a>
+		<a href="/tratamientos/create"><button class="ui button left">{{trans('tratamientos.insertar')}} </button></a>
+		<a id="borrar"><button class="ui button left" style="height: 36px;">{{trans('tratamientos.borrar')}} </button></a>
 		<div class="ui icon input right">
 			<i class="search icon"></i>
-			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="Buscar...">
+			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="{{trans('tratamientos.buscar')}}">
 		</div>
 	</div>
 
@@ -41,13 +41,13 @@
 			<tr>
 				<th><div class="ui checkbox"><input type="checkbox" class="check_all"><label></label></div></th>
 				<th>Id</th>
-				<th>Descripción</th>
-				<th>Fecha de inicio</th>
-				<th>Fecha de finalización</th>
-				<th>Médico (id)</th>
-				<th>Paciente (id)</th>
-				<th>Tipo de tratamiento (id)</th>
-				<th>Acciones</th>
+				<th>{{trans('tratamientos.descripcion')}}</th>
+				<th>{{trans('tratamientos.f_inicio')}}</th>
+				<th>{{trans('tratamientos.f_fin')}}n</th>
+				<th>{{trans('tratamientos.medico')}} (id)</th>
+				<th>{{trans('tratamientos.paciente')}} (id)</th>
+				<th>{{trans('tratamientos.tipo_tratamiento')}} (id)</th>
+				<th>{{trans('tratamientos.accion')}}</th>
 			</tr>
 		</thead>
 		<tbody>
