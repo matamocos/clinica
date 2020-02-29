@@ -28,6 +28,7 @@
 	<script src="{{ asset('/assets/js/edit.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-citas.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-medicos.js',true)}}"></script>
+	<script src="{{ asset('/assets/js/show-pacientes.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-tratamientos.js',true)}}"></script>
 
 	<!-- VANTA JS ASSETS -->

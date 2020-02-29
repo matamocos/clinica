@@ -39,14 +39,24 @@ class PacienteController extends Controller
 	 */
 	public function simular()
 	{
-		$pacientes = Paciente::All();
-		$medicos = Medico::All();
-		$tratamientos = Tipotratamiento::All();
-		return view('clinica.simular.formulario', compact('pacientes','medicos','tratamientos'));
+		if(Gate::allows('administradores', Auth::user())){
+			
+			$pacientes = Paciente::All();
+			$medicos = Medico::All();
+			$tratamientos = Tipotratamiento::All();
+			return view('clinica.simular.formulario', compact('pacientes','medicos','tratamientos'));
+			
+		}else{
+			
+			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para simular nuevas citas.');
+			return redirect('pacientes');
+			
+		}
 	}
 	
 	public function pdf(Request $request)
 	{
+		
 		$cita = new Cita;
 		$cita->paciente_id = $request->input('paciente_id');
 		$cita->medico_id = $request->input('medico_id');
@@ -54,9 +64,9 @@ class PacienteController extends Controller
 		if($request->input('observaciones')){
 			$cita->observaciones = $request->input('observaciones');
 		}
-		
+
 		$cita->save();
-		
+
 		if($request->tipo_tratamiento_id != 'ninguno'){
 			$tratamiento = new Tratamiento;
 			$tratamiento->medico_id = $request->input('medico_id');
@@ -73,19 +83,19 @@ class PacienteController extends Controller
 			}
 			$tratamiento->save();
 		}
-		
+
 		$paciente = Paciente::find($request->input('paciente_id'));
 		$medico = Medico::find($request->input('medico_id'));
 		$tipo = $request->input('tipo_tratamiento_id');
-		
+
 		if($tipo != 'ninguno'){ 
 			$tipo = Tipotratamiento::select('tipo')->find($request->input('tipo_tratamiento_id'));; 
 			$tipo = $tipo->tipo;
 		}
-		
+
 		date_default_timezone_set('Europe/London');
 		$hora = date('G:i:s', time());
-		
+
 		$data = array (
 			"p_nombre" => $paciente->nombre,
 			"p_apellido1" => $paciente->apellido_1,
@@ -103,17 +113,19 @@ class PacienteController extends Controller
 			"fecha_fin" => $request->input('fecha_fin'),
 			"fecha_cita" => "Día ".Carbon::now('UTC')->format('d-m-20y')." a las ".$hora." horas.",
 		);
-		
+
 		$pdf = PDF::loadView('clinica.simular.pdf', $data);
 		$nombre = $paciente->nombre." ".$paciente->apellido_1." ".$paciente->apellido_2;
-		
+
 		Mail::send('clinica.simular.mail', $data, function($message) use ($nombre, $paciente, $pdf){
-            $message->from('carlosydanieldaw@gmail.com', 'Clínica Dalos')
+			$message->from('carlosydanieldaw@gmail.com', 'Clínica Dalos')
 					->to($paciente->email, $nombre)->subject("Cíta clínica")
 					->attachData($pdf->output(), "Cita.pdf");
-        });  
-		
+		});  
+
+		Session::flash('mensaje_simulacion', 'Se han insertado los registros y enviado el correo correctamente.');
 		return redirect('citas');
+	
 	}
 	
     /**
@@ -123,14 +135,12 @@ class PacienteController extends Controller
      */
     public function create()
     {
-		
 		if(Gate::allows('administradores', Auth::user())){
 			return view('clinica.pacientes.create-pacientes');
 		}else{
 			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevos pacientes.');
 			return redirect('pacientes');
 		}
-
     }
 
     /**
@@ -154,7 +164,9 @@ class PacienteController extends Controller
      */
     public function show($id)
     {
-        //
+        $citas = Cita::where('paciente_id', $id)->get();
+		$tratamientos = Tratamiento::where('paciente_id', $id)->get();
+		return view('clinica.pacientes.show-pacientes', compact('citas', 'tratamientos'));
     }
 
     /**

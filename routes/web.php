@@ -29,7 +29,7 @@ Route::group(['middleware' => ['idioma']], function () {
 	//Pacientes
 	Route::get('/pacientes', 'PacienteController@index');
 	Route::get('/pacientes/create', 'PacienteController@create');
-	//Route::get('/pacientes/show/{id}', 'PacienteController@show');
+	Route::get('/pacientes/show/{id}', 'PacienteController@show');
 	Route::get('/pacientes/edit/{id}', 'PacienteController@edit');
 	Route::put('/pacientes/update/{id}', 'PacienteController@update');
 	Route::delete('/pacientes/destroy/{id}', 'PacienteController@destroy');

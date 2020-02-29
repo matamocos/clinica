@@ -26,6 +26,14 @@
 		</div>
 	@endif
 
+	@if(Session::has('mensaje_simulacion'))
+		<div class="ui success message">
+  			<i class="close icon"></i>
+			<div class="header">{{ trans('pacientes.cita_simulacion') }}</div>
+  			<p>{{Session::get('mensaje_simulacion')}}</p>
+		</div>
+	@endif
+
 	<h2 class="section-title">{{ trans('citas.cita') }}</h2>
 	<div class="table-options">
 		<a href="/citas/create"><button class="ui button left">{{ trans('citas.insertar') }}</button></a>

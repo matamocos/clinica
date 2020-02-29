@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/inicio';
+    protected $redirectTo = 'http://clinica-plyrm.run.goorm.io/';
 
     /**
      * Create a new controller instance.

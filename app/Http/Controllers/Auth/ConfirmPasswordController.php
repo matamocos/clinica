@@ -25,7 +25,7 @@ class ConfirmPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = 'http://clinica-plyrm.run.goorm.io/';
 
     /**
      * Create a new controller instance.

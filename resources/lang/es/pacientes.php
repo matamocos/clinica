@@ -24,6 +24,7 @@ return [
 	'paciente_creado' => 'Nuevo registro creado.',
 	'paciente_editado' => 'Registro editado.',
 	'paciente_autorizado' => 'Usuario no autorizado.',
+	'cita_simulacion' => 'Simulación de citas.',
 ];
 
 

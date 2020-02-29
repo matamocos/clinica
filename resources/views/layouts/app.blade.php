@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Clínica Dalos</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Clínica Dalos
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -77,4 +77,22 @@
         </main>
     </div>
 </body>
+	
+	<script>
+		VANTA.NET({
+			el: ".vanta-banner",
+			mouseControls: true,
+			touchControls: true,
+			minHeight: 250.00,
+			minWidth: 250.00,
+			scale: 1.00,
+			scaleMobile: 1.00,
+			color: 0x5d49be,
+			maxDistance: 30.00,
+			showDots: true,
+			spacing: 25.00,
+			points: 25.00
+		}) 
+	</script>
+	
 </html>

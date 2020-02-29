@@ -43,7 +43,7 @@
 				<th>Id</th>
 				<th>{{trans('tratamientos.descripcion')}}</th>
 				<th>{{trans('tratamientos.f_inicio')}}</th>
-				<th>{{trans('tratamientos.f_fin')}}n</th>
+				<th>{{trans('tratamientos.f_fin')}} </th>
 				<th>{{trans('tratamientos.medico')}} (id)</th>
 				<th>{{trans('tratamientos.paciente')}} (id)</th>
 				<th>{{trans('tratamientos.tipo_tratamiento')}} (id)</th>

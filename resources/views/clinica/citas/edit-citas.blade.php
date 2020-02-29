@@ -31,7 +31,7 @@
 
 				<div class="eight wide required field">
 						<label>{{ trans('citas.hora_cita') }}a</label>
-						<input type="time" name="hora" placeholder="Hora" step="3600" required value="{{$cita->hora}}">
+						<input type="time" name="hora" placeholder="Hora" step="1" required value="{{$cita->hora}}">
 				</div>
 			
 			</div>

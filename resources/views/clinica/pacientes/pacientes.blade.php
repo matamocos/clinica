@@ -74,6 +74,7 @@
 					<td>{{$p->genero}}</td>
 					<td>{{$p->telefono}}</td>
 					<td>
+						<i class="search large circular icon show-pacientes"></i>
 						<i class="edit large circular icon edit-button"></i>
 						<i class="trash large circular alternate outline icon delete-button"></i>
 					</td>
