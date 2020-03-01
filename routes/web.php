@@ -11,80 +11,80 @@
 |
 */
 
+//Rutas autenticaciรณn
+Auth::routes();
+
+Route::get('/', function () {
+	return view('welcome');
+})->middleware('idioma')->name('Página de bienvenida');
 
 
-Route::group(['middleware' => ['idioma']], function () {
-	
-	Route::get('/', function () {
-		return view('welcome');
-	});
+Route::group(['middleware' => ['idioma', 'auth']], function () {
 
-	//Rutas autenticaciรณn
-	Auth::routes();
 	Route::get('/home', 'HomeController@index')->name('home');
 
 	//Inicio
-	Route::get('/inicio', 'ClinicaController@index');
+	Route::get('/inicio', 'ClinicaController@index')->name('Página inicio');
 
 	//Pacientes
-	Route::get('/pacientes', 'PacienteController@index');
-	Route::get('/pacientes/create', 'PacienteController@create');
-	Route::get('/pacientes/show/{id}', 'PacienteController@show');
-	Route::get('/pacientes/edit/{id}', 'PacienteController@edit');
-	Route::put('/pacientes/update/{id}', 'PacienteController@update');
-	Route::delete('/pacientes/destroy/{id}', 'PacienteController@destroy');
-	Route::post('/pacientes/store', 'PacienteController@store');
+	Route::get('/pacientes', 'PacienteController@index')->name('Listado pacientes');
+	Route::get('/pacientes/create', 'PacienteController@create')->name('Creación de pacientes');
+	Route::get('/pacientes/show/{id}', 'PacienteController@show')->name('Visualizar un solo paciente');
+	Route::get('/pacientes/edit/{id}', 'PacienteController@edit')->name('Edición de un paciente');
+	Route::put('/pacientes/update/{id}', 'PacienteController@update')->name('Actualización de un paciente');
+	Route::delete('/pacientes/destroy/{id}', 'PacienteController@destroy')->name('Borrado de un paciente');
+	Route::post('/pacientes/store', 'PacienteController@store')->name('Guardado de un paciente');
 
 	//Medicos
-	Route::get('/medicos', 'MedicoController@index');
-	Route::get('/medicos/create', 'MedicoController@create');
-	Route::get('/medicos/show/{id}', 'MedicoController@show');
-	Route::get('/medicos/edit/{id}', 'MedicoController@edit');
-	Route::put('/medicos/update/{id}', 'MedicoController@update');
-	Route::delete('/medicos/destroy/{id}', 'MedicoController@destroy');
-	Route::post('/medicos/store', 'MedicoController@store');
+	Route::get('/medicos', 'MedicoController@index')->name('Listado de médicos');
+	Route::get('/medicos/create', 'MedicoController@create')->name('Creación de un médico');
+	Route::get('/medicos/show/{id}', 'MedicoController@show')->name('Visualizar un solo médico');
+	Route::get('/medicos/edit/{id}', 'MedicoController@edit')->name('Edición de un médico');
+	Route::put('/medicos/update/{id}', 'MedicoController@update')->name('Actualización de un médico');
+	Route::delete('/medicos/destroy/{id}', 'MedicoController@destroy')->name('Borrado de un médico');
+	Route::post('/medicos/store', 'MedicoController@store')->name('Guardado de un medico');
 
 	//Citas
-	Route::get('/citas', 'CitasController@index');
-	Route::get('/citas/create', 'CitasController@create');
-	Route::get('/citas/edit/{id}', 'CitasController@edit');
-	Route::put('/citas/update/{id}', 'CitasController@update');
-	Route::delete('/citas/destroy/{id}', 'CitasController@destroy');
-	Route::post('/citas/store', 'CitasController@store');
-	Route::get('/citas/show/{id}', 'CitasController@show');
+	Route::get('/citas', 'CitasController@index')->name('Listado de citas');
+	Route::get('/citas/create', 'CitasController@create')->name('Creación de una cita');
+	Route::get('/citas/edit/{id}', 'CitasController@edit')->name('Edición de una cita');
+	Route::put('/citas/update/{id}', 'CitasController@update')->name('Actualización de un cita');
+	Route::delete('/citas/destroy/{id}', 'CitasController@destroy')->name('Borrado de una cita');
+	Route::post('/citas/store', 'CitasController@store')->name('Almacenado de una cita');
+	Route::get('/citas/show/{id}', 'CitasController@show')->name('Visualización de una cita');
 
 	//Tratamientos
-	Route::get('/tratamientos', 'TratamientoController@index');
-	Route::get('/tratamientos/create', 'TratamientoController@create');
-	Route::get('/tratamientos/edit/{id}', 'TratamientoController@edit');
-	Route::put('/tratamientos/update/{id}', 'TratamientoController@update');
-	Route::delete('/tratamientos/destroy/{id}', 'TratamientoController@destroy');
-	Route::post('/tratamientos/store', 'TratamientoController@store');
-	Route::get('/tratamientos/show/{id}', 'TratamientoController@show');
+	Route::get('/tratamientos', 'TratamientoController@index')->name('Listado de tratamiento');
+	Route::get('/tratamientos/create', 'TratamientoController@create')->name('Creación de un tratamiento');
+	Route::get('/tratamientos/edit/{id}', 'TratamientoController@edit')->name('Edición de un tratamiento');
+	Route::put('/tratamientos/update/{id}', 'TratamientoController@update')->name('Actualización de un tratamiento');
+	Route::delete('/tratamientos/destroy/{id}', 'TratamientoController@destroy')->name('Borrado de una cita');
+	Route::post('/tratamientos/store', 'TratamientoController@store')->name('Almacenado de una cita');
+	Route::get('/tratamientos/show/{id}', 'TratamientoController@show')->name('Visualización de una cita');
 
 	//Tipos de tratamientos
-	Route::get('/tratamientos_tipos', 'TipoTratamientoController@index');
-	Route::get('/tratamientos_tipos/create', 'TipoTratamientoController@create');
-	Route::get('/tratamientos_tipos/edit/{id}', 'TipoTratamientoController@edit');
-	Route::put('/tratamientos_tipos/update/{id}', 'TipoTratamientoController@update');
-	Route::delete('/tratamientos_tipos/destroy/{id}', 'TipoTratamientoController@destroy');
-	Route::post('/tratamientos_tipos/store', 'TipoTratamientoController@store');
+	Route::get('/tratamientos_tipos', 'TipoTratamientoController@index')->name('Listado tipos de tratamientos');
+	Route::get('/tratamientos_tipos/create', 'TipoTratamientoController@create')->name('Creación de un tipo de tratamiento');
+	Route::get('/tratamientos_tipos/edit/{id}', 'TipoTratamientoController@edit')->name('Edición de un tipo de tratamiento');
+	Route::put('/tratamientos_tipos/update/{id}', 'TipoTratamientoController@update')->name('Actualización de un tipo de tratamiento');
+	Route::delete('/tratamientos_tipos/destroy/{id}', 'TipoTratamientoController@destroy')->name('Borrado de un tipo de tratamiento');
+	Route::post('/tratamientos_tipos/store', 'TipoTratamientoController@store')->name('Almacenado de un tipo de tratamiento');
 
 	//Especialidades
-	Route::get('/especialidades', 'EspecialidadesController@index');
-	Route::get('/especialidades/create', 'EspecialidadesController@create');
-	Route::get('/especialidades/edit/{id}', 'EspecialidadesController@edit');
-	Route::put('/especialidades/update/{id}', 'EspecialidadesController@update');
-	Route::delete('/especialidades/destroy/{id}', 'EspecialidadesController@destroy');
-	Route::post('/especialidades/store', 'EspecialidadesController@store');
+	Route::get('/especialidades', 'EspecialidadesController@index')->name('Listado de especialidades');
+	Route::get('/especialidades/create', 'EspecialidadesController@create')->name('Creaión de un especialidad');
+	Route::get('/especialidades/edit/{id}', 'EspecialidadesController@edit')->name('Edición de una especialidad');
+	Route::put('/especialidades/update/{id}', 'EspecialidadesController@update')->name('Actualización de una especialidad');
+	Route::delete('/especialidades/destroy/{id}', 'EspecialidadesController@destroy')->name('Borrado de una especialidad');
+	Route::post('/especialidades/store', 'EspecialidadesController@store')->name('Almacenado de una especialidad');
 
 	//Especialidades medicos
-	Route::post('/especialidades_medicos/store', 'EspecialidadesMedicosController@store');
-	Route::delete('/especialidades_medicos/destroy/{id}/{medico_id}', 'EspecialidadesMedicosController@destroy');
+	Route::post('/especialidades_medicos/store', 'EspecialidadesMedicosController@store')->name('Almacenado especialidad-medico');
+	Route::delete('/especialidades_medicos/destroy/{id}/{medico_id}', 'EspecialidadesMedicosController@destroy')->name('Borrado especialidades-médicos');
 	
 	//Ruta simular cita (email y pdf)
-	Route::get('/simular','PacienteController@simular');
-	Route::post('/simular/pdf','PacienteController@pdf');
+	Route::get('/simular','PacienteController@simular')->name('Simulación creación de un cita');
+	Route::post('/simular/pdf','PacienteController@pdf')->name('Generación PDF');
 	
 	//Ruta para cambio de idioma
 	Route::get('lang/{lang}', function ($lang) {
@@ -92,7 +92,7 @@ Route::group(['middleware' => ['idioma']], function () {
         return \Redirect::back();
 	})->where([
         'lang' => 'en|es'
-	]);//fin lang
+	])->name('Selección de idioma');//fin lang
 	
 });//fin middleware idioma
 	

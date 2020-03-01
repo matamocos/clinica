@@ -1,6 +1,6 @@
 @extends('layouts.template') @section('content')
 
-<h2 class="section-title" style="margin-top: 0">P&aacute;gina de inicio</h2>
+<h2 class="section-title" style="margin-top: 0">{{trans('inicio.inicio')}}</h2>
 
 <html>
 
@@ -42,11 +42,11 @@
 			var data = google.visualization.arrayToDataTable([
 				['Pacientes', 'Edades'],
 				@foreach($paciente as $p)
-				['{{$p->edad_paciente}} años', {{$p->edad_paciente}}],
+				['{{$p->edad_paciente}} {{trans('inicio.anyos')}}', {{$p->edad_paciente}}],
 				@endforeach
 			]);
 			var options = {
-				title: 'Demografía de los pacientes de la clínica',
+				title: '{{trans('inicio.demografia')}}',
 				is3D: false,
 				width: 750,
   				height: 750,
@@ -59,7 +59,7 @@
 
 <body>
 	<div class="graficas-wrapper">
-		<h3 class="section-title" style="margin-top: 0; padding: 1em;">Estad&iacute;sticas de la cl&iacute;nica</h3>
+		<h3 class="section-title" style="margin-top: 0; padding: 1em;">{{trans('inicio.estadistica')}}</h3>
 		<div class="graficas">
 			<div id="piechart"></div>
 			<div></div>

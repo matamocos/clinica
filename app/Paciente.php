@@ -12,10 +12,6 @@ class Paciente extends Model
 	//especifica qué campos se desean guardar en la base de datos usando este modelo
 	protected $fillable = ['nombre','apellido_1', 'apellido_2','fecha_nacimiento','telefono', 'pais', 'ciudad', 'direccion', 'email', 'dni', 'genero'];
 	
-    public function expediente(){
-		return $this->hasOne('App\Expediente');
-	}//fin expediente
-	
 	public function cita(){
 		return $this->hasMany('App\Cita');
 	}//fin cita

@@ -33,7 +33,8 @@
 
 	<!-- VANTA JS ASSETS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
-	<script src="https://www.vantajs.com/dist/vanta.net.min.js"></script>
+	<script src="{{ asset('/assets/vanta/src/vanta.net.js',true)}}"></script>
+	<!--<script src="https://www.vantajs.com/dist/vanta.net.min.js"></script>-->
 	
 <body>
 
@@ -120,7 +121,7 @@
 	
 </body>
 <script>
-	VANTA.NET({
+	/*VANTA.NET({
 		el: "#vanta-banner",
 		mouseControls: true,
 		touchControls: true,
@@ -133,7 +134,7 @@
 		showDots: true,
 		spacing: 25.00,
 		points: 25.00
-	}) 
+	}) */
 	
 	$('.ui.dropdown').dropdown();
 </script>

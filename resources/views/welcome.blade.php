@@ -11,6 +11,7 @@
 		
 		<!-- VANTA JS ASSETS -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
+		<!--<script type="module" src="{{ asset('/assets/vanta/src/vanta.net.js',true)}}"></script>-->
 		<script src="https://www.vantajs.com/dist/vanta.net.min.js"></script>
 
         <!-- Styles -->
@@ -123,7 +124,7 @@
 			showDots: true,
 			spacing: 25.00,
 			points: 25.00
-		}) 
+		})
 	</script>
 	
 </html>
