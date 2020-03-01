@@ -33,7 +33,7 @@
 
 	<!-- VANTA JS ASSETS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
-	<script src="{{ asset('/assets/vanta/src/vanta.net.js',true)}}"></script>
+	<!--<script src="{{ asset('/assets/vanta/src/vanta.net.js',true)}}"></script>-->
 	<!--<script src="https://www.vantajs.com/dist/vanta.net.min.js"></script>-->
 	
 <body>
@@ -41,8 +41,16 @@
 	<div class="wrapper">
 
 		<!-- BANNER -->
-		<div id="vanta-banner" class="banner"></div>
-
+		<!--<div id="vanta-banner" class="banner"></div>-->
+		<div class="banner">
+			<div class="bg"></div>
+			<div class="bg bg2"></div>
+			<div class="bg bg3"></div>
+			<div class="content-banner">
+				<!--<a href="http://clinica-plyrm.run.goorm.io/" style="color: white;">Clínica Dalos</a>-->
+			</div>
+		</div>
+		
 			<!-- NAVBAR -->
 			<div class="navbar">
 				<div class="ui inverted segment" style="border-radius: 0; background-image: linear-gradient(to right, black, #5d49be);">
@@ -54,6 +62,7 @@
 						<a class="item" href="{{url('/tratamientos')}}">{{ trans('template.tratamiento') }}</a>
 					    <a class="item" href="{{url('/tratamientos_tipos')}}">{{ trans('template.t_tratamiento') }}</a>
 						<a class="item" href="{{url('/especialidades')}}">{{ trans('template.especialidad') }}</a>
+						<a class="item" href="{{url('/estadisticas')}}">{{ trans('template.estadisticas') }}</a>
 						
 						<div class="item right">
 							
@@ -120,22 +129,22 @@
 	</div>	
 	
 </body>
-<script>
-	/*VANTA.NET({
-		el: "#vanta-banner",
-		mouseControls: true,
-		touchControls: true,
-		minHeight: 250.00,
-		minWidth: 250.00,
-		scale: 1.00,
-		scaleMobile: 1.00,
-		color: 0x5d49be,
-		maxDistance: 30.00,
-		showDots: true,
-		spacing: 25.00,
-		points: 25.00
-	}) */
-	
-	$('.ui.dropdown').dropdown();
-</script>
+	<script>
+		/*VANTA.NET({
+			el: "#vanta-banner",
+			mouseControls: true,
+			touchControls: true,
+			minHeight: 250.00,
+			minWidth: 250.00,
+			scale: 1.00,
+			scaleMobile: 1.00,
+			color: 0x5d49be,
+			maxDistance: 30.00,
+			showDots: true,
+			spacing: 25.00,
+			points: 25.00
+		}) */
+
+		$('.ui.dropdown').dropdown();
+	</script>
 </html>

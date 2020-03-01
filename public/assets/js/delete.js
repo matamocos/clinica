@@ -30,7 +30,7 @@ $(document).ready(function(){
 	
 	$(document).on('click', '.modal-delete .approve', function(e){
 		$.ajax({                
-			url: window.location.href + '/destroy/' + $(tr).attr('data-id'),  
+			url: location.protocol + '//' + location.host + location.pathname + '/destroy/' + $(tr).attr('data-id'),  
 			type: 'DELETE',              
 			data: {
 				"_token": $("meta[name='csrf-token']").attr("content")

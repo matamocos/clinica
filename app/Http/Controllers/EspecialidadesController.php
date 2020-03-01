@@ -19,7 +19,7 @@ class EspecialidadesController extends Controller
      */
     public function index()
     {
-        $especialidades = Especialidade::All();
+        $especialidades = Especialidade::paginate(10);
 		return view('clinica.especialidades.especialidades', compact('especialidades'));
     }
 

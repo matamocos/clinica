@@ -30,6 +30,9 @@ $(document).ready(function(){
 		case "http://clinica-plyrm.run.goorm.io/expedientes":
 			$('body > div > div.navbar > div.ui.inverted.segment > div > a:nth-child(9)').addClass('active');
 			break;
+		case "http://clinica-plyrm.run.goorm.io/estadisticas":
+			$('body > div > div.navbar > div > div > a:nth-child(8)').addClass('active');
+			break;
 	}
 	
 	$('body > div > div.content-wrapper > div.ui.success.message > i').click(function(){

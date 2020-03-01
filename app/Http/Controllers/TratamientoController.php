@@ -21,7 +21,7 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-        $tratamientos = Tratamiento::All();
+        $tratamientos = Tratamiento::paginate(10);
 		return view('clinica.tratamientos.tratamientos', compact('tratamientos'));
     }
 

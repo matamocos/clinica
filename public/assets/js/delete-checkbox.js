@@ -1,6 +1,6 @@
 $(document).ready(function(){
 			
-	$('.check_all').click(function() {
+	$(document).on('click','.check_all',function() {
 		if ($(this).prop('checked')) {
 			$('.check').prop('checked', true);
 		} else {
@@ -9,13 +9,13 @@ $(document).ready(function(){
 	});
 
 	//Borrar los registros seleccionados
-	$("#borrar").click(function(){
+	$(document).on('click','#borrar',function(){
 		$('.check').each(function(e){
 			if($(this).prop('checked')){
 				let id = $(this).closest('tr').attr('data-id');
 				let tr = $(this).closest('tr');
 				$.ajax({
-					url: location.href + '/destroy/' + id,
+					url: location.protocol + '//' + location.host + location.pathname + '/destroy/' + id,
 					type: 'DELETE',
 					data: {
 						"_token": $("meta[name='csrf-token']").attr("content")

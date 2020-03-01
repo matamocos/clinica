@@ -70,4 +70,21 @@
         </div>
     </div>
 </div>
+
+<form class="container">
+	<hr>
+	<h2 class="text-center">Logearse con Google: </h2>
+	
+	<div class="form-group row mb-0">
+    	<div class="col text-center">
+		
+            <a href="{{ url('/login/google') }}" class="btn btn-danger"> Google</a>              
+          
+         
+    	</div>
+	</div>
+</form>
+
+
+
 @endsection

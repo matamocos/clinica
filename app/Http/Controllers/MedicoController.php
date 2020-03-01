@@ -22,7 +22,7 @@ class MedicoController extends Controller
      */
     public function index()
     {
-        $medicos = Medico::All();
+        $medicos = Medico::paginate(10);
 		return view('clinica.medicos.medicos', compact('medicos'));
     }
 

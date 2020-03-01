@@ -64,12 +64,14 @@
 					<td>
 						<i class="search large circular icon show-tratamientos"></i>
 						<i class="edit large circular icon edit-button"></i>
-						<i class="trash large circular alternate outline icon delete-button"></i>
+						<i class="trash large circular alternate outline icon delete-button"</i>
 					</td>
 				</tr>
 			@endforeach
 		</tbody>
 	</table>
+
+	{{ $tratamientos->links("vendor.pagination.semantic-ui") }}
 
 	<div class="modal-delete"></div>
 	<div class="modal-show-3"></div>

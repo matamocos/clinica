@@ -21,7 +21,7 @@ class CitasController extends Controller
     public function index()
     {
 		//dd($request);
-        $citas = Cita::All();
+        $citas = Cita::paginate(10);
 		return view('clinica.citas.citas', compact('citas'));
     }
 

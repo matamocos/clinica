@@ -7,7 +7,7 @@
 }
 
 .banner{
-	height: 300px;
+	height: 250px;
 	width: 100%;
 }
 
@@ -131,3 +131,53 @@ tbody{
 td img{
 	cursor: pointer;
 }
+
+/*------------------------------------*/
+
+.bg {
+	animation:slide 4s ease-in-out infinite alternate;
+	background-image: linear-gradient(-60deg, darkslateblue 50%, black 50%);
+	bottom:0;
+	left:-50%;
+	opacity:.5;
+	position:absolute;
+	right:-50%;
+	top:0;
+	z-index:-1;
+	height:250px;
+}
+
+.bg2 {
+	animation-direction:alternate-reverse;
+	animation-duration:6s;
+}
+
+.bg3 {
+	animation-duration:8s;
+}
+
+@keyframes slide {
+	0% {
+		transform:translateX(-25%);
+	}
+	100% {
+		transform:translateX(25%);
+	}
+}
+
+.content-banner {
+	box-sizing:border-box;
+	left:50%;
+	padding:10vmin;
+	position:absolute;
+	text-align:center;
+	top:125px;
+	color: white;
+	font-size: 84px;
+	font-weight: italic;
+	font-family: 'Open Sans';
+	text-decoration: none;
+	transform:translate(-50%, -50%);
+}
+
+

@@ -18,6 +18,10 @@ Route::get('/', function () {
 	return view('welcome');
 })->middleware('idioma')->name('Página de bienvenida');
 
+//rutas loging para Socialite
+Route::get('login/{provider}', 'SocialController@redireccion');
+Route::get('login/{provider}/callback','SocialController@Callback');
+
 
 Route::group(['middleware' => ['idioma', 'auth']], function () {
 
@@ -25,6 +29,7 @@ Route::group(['middleware' => ['idioma', 'auth']], function () {
 
 	//Inicio
 	Route::get('/inicio', 'ClinicaController@index')->name('Página inicio');
+	Route::get('/estadisticas', 'ClinicaController@estadisticas')->name('Página de estadísticas');
 
 	//Pacientes
 	Route::get('/pacientes', 'PacienteController@index')->name('Listado pacientes');

@@ -9,8 +9,11 @@ use Illuminate\Http\Request;
 class ClinicaController extends Controller
 {
     public function index(){
-		
+		return redirect('http://clinica-plyrm.run.goorm.io/');
+	}
+	
+	public function estadisticas(){
 		$paciente = Paciente::All();
-		return view('clinica.inicio', compact('paciente'));
+		return view('clinica.estadisticas', compact('paciente'));
 	}
 }

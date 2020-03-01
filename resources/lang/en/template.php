@@ -14,4 +14,5 @@ return [
 	'en' => 'English',
 	'y' => '&',
 	'autores' => 'Project created by',
+	'estadisticas' => 'Clinic Statistics',
 ];

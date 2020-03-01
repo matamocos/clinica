@@ -80,6 +80,9 @@
 		</tbody>
 	</table>
 
+
+	{{ $citas->links("vendor.pagination.semantic-ui") }}
+
 	<div class="modal-delete"></div>
 	<div class="modal-show"></div>
 @endsection
