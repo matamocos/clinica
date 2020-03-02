@@ -30,4 +30,13 @@ return [
 	'f_inicio' => 'Fecha de inicio',
 	'f_fin' => 'Fecha de finalizacion',
 	'finalizar_cita' => 'Finalizar cita',
+	'modal_paciente' => 'El/la paciente',
+	'modal_concertar' => 'concertó / ha concertado una cita con el médico ',
+	'modal_dia' => 'el día',
+	'modal_hora' => 'a la/s hora/s',
+	'modal_motivo' => 'Motivo de la cita:',
+	'modal_cabecera' => 'Mostrando la cita con ID:',
+	'modal_cerrar' => 'Cerrar',
+	'modal_nosepuede' => 'No se ha podido mostrar el registro debido a un error.',
+	
 ];

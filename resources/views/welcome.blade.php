@@ -86,7 +86,7 @@
     <body>
 		<canvas id="canvas"></canvas>
 		<div id="text">
-			<div id="vanta-banner" class="flex-center position-ref full-height">
+			<div class="flex-center position-ref full-height">
 				@if (Route::has('login'))
 					<div class="top-right links">
 						@auth

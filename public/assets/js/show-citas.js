@@ -1,3 +1,4 @@
+/*
 $(document).ready(function(){
 	
 	toastr.options = {
@@ -47,5 +48,6 @@ $(document).ready(function(){
 		});//fin ajax
 	});
 });
+*/
 
 

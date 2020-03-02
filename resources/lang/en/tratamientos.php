@@ -22,4 +22,12 @@ return [
 	'actualizar_tratamiento' => 'Update record',
 	'actualizar_registro' => 'Update record',
 	'editar' => 'Edit Treatment',
+	'modal_cabecera' => 'Showing the ID treatment:',
+	'modal_paciente' => 'Name of patient:',
+	'modal_medico' => 'Name of doctor:',
+	'modal_fecha_inicio' => 'Start date:',
+	'modal_fecha_fin' => 'Ending date:',
+	'modal_descripcion' => 'Treatment Description:',
+	'modal_tipo' => 'Type of treatment:',
+	'modal_cerrar' => 'Close',
 ];

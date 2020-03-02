@@ -85,4 +85,60 @@
 
 	<div class="modal-delete"></div>
 	<div class="modal-show"></div>
+
+	<script>
+	$(document).ready(function(){
+	
+	toastr.options = {
+        'closeButton': true,
+        'progressBar': true,
+    }
+	
+	//PROBLEMA: Se multiplica el número de ventanas modales que se generan exponencialmente a medida que vas clickeando en mostrar.
+	
+	$(document).on('click','.show-citas', function(){	
+			
+		var id = $(this).closest('tr').attr('data-id');
+		//$('.modal-show').html('');
+		$.ajax({
+			url: location.protocol + '//' + location.host + location.pathname + '/show/' + id ,
+			type:'GET', 
+			success: function(data){
+				if(data != 'error'){
+					
+					$('.ui.dimmer.modals.page.transition').remove();
+					
+					var ventanaModal = `
+						<div class="ui mini modal modal-show" style="width:60%;">
+							<div class="header"><span class="section-title">{{trans('citas.modal_cabecera')}} ${data.id_citas}</span></div>
+							<div class="content">
+								<p>
+									{{trans('citas.modal_paciente')}}  <strong>${data.nombre_paciente} ${data.apellido_1_paciente} ${data.apellido_2_paciente}</strong> {{trans('citas.modal_concertar')}} 
+									 <strong>${data.nombre_medico} ${data.apellido_1_medico} ${data.apellido_2_medico}</strong> {{trans('citas.modal_dia')}} ${data.fecha} {{trans('citas.modal_hora')}} ${data.hora}.
+								</p>
+								<p>{{trans('citas.modal_motivo')}} ${data.motivo}</p>
+							</div>
+							<div  class="actions">
+								<button id="test"  class="ui approve positive button">{{trans('citas.modal_cerrar')}}</button>
+							</div>
+						</div>`;
+					
+					$('.modal-show').html(ventanaModal);
+					
+					$('.ui.mini.modal.modal-show')
+  						.modal('show')
+					;
+				
+				}else{
+					toastr.warning(`{{trans('citas.modal_nosepuede')}}`, "Error");
+				}
+			}
+		});//fin ajax
+	});
+});
+		
+
+	</script>
+
+
 @endsection

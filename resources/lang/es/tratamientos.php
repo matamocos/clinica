@@ -22,4 +22,12 @@ return [
 	'actualizar_tratamiento' => 'Actualizar tratamiento',
 	'actualizar_registro' => 'Actualizar registro',
 	'editar' => 'Editar tratamiento',
+	'modal_cabecera' => 'Mostrando el tratamiento con ID:',
+	'modal_paciente' => 'Nombre del paciente:',
+	'modal_medico' => 'Nombre del médico:',
+	'modal_fecha_inicio' => 'Fecha de inicio:',
+	'modal_fecha_fin' => 'Fecha de fin:',
+	'modal_descripcion' => 'Descripción del tratamiento:',
+	'modal_tipo' => 'Tipo de tratamiento:',
+	'modal_cerrar' => 'Cerrar',
 ];

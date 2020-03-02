@@ -30,4 +30,12 @@ return [
 	'f_inicio' => 'Start date',
 	'f_fin' => 'Finish date',
 	'finalizar_cita' => 'End appointment',
+	'modal_paciente' => 'The patient',
+	'modal_concertar' => 'has made an appointment with the doctor',
+	'modal_dia' => 'the day',
+	'modal_hora' => 'at the time',
+	'modal_motivo' => 'Reason for the appointment:',
+	'modal_cabecera' => 'Showing the appointment with ID:',
+	'modal_cerrar' => 'Close',
+	'modal_nosepuede' => 'The record could not be displayed due to an error.',
 ];

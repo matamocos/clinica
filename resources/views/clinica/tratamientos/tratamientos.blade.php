@@ -75,5 +75,54 @@
 
 	<div class="modal-delete"></div>
 	<div class="modal-show-3"></div>
+
+	<script>
+		$(document).ready(function(){
+	
+		toastr.options = {
+			'closeButton': true,
+			'progressBar': true,
+		}
+
+		$(document).on('click','.show-tratamientos', function(){	
+			var id = $(this).closest('tr').attr('data-id');
+			$.ajax({
+				url: location.protocol + '//' + location.host + location.pathname + '/show/' + id ,
+				type:'GET', 
+				success: function(data){
+					if(data != 'error'){
+						$('.ui.dimmer.modals.page.transition').remove();
+
+						var ventanaModal = `
+							<div class="ui mini modal modal-show-3" style="width:60%;">
+								<div class="header"><span class="section-title">{{trans('tratamientos.modal_cabecera')}} ${data[0].tratamiento_id}</span></div>
+								<div class="content">
+									<p>{{trans('tratamientos.modal_tipo')}} <strong>${data[0].tipo}</strong></p>
+									<p>{{trans('tratamientos.modal_paciente')}} <strong>${data[0].p_nombre} ${data[0].p_apellido1} ${data[0].p_apellido2}</strong></p>
+									<p>{{trans('tratamientos.modal_medico')}}   <strong>${data[0].m_nombre} ${data[0].m_apellido1} ${data[0].m_apellido2}</strong></p>
+									<p>{{trans('tratamientos.modal_fecha_inicio')}}     <strong>${data[0].fecha_inicio}</strong></p>
+									<p>{{trans('tratamientos.modal_fecha_fin')}}     <strong>${data[0].fecha_fin}</strong></p>
+									<p>{{trans('tratamientos.modal_descripcion')}} <strong>${data[0].descripcion}</strong></p>
+								</div>
+								<div  class="actions">
+									<button class="ui approve positive button">{{trans('tratamientos.modal_cerrar')}}</button>
+								</div>
+							</div>`;
+
+						$('.modal-show-3').html(ventanaModal);
+
+						$('.ui.mini.modal.modal-show-3')
+							.modal('show')
+						;
+
+					}else{
+						toastr.warning(`No se ha podido mostrar el registro debido a un error.`, "Error");
+					}
+				}
+			});//fin ajax
+		});
+	});
+
+	</script>
 	
 @endsection
