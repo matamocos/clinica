@@ -23,7 +23,7 @@ $(document).ready(function(){
 		
 	$('.modal-delete').append(ventanaModal);
 	
-	$(".delete-button").click(function(){	
+	$(document).on('click','.delete-button', function(){	
 		$('.modal-delete').modal('show');
 		tr = $(this).closest('tr');
 	}); //fin función

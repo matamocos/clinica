@@ -7,12 +7,12 @@ $(document).ready(function(){
 	
 	//PROBLEMA: Se multiplica el número de ventanas modales que se generan exponencialmente a medida que vas clickeando en mostrar.
 	
-	$('.show-citas').click(function(){
+	$(document).on('click','.show-citas', function(){	
 			
 		var id = $(this).closest('tr').attr('data-id');
 		//$('.modal-show').html('');
 		$.ajax({
-			url: location.href + '/show/' + id ,
+			url: location.protocol + '//' + location.host + location.pathname + '/show/' + id ,
 			type:'GET', 
 			success: function(data){
 				if(data != 'error'){

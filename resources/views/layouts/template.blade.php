@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="csrf-token" content="{{ csrf_token() }}">
-	<title>Clínica</title>
+	<title>Clínica Dalos</title>
 </head>
 
 	<!-- STYLESHEETS -->
@@ -30,11 +30,6 @@
 	<script src="{{ asset('/assets/js/show-medicos.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-pacientes.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-tratamientos.js',true)}}"></script>
-
-	<!-- VANTA JS ASSETS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/100/three.min.js"></script>
-	<!--<script src="{{ asset('/assets/vanta/src/vanta.net.js',true)}}"></script>-->
-	<!--<script src="https://www.vantajs.com/dist/vanta.net.min.js"></script>-->
 	
 <body>
 
@@ -129,22 +124,5 @@
 	</div>	
 	
 </body>
-	<script>
-		/*VANTA.NET({
-			el: "#vanta-banner",
-			mouseControls: true,
-			touchControls: true,
-			minHeight: 250.00,
-			minWidth: 250.00,
-			scale: 1.00,
-			scaleMobile: 1.00,
-			color: 0x5d49be,
-			maxDistance: 30.00,
-			showDots: true,
-			spacing: 25.00,
-			points: 25.00
-		}) */
-
-		$('.ui.dropdown').dropdown();
-	</script>
+	<script> $('.ui.dropdown').dropdown(); </script>
 </html>

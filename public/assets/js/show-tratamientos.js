@@ -5,10 +5,10 @@ $(document).ready(function(){
         'progressBar': true,
     }
 	
-	$('.show-tratamientos').click(function(){
+	$(document).on('click','.show-tratamientos', function(){	
 		var id = $(this).closest('tr').attr('data-id');
 		$.ajax({
-			url: location.href + '/show/' + id ,
+			url: location.protocol + '//' + location.host + location.pathname + '/show/' + id ,
 			type:'GET', 
 			success: function(data){
 				if(data != 'error'){

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
-	$('.edit-button').click(function(){
-		location.href = location.href + '/edit/' + $(this).closest('tr').attr('data-id');
+	$(document).on('click','.edit-button', function(){	
+		location.href = location.protocol + '//' + location.host + location.pathname + '/edit/' + $(this).closest('tr').attr('data-id');
 	});
 	
 });
