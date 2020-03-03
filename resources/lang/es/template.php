@@ -15,4 +15,5 @@ return [
 	'y' => 'y',
 	'autores' => 'Proyecto realizado por',
 	'estadisticas' => 'Estadísticas de la clínica',
+	'banner' => 'Clínica Dalos',
 ];

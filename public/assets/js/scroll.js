@@ -2,7 +2,7 @@ window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
 
- 	if (document.body.scrollTop >300 || document.documentElement.scrollTop > 300) {
+ 	if (document.body.scrollTop >250 || document.documentElement.scrollTop > 250) {
 
   	  	$(".navbar").css('position', 'fixed');
 		$(".content-wrapper").css('margin-top', '76px');

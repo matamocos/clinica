@@ -29,7 +29,7 @@ class SocialController extends Controller
                 'provider'      => $provider,
             ]);         
 			  
-			 return redirect()->route('/welcome');
+			 return redirect()->route('/');
         }
 	}//fin callback
 

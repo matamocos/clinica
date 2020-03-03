@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 	
 	toastr.options = {
@@ -7,11 +8,10 @@ $(document).ready(function(){
 	
 	var tr;
 	
-	/*la ventana modal se crea aquí, porque si está en el blade se guarda en la memoria o algo similar, y se duplica
-	  el evento de borrar*/
+
 	var ventanaModal = `
 		<div class="ui mini modal modal-delete">
-			<div class="header"><span class="section-title">Borrar registro</span></div>
+			<div class="header"><span class="section-title"> Borrar registro</span></div>
 			<div class="content">
 				<p>¿Está seguro de que decea borrar este registro?</p>
 			</div>
@@ -62,3 +62,4 @@ $(document).ready(function(){
 	});//fin close
 	
 });
+

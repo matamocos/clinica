@@ -23,9 +23,11 @@ $(document).ready(function(){
 					 success: function(respuesta){
 						if (respuesta=="error"){
 							toastr.warning(`No se puede borrar el registro ${id} debido a la entidad referencial.`,"Error");
-						}else{
+						}else if(respuesta == 'success'){
 							toastr.success(`El registro ${id} se borró correctamente.`, "Éxito");
 							tr.fadeOut();
+						}else if(respuesta == 'desautorizado'){
+							toastr.warning(`Su cuenta de usuario no tiene autorización para realizar esta acción.`,"Error");	 
 						}
 					},
 				});

@@ -57,10 +57,10 @@
 			</tr>
 			<tr>
 				<td colspan="6" rowspan="3">
-					<?php if($tipo){echo "<div><span style='font-weight:bold'>Tipo de tratamiento:</span> ".$tipo."</div>";} ?>
-					<?php if($descripcion){echo "<div><span style='font-weight:bold'>Descripción de tratamiento:</span> ".$descripcion."</div>";} ?>
-					<?php if($fecha_fin){echo "<div><span style='font-weight:bold'>Fecha de inicio del tratamiento:</span> ".$fecha_inicio."</div>";} ?>
-					<?php if($fecha_fin){echo "<div><span style='font-weight:bold'>Fecha de fin del tratamiento:</span> ".$fecha_fin."</div>";} ?>
+					<div><span style='font-weight:bold'>{{trans('mail.tipo_tratamiento')}}</span> <?php if($tipo){echo $tipo; }?> </div>
+					<div><span style='font-weight:bold'>{{trans('mail.descripcion')}}</span> <?php if($descripcion){echo $descripcion; }?> </div>
+					<div><span style='font-weight:bold'>{{trans('mail.fecha_inicio_tratamiento')}}</span> <?php if($fecha_fin){echo $fecha_inicio; }?> </div>
+					<div><span style='font-weight:bold'>{{trans('mail.fecha_fin_tratamiento')}}</span> <?php if($fecha_fin){echo $fecha_fin; }?> </div>
 				</td>
 			</tr>
 			<tr>

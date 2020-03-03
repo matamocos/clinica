@@ -8,17 +8,14 @@
 
 	<!-- STYLESHEETS -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
 	<link rel="stylesheet" href="{{ asset('/assets/css/template.css',true)}}">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	
 	<!-- SCRIPTS -->
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-
 	<script src="{{ asset('/assets/js/redirecciones.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/scroll.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/search.js',true)}}"></script>
@@ -26,23 +23,32 @@
 	<script src="{{ asset('/assets/js/delete.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/delete-checkbox.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/edit.js',true)}}"></script>
-	<script src="{{ asset('/assets/js/show-citas.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-medicos.js',true)}}"></script>
 	<script src="{{ asset('/assets/js/show-pacientes.js',true)}}"></script>
-	<script src="{{ asset('/assets/js/show-tratamientos.js',true)}}"></script>
 	
 <body>
 
 	<div class="wrapper">
 
 		<!-- BANNER -->
-		<!--<div id="vanta-banner" class="banner"></div>-->
 		<div class="banner">
 			<div class="bg"></div>
 			<div class="bg bg2"></div>
 			<div class="bg bg3"></div>
 			<div class="content-banner">
-				<!--<a href="http://clinica-plyrm.run.goorm.io/" style="color: white;">Clínica Dalos</a>-->
+				<a href="http://clinica-plyrm.run.goorm.io/" style="color: white;">{{trans('template.banner')}}</a>
+			</div>
+		</div>
+		
+		<div class="waveWrapper waveAnimation">
+			<div class="waveWrapperInner bgTop">
+				<div class="wave waveTop" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png')"></div>
+			</div>
+				<div class="waveWrapperInner bgMiddle">
+				<div class="wave waveMiddle" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png')"></div>
+			</div>
+				<div class="waveWrapperInner bgBottom">
+				<div class="wave waveBottom" style="background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png')"></div>
 			</div>
 		</div>
 		

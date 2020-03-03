@@ -30,6 +30,7 @@
 	<div class="table-options">
 		<a href="/pacientes/create"><button class="ui button left">{{ trans('pacientes.insertar') }}</button></a>
 		<a id="borrar"><button class="ui button left" style="height: 36px;">{{ trans('pacientes.borrar') }}</button></a>
+		
 		<div class="ui icon input right">
 			<i class="search icon"></i>
 			<input id="search-input" style="border-color: lightgrey" type="text" placeholder="{{ trans('pacientes.buscar') }}">

@@ -74,4 +74,6 @@
 	{{ $medicos->links("vendor.pagination.semantic-ui") }}
 	<div class="modal-delete"></div>
 
+
+
 @endsection

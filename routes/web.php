@@ -29,7 +29,7 @@ Route::group(['middleware' => ['idioma', 'auth']], function () {
 
 	//Inicio
 	Route::get('/inicio', 'ClinicaController@index')->name('Página inicio');
-	Route::get('/welcome', 'ClinicaController@index')->name('Página inicio');
+	Route::get('/welcome', 'ClinicaController@index')->name('Página welcome');
 	Route::get('/estadisticas', 'ClinicaController@estadisticas')->name('Página de estadísticas');
 
 	//Pacientes

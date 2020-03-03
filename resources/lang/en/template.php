@@ -15,4 +15,5 @@ return [
 	'y' => '&',
 	'autores' => 'Project created by',
 	'estadisticas' => 'Clinic Statistics',
+	'banner' => 'Clinic Dalos',
 ];

@@ -27,4 +27,8 @@ return [
 	'observacion' => 'Observaciones',
 	'tratamiento' => 'Tratamientos indicados',
 	'clinica' => 'Clínica Dalos',
+	'tipo_tratamiento' => 'Tipo de tratamiento:',
+	'descripcion' => 'Descripción del tratamiento:',
+	'fecha_inicio_tratamiento' => 'Fecha de inicio del tratamiento:',
+	'fecha_fin_tratamiento' => 'Fecha de finalización del tratamiento:',
 ];

@@ -27,4 +27,8 @@ return [
 	'observacion' => 'Observations:',
 	'tratamiento' => 'Treatments indicated',
 	'clinica' => 'Dalos Clinic',
+	'tipo_tratamiento' => 'Type of treatment:',
+	'descripcion' => 'Description of the treatment:',
+	'fecha_inicio_tratamiento' => 'Beginning of the treatment:',
+	'fecha_fin_tratamiento' => 'End of the treatment:',
 ];
