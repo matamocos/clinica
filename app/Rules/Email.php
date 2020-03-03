@@ -39,6 +39,6 @@ class Email implements Rule
      */
     public function message()
     {
-        return 'El formato de la dirección de correo de no es válido.';
+        return trans('reglas.email');
     }
 }

@@ -33,10 +33,18 @@ class MedicoController extends Controller
      */
     public function create()
     {
+		$lang = \App::getLocale(session('lang'));
+		
 		if(Gate::allows('administradores', Auth::user())){
 			return view('clinica.medicos.create-medicos');
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir nuevos médicos.');
+			
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para crear nuevos médicos.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to create new doctors.');	
+			}//fin else
+			
 			return redirect('medicos');
 		}  
     }
@@ -49,8 +57,16 @@ class MedicoController extends Controller
      */
     public function store(MedicoRequest $request)
     {
+		
+		$lang = \App::getLocale(session('lang'));
 		Medico::create($request->all());
-		Session::flash('mensaje_confirmacion', 'El médico se ha creado correctamente.');
+		
+		if($lang == 'es'){
+				Session::flash('mensaje_confirmacion', 'El médico se ha creado correctamente.');	
+		}else{
+				Session::flash('mensaje_confirmacion', 'The doctor was created successfully.');
+		}
+
         return redirect('medicos');
     }
 
@@ -82,14 +98,22 @@ class MedicoController extends Controller
      */
     public function edit($id)
     {
+		$lang = \App::getLocale(session('lang'));
+		
 		if(Gate::allows('administradores', Auth::user())){
 			$medico = Medico::find($id);
 			return view('clinica.medicos.edit-medicos', compact('medico'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar médicos.');
-			return redirect('medicos');
-		}
-    }
+			
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar médicos.');
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your user account is not authorized to edit doctors.');
+			}//fin else
+			
+		}//fin else
+		return redirect('medicos');
+    }//fin edit
 
     /**
      * Update the specified resource in storage.

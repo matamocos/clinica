@@ -39,6 +39,7 @@ class PacienteController extends Controller
 	 */
 	public function simular()
 	{
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			
 			$pacientes = Paciente::All();
@@ -47,8 +48,11 @@ class PacienteController extends Controller
 			return view('clinica.simular.formulario', compact('pacientes','medicos','tratamientos'));
 			
 		}else{
-			
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para simular nuevas citas.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevas citas.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to insert new appointments.');	
+			}
 			return redirect('pacientes');
 			
 		}
@@ -56,7 +60,7 @@ class PacienteController extends Controller
 	
 	public function pdf(Request $request)
 	{
-		
+		$lang = \App::getLocale(session('lang'));
 		$cita = new Cita;
 		$cita->paciente_id = $request->input('paciente_id');
 		$cita->medico_id = $request->input('medico_id');
@@ -123,7 +127,12 @@ class PacienteController extends Controller
 					->attachData($pdf->output(), "Cita.pdf");
 		});  
 
-		Session::flash('mensaje_simulacion', 'Se han insertado los registros y enviado el correo correctamente.');
+		
+		if($lang == 'es'){
+			Session::flash('mensaje_simulacion', 'Se han insertado los registros y enviado el correo correctamente.');	
+		}else{
+			Session::flash('mensaje_simulacion', 'The registries have been inserted and the email has been sent.');	
+		}
 		return redirect('citas');
 	
 	}
@@ -135,10 +144,15 @@ class PacienteController extends Controller
      */
     public function create()
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			return view('clinica.pacientes.create-pacientes');
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevos pacientes.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevos pacientes.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to insert new patients.');	
+			}
 			return redirect('pacientes');
 		}
     }
@@ -177,11 +191,16 @@ class PacienteController extends Controller
      */
     public function edit($id)
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$paciente = Paciente::find($id);
 			return view('clinica.pacientes.edit-pacientes', compact('paciente'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estáก autorizada para editar pacientes.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar pacientes.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit patients.');	
+			}
 			return redirect('pacientes');
 		}
     }
@@ -195,9 +214,14 @@ class PacienteController extends Controller
      */
     public function update(PacientesRequest $request, $id)
     {
+		$lang = \App::getLocale(session('lang'));
         $request = request()->except('_token','_method');
 		Paciente::where('id',$id)->update($request);
-		Session::flash('mensaje_editado', 'El paciente se ha actualizado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_editado', 'El paciente se ha actualizado correctamente.');	
+		}else{
+			Session::flash('mensaje_editado', 'The patient has been updated.');	
+		}
         return redirect('pacientes');
     }
 
@@ -222,6 +246,6 @@ class PacienteController extends Controller
 			}
 		}else{
 			return "desautorizado";
-		}	
+		}
     }
 }

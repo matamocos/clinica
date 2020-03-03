@@ -30,10 +30,15 @@ class EspecialidadesController extends Controller
      */
     public function create()
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			return view('clinica.especialidades.create-especialidades');
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir una nueva especialidad.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir una nueva especialidad.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to insert a new specialy.');	
+			}
 			return redirect('especialidades');
 		} 
     }
@@ -44,10 +49,22 @@ class EspecialidadesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EspecialidadesRequest $request)
+    public function store(Request $request)
     {
-        Especialidade::create($request->all());
-        Session::flash('mensaje_confirmacion', 'La especialidad médica se ha creado correctamente.');
+		
+		$validatedData = $request->validate([
+        	'especialidad' => 'required|alpha',
+    	]);
+		
+		$lang = \App::getLocale(session('lang'));
+		
+        Especialidade::create($validatedData);
+		
+		if($lang == 'es'){
+				Session::flash('mensaje_confirmacion', 'La especialidad médica se ha creado correctamente.');	
+			}else{
+				Session::flash('mensaje_confirmacion', 'The specialy has been created.');	
+			}
         return redirect('especialidades');
     }
 
@@ -70,11 +87,16 @@ class EspecialidadesController extends Controller
      */
     public function edit($id)
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$especialidad = Especialidade::find($id);
 			return view('clinica.especialidades.edit-especialidades', compact('especialidad'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar una especialidad.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar una especialidad.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit a specialy.');	
+			}
 			return redirect('especialidades');
 		} 
     }
@@ -88,9 +110,15 @@ class EspecialidadesController extends Controller
      */
     public function update(EspecialidadesRequest $request, $id)
     {
+		$lang = \App::getLocale(session('lang'));
         $request = request()->except('_token','_method');
 		Especialidade::where('id',$id)->update($request);
 		Session::flash('mensaje_editado', 'La especialidad se ha actualizado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_editado', 'Su cuenta de usuario no está autorizada para editar una especialidad.');	
+		}else{
+			Session::flash('mensaje_editado', 'Your account does not have permission to edit a specialy.');	
+		}
         return redirect('especialidades');
     }
 
@@ -113,6 +141,6 @@ class EspecialidadesController extends Controller
 			}
 		}else{
 			return "desautorizado";
-		}		
+		}
     }
 }

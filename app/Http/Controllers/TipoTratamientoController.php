@@ -30,10 +30,15 @@ class TipoTratamientoController extends Controller
      */
     public function create()
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			return view('clinica.tipos_de_tratamientos.create-tipos_tratamientos');
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir un nuevo tipo de tratamiento.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir un nuevo tipo de tratamiento.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to create new treatments.');	
+			}
 			return redirect('tratamientos_tipos');
 		} 
     }
@@ -46,8 +51,13 @@ class TipoTratamientoController extends Controller
      */
     public function store(TipotratamientoResquest $request)
     {
+		$lang = \App::getLocale(session('lang'));
         Tipotratamiento::create($request->all());
-        Session::flash('mensaje_confirmacion', 'El tipo de tratamiento se ha creado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_confirmacion', 'El tipo de tratamiento se ha creado correctamente.');	
+		}else{
+			Session::flash('mensaje_confirmacion', 'The type of treatment has been created.');	
+		}
         return redirect('tratamientos_tipos');
     }
 
@@ -70,11 +80,16 @@ class TipoTratamientoController extends Controller
      */
     public function edit($id)
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$tipo = Tipotratamiento::find($id);
 			return view('clinica.tipos_de_tratamientos.edit-tipos_tratamientos', compact('tipo'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar un tipo de tratamiento.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar un tipo de tratamiento.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit types of treatments.');	
+			}
 			return redirect('tratamientos_tipos');
 		} 
     }
@@ -88,9 +103,14 @@ class TipoTratamientoController extends Controller
      */
     public function update(TipotratamientoResquest $request, $id)
     {
+		$lang = \App::getLocale(session('lang'));
         $request = request()->except('_token','_method');
 		Tipotratamiento::where('id',$id)->update($request);
-		Session::flash('mensaje_editado', 'El tipo de tratamiento se ha actualizado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_editado', 'El tipo de tratamiento se ha actualizado correctamente.');	
+		}else{
+			Session::flash('mensaje_editado', 'The type of treatment has been updated.');	
+		}
         return redirect('tratamientos_tipos');
     }
 
@@ -102,6 +122,7 @@ class TipoTratamientoController extends Controller
      */
     public function destroy($id)
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$cant = Tratamiento::where("tipo_tratamiento_id", $id)->count();
 		

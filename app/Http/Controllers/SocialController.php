@@ -29,7 +29,8 @@ class SocialController extends Controller
                 'provider'      => $provider,
             ]);         
 			  
-			 return redirect()->route('/');
+			 //return redirect('http://clinica-plyrm.run.goorm.io/');
+			  return redirect('welcome');
         }
 	}//fin callback
 

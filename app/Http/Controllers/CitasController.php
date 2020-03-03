@@ -32,12 +32,17 @@ class CitasController extends Controller
      */
     public function create()
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$medicos = Medico::All();
 			$pacientes = Paciente::All();
         	return view('clinica.citas.create-citas', compact('medicos','pacientes'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para crear nuevas citas.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para crear nuevas citas.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to create new appointments.');	
+			}
 			return redirect('citas');
 		}
     }
@@ -50,8 +55,13 @@ class CitasController extends Controller
      */
     public function store(CitasRequest $request)
     {
+		$lang = \App::getLocale(session('lang'));
 		Cita::create($request->all());
-        Session::flash('mensaje_confirmacion', 'La cita se ha creado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_confirmacion', 'La cita se ha creado correctamente.');	
+		}else{
+			Session::flash('mensaje_confirmacion', 'The appointment has been created.');	
+		}
         return redirect('citas');
     }
 
@@ -93,14 +103,18 @@ class CitasController extends Controller
      */
     public function edit($id)
     {
-
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$cita = Cita::find($id);
 			$medicos = Medico::All();
 			$pacientes = Paciente::All();
 			return view('clinica.citas.edit-citas', compact('cita','medicos','pacientes'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar citas.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar citas.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit appointments.');	
+			}
 			return redirect('citas');
 		}
 
@@ -115,9 +129,14 @@ class CitasController extends Controller
      */
     public function update(CitasRequest $request, $id)
     {
+		$lang = \App::getLocale(session('lang'));
         $request = request()->except('_token','_method');
 		Cita::where('id',$id)->update($request);
-		Session::flash('mensaje_editado', 'La cita se ha actualizado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_editado', 'La cita se ha actualizado correctamente.');	
+		}else{
+			Session::flash('mensaje_editado', 'The appointment has been updated.');	
+		}
         return redirect('citas');
     }
 

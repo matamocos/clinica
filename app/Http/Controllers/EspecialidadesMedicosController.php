@@ -39,7 +39,7 @@ class EspecialidadesMedicosController extends Controller
      */
     public function store(Request $request)
     {
-		
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$count = Especialidade_medico::where('especialidade_id', $request->especialidad)->where('medico_id', $request->medico_id)->count();
 			
@@ -48,15 +48,27 @@ class EspecialidadesMedicosController extends Controller
 				$object->medico_id = $request->medico_id;
 				$object->especialidade_id = $request->especialidad;
 				$object->save();
-
-				Session::flash('mensaje_confirmacion', 'Se ha añadido correctamente la especialidad.');
+				
+				if($lang == 'es'){
+					Session::flash('mensaje_confirmacion', 'Se ha añadido correctamente la especialidad.');	
+				}else{
+					Session::flash('mensaje_confirmacion', 'A new specialty has been added.');	
+				}
 				return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
 			}else{
-				Session::flash('mensaje_error', 'El médico ya posee esa especialidad.');
+				if($lang == 'es'){
+					Session::flash('mensaje_error', 'El médico ya posee esa especialidad.');	
+				}else{
+					Session::flash('mensaje_error', 'The doctor already has that specialty.');	
+				}
 				return redirect('http://clinica-plyrm.run.goorm.io/medicos/show/'.$request->medico_id);
 			}
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir una nueva especialidad.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para introducir una nueva especialidad.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to add a new specialy.');	
+			}
 			return redirect('/medicos/show/'.$request->medico_id);
 		} 
 		        

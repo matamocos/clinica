@@ -39,6 +39,6 @@ class Telefono implements Rule
      */
     public function message()
     {
-        return 'El número de teléfono introducido no es válido';
+        return trans('reglas.telefono');
     }
 }

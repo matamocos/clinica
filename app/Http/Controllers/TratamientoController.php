@@ -32,13 +32,18 @@ class TratamientoController extends Controller
      */
     public function create()
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$tipos = Tipotratamiento::All();
 			$medicos = Medico::All();
 			$pacientes = Paciente::All();
         	return view('clinica.tratamientos.create-tratamientos', compact('medicos','pacientes','tipos'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para introducir nuevos tratamientos.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para crear tratamientos.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to create treatments.');	
+			}
 			return redirect('tratamientos');
 		}  
     }
@@ -51,8 +56,13 @@ class TratamientoController extends Controller
      */
     public function store(TratamientosRequest $request)
     {
+		$lang = \App::getLocale(session('lang'));
 		Tratamiento::create($request->all());
-        Session::flash('mensaje_confirmacion', 'El tratamiento se ha creado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_confirmacion', 'El tratamiento se ha creado correctamente.');	
+		}else{
+			Session::flash('mensaje_confirmacion', 'The treatment has been created.');	
+		}
         return redirect('tratamientos');
     }
 
@@ -87,6 +97,7 @@ class TratamientoController extends Controller
      */
     public function edit($id)
     {
+		$lang = \App::getLocale(session('lang'));
 		if(Gate::allows('administradores', Auth::user())){
 			$tratamiento = Tratamiento::find($id);
 			$medicos = Medico::All();
@@ -94,7 +105,11 @@ class TratamientoController extends Controller
 			$tipos = Tipotratamiento::All();
 			return view('clinica.tratamientos.edit-tratamientos', compact('tratamiento','medicos','pacientes','tipos'));
 		}else{
-			Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar tratamientos.');
+			if($lang == 'es'){
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar tratamientos.');	
+			}else{
+				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit treatments.');	
+			}
 			return redirect('tratamientos');
 		}
     }
@@ -108,9 +123,14 @@ class TratamientoController extends Controller
      */
     public function update(TratamientosRequest $request, $id)
     {
+		$lang = \App::getLocale(session('lang'));
         $request = request()->except('_token','_method');
 		Tratamiento::where('id',$id)->update($request);
-		Session::flash('mensaje_editado', 'El tratamiento se ha actualizado correctamente.');
+		if($lang == 'es'){
+			Session::flash('mensaje_editado', 'El tratamiento se ha actualizado correctamente.');	
+		}else{
+			Session::flash('mensaje_editado', 'The treatment has been updated.');	
+		}
         return redirect('tratamientos');
     }
 

@@ -47,6 +47,6 @@ class Dni implements Rule
      */
     public function message()
     {
-        return 'El documento DNI introducido no es válido.';
+        return trans('reglas.dni');
     }
 }
