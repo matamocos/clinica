@@ -98,7 +98,7 @@
 								@csrf
 							</form>	
 						@else
-							<a href="{{ route('login') }}">Login</a>
+							<a id="btn_login" href="{{ route('login') }}">Login</a>
 
 							@if (Route::has('register'))
 								<a href="{{ route('register') }}">Register</a>
