@@ -26,7 +26,7 @@
 			
 				<div class="eight wide required field">
 						<label>{{ trans('citas.dia_cita') }}</label>
-						<input type="date" name="fecha" placeholder="Fecha" required value="{{$cita->fecha}}">
+						<input type="date" name="fecha"  required value="{{ date('Y-m-d', strtotime($cita->fecha)) }}">
 				</div>
 
 				<div class="eight wide required field">

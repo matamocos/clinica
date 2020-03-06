@@ -33,6 +33,7 @@ class TratamientoController extends Controller
     public function create()
     {
 		$lang = \App::getLocale(session('lang'));
+		
 		if(Gate::allows('administradores', Auth::user())){
 			$tipos = Tipotratamiento::All();
 			$medicos = Medico::All();
@@ -109,9 +110,11 @@ class TratamientoController extends Controller
 				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar tratamientos.');	
 			}else{
 				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit treatments.');	
-			}
+			}//fin else
+			
 			return redirect('tratamientos');
-		}
+			
+		}//fin else
     }
 
     /**

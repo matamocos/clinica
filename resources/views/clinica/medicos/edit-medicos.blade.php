@@ -45,7 +45,7 @@
 				
 				<div class="eight wide required field">
 					<label>{{trans('medicos.f_nacimiento')}}</label>
-					<input type="date" name="fecha_nacimiento" placeholder="{{trans('medicos.f_nacimiento')}}" required value="{{$medico->fecha_nacimiento}}" >
+					<input type="date" name="fecha_nacimiento" placeholder="{{trans('medicos.f_nacimiento')}}" required value="{{ date('Y-m-d', strtotime($medico->fecha_nacimiento)) }}" >
 				</div>
 
 				<div class="eight wide required field">

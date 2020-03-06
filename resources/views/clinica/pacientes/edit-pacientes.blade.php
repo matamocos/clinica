@@ -54,7 +54,7 @@
 
 				<div class="six wide required field">
 					<label>{{ trans('pacientes.f_nacimiento') }}</label>
-					<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required value="{{$paciente->fecha_nacimiento}}" >
+					<input type="date" name="fecha_nacimiento" placeholder="Fecha de nacimiento" required value="{{ date('Y-m-d', strtotime($paciente->fecha_nacimiento)) }}" >
 				</div>
 
 			</div> <!-- End fields -->	

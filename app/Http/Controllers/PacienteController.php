@@ -16,6 +16,7 @@ use App\Tipotratamiento;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Requests\PacientesRequest;
+use App\Http\Requests\PacienteEditarRequest;
 use PDF;
 use Mail;
 
@@ -65,6 +66,7 @@ class PacienteController extends Controller
 		$cita->paciente_id = $request->input('paciente_id');
 		$cita->medico_id = $request->input('medico_id');
 		$cita->motivo = $request->input('motivo');
+		
 		if($request->input('observaciones')){
 			$cita->observaciones = $request->input('observaciones');
 		}

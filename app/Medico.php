@@ -38,8 +38,7 @@ class Medico extends Model
         return $value->format('d-m-Y');
     }
 	
-		public function setNombreAttribute($value)
-    {
+	public function setNombreAttribute($value){
         $this->attributes['nombre'] = ucwords($value);
     }
 	

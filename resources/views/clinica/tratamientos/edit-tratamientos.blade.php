@@ -15,6 +15,7 @@
 		</div>
 	@endif
 
+
 	<h2 class="section-title">{{trans('tratamientos.editar')}}</h2>
 	
 	<div class="form-container">
@@ -30,12 +31,13 @@
 
 				<div class="eight wide required field">
 					<label>{{trans('tratamientos.f_inicio')}}</label>
-					<input type="date" name="fecha_inicio" placeholder="{{trans('tratamientos.f_inicio')}}" required value="{{$tratamiento->fecha_inicio}}" >
+					<input type="date" name="fecha_inicio" required value="{{ date('Y-m-d', strtotime($tratamiento->fecha_inicio)) }}" >
 				</div>
 
 				<div class="eight wide field">
 					<label>{{trans('tratamientos.f_fin')}}</label>
-					<input type="date" name="fecha_fin" placeholder="{{trans('tratamientos.f_fin')}}" value="{{$tratamiento->fecha_fin}}" >
+					<input type="date" name="fecha_fin" placeholder="{{trans('tratamientos.f_fin')}}" value="{{ date('Y-m-d', strtotime($tratamiento->fecha_fin)) }}">
+					
 				</div>
 
 			</div> <!-- End fields -->	
