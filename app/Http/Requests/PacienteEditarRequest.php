@@ -2,7 +2,13 @@
 
 namespace App\Http\Requests;
 
+use App\Paciente;
+use App\Rules\Dni;
+use App\Rules\Email;
+use App\Rules\Telefono;
 use Illuminate\Foundation\Http\FormRequest;
+use Carbon\Carbon;
+
 
 class PacienteEditarRequest extends FormRequest
 {
@@ -13,7 +19,7 @@ class PacienteEditarRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

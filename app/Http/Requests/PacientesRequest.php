@@ -33,7 +33,7 @@ class PacientesRequest extends FormRequest
 			'apellido_1' => 'required|max:20|min:2|alpha',
 			'apellido_2' => 'required|max:20|min:2|alpha',
 			'telefono' => ['required','max:9','min:9', new Telefono],
-			'dni' => ['required','max:10','min:9', new Dni],
+			'dni' => ['required','max:10','min:9','unique:pacientes', new Dni],
 			'fecha_nacimiento' => 'required|date|after:1/1/1900|before:4/3/2020',
 			'pais' => 'required|max:50|min:2',
 			'ciudad' => 'required|max:50|min:2',

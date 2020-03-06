@@ -214,11 +214,14 @@ class PacienteController extends Controller
      * @param  \App\Paciente  $paciente
      * @return \Illuminate\Http\Response
      */
-    public function update(PacientesRequest $request, $id)
+    public function update(PacienteEditarRequest $request, $id)
     {
 		$lang = \App::getLocale(session('lang'));
+		
         $request = request()->except('_token','_method');
+		
 		Paciente::where('id',$id)->update($request);
+		
 		if($lang == 'es'){
 			Session::flash('mensaje_editado', 'El paciente se ha actualizado correctamente.');	
 		}else{
