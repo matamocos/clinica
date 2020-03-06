@@ -16,4 +16,9 @@ return [
 	'autores' => 'Proyecto realizado por',
 	'estadisticas' => 'Estadísticas de la clínica',
 	'banner' => 'Clínica Dalos',
+	'pacientes' => 'PACIENTES',
+	'medicos' => 'MÉDICOS',
+	'citas' => 'CITAS',
+	'tratamientos' => 'TRATAMIENTOS',
+	
 ];

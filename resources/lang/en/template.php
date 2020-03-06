@@ -16,4 +16,8 @@ return [
 	'autores' => 'Project created by',
 	'estadisticas' => 'Clinic Statistics',
 	'banner' => 'Clinic Dalos',
+	'pacientes' => 'PATIENTS',
+	'medicos' => 'DOCTORS',
+	'citas' => 'medical appointments',
+	'tratamientos' => 'TREATMENTS',
 ];

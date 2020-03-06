@@ -84,12 +84,22 @@
         </style>
     </head>
     <body>
+
 		<canvas id="canvas"></canvas>
+		
 		<div id="text">
+			<div class="pull-right">
+					<span><a href="{{ url('lang', ['es']) }}"> <img src="{{ asset('/assets/img/espain.png',true)}}"  ></a></span>
+					<span><a href="{{ url('lang', ['en']) }}"> <img src="{{ asset('/assets/img/ingles.png',true)}}"  ></a></span>
+			</div>
+				
 			<div class="flex-center position-ref full-height">
+
 				@if (Route::has('login'))
+					
 					<div class="top-right links">
 						@auth
+						
 							<div style="text-align: center">{{ Auth::user()->name }}</div>
 							<a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
 								<span>{{ __('Logout') }}</span>
@@ -97,29 +107,34 @@
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 								@csrf
 							</form>	
-						@else
+							@else
 							<a id="btn_login" href="{{ route('login') }}">Login</a>
 
 							@if (Route::has('register'))
-								<a href="{{ route('register') }}">Register</a>
+								<a href="{{ route('register') }}">{{ trans('auth.registro') }}</a>
 							@endif
 						@endauth
+						
+						
 					</div>
+				
 				@endif
+				
+				
 
 				<div class="content">
 					<div class="title m-b-md">
-						Clínica Dalos
+						{{ trans('template.banner') }}
 					</div>
 
 					<div class="links">
 						@if (Route::has('login'))
 							@auth
-								<a href="/pacientes">Pacientes</a>
-								<a href="/medicos">Médicos</a>
-								<a href="/citas">Citas</a>
-								<a href="/tratamientos">Tratamientos</a>
-								<a href="/estadisticas">Estadísticas</a>
+								<a href="/pacientes">{{ trans('template.pacientes') }}</a>
+								<a href="/medicos">{{ trans('template.medicos') }}</a>
+								<a href="/citas">{{ trans('template.citas') }}</a>
+								<a href="/tratamientos">{{ trans('template.tratamientos') }}</a>
+								<a href="/estadisticas">{{ trans('template.estadisticas') }}</a>
 							 @endauth
 						@endif
 					</div>

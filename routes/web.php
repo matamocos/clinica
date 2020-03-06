@@ -23,6 +23,15 @@ Route::get('login/{provider}', 'SocialController@redireccion');
 Route::get('login/{provider}/callback','SocialController@Callback');
 
 
+
+//Ruta para cambio de idioma
+Route::get('lang/{lang}', function ($lang) {
+    session(['lang' => $lang]);
+        return \Redirect::back();
+	})->where([
+        'lang' => 'en|es'
+])->name('Selección de idioma');//fin lang
+	
 Route::group(['middleware' => ['idioma', 'auth']], function () {
 
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -92,18 +101,10 @@ Route::group(['middleware' => ['idioma', 'auth']], function () {
 	Route::get('/simular','PacienteController@simular')->name('Simulación creación de un cita');
 	Route::post('/simular/pdf','PacienteController@pdf')->name('Generación PDF');
 	
-	//Ruta para cambio de idioma
-	Route::get('lang/{lang}', function ($lang) {
-    session(['lang' => $lang]);
-        return \Redirect::back();
-	})->where([
-        'lang' => 'en|es'
-	])->name('Selección de idioma');//fin lang
+	
 	
 });//fin middleware idioma
 	
-	
-
 
 
 
