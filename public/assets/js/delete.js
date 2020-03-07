@@ -1,6 +1,8 @@
 
 $(document).ready(function(){
 	
+	var	lang = $('div.dropdown:nth-child(1) > div:nth-child(3)').text();
+		
 	toastr.options = {
         'closeButton': true,
         'progressBar': true,
@@ -11,13 +13,13 @@ $(document).ready(function(){
 
 	var ventanaModal = `
 		<div class="ui mini modal modal-delete">
-			<div class="header"><span class="section-title"> Borrar registro</span></div>
+			<div class="header"><span class="section-title"> ${lang == 'Idioma' ? 'Borrar registro' : 'Delete record'} &nbsp; </span></div>
 			<div class="content">
-				<p>¿Está seguro de que decea borrar este registro?</p>
+				<p> ${lang == 'Idioma' ? '¿Está seguro de que decea borrar este registro?' : 'Are you sure you want to delete this record?'} &nbsp; </p>
 			</div>
 			<div class="actions">
-				<div class="ui cancel negative button">Cancelar</div>
-				<div class="ui approve positive ok button">Aceptar</div>
+				<div class="ui cancel negative button">${lang == 'Idioma' ? 'Cancelar' : 'Cancel'} &nbsp;</div>
+				<div class="ui approve positive ok button">${lang == 'Idioma' ? 'Aceptar' : 'Accept'} &nbsp;</div>
 			</div>
 		</div>`;
 		
@@ -40,14 +42,14 @@ $(document).ready(function(){
 				console.log(message)
 				
 				if(message == "success"){
-					toastr.success(`El registro se borró correctamente.`, "Éxito");
+					toastr.success(` ${lang == 'Idioma' ? 'El registro se borró correctamente.' : 'The record was deleted successfully.'}`, lang == 'Idioma' ? 'Éxito' : 'Success' );
 					$(tr).fadeOut();
 					$('.modal').css('display', 'none');
 				}else if(message == "desautorizado"){
-					toastr.warning(`Su cuenta de usuario no está autorazada para borrar registros.`, "Usuario no autorizado");
+					toastr.warning(`${lang == 'Idioma' ? 'Su cuenta de usuario no está autorazada para borrar registros.' : 'Your user account is not autorized to delete records.'}`, lang == 'Idioma' ? 'Usuario no autorizado' : 'Unauthorized User');
 					$('.modal').css('display', 'none');
 				}else{
-					toastr.warning(`No se puede borrar el registro debido a la integridad referencial`, "Error");
+					toastr.warning(`  ${lang == 'Idioma' ? 'No se puede borrar el registro debido a la integridad referencial' : 'The record cannot be deleted due to referential integrity'}`, "Error");
 					$('.modal').css('display', 'none');
 				}
 			},
