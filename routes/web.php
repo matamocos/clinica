@@ -34,7 +34,7 @@ Route::get('lang/{lang}', function ($lang) {
 	
 Route::group(['middleware' => ['idioma', 'auth']], function () {
 
-	Route::get('/home', 'HomeController@index')->name('home');
+	//Route::get('/home', 'HomeController@index')->name('home');
 
 	//Inicio
 	Route::get('/inicio', 'ClinicaController@index')->name('Página inicio');
