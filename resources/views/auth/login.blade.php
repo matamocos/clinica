@@ -74,7 +74,7 @@
 
 <form class="container">
 	<hr>
-	<h2 class="text-center">Logearse con Google: </h2>
+	<h2 class="text-center">{{trans('auth.google')}} </h2>
 	
 	<div class="form-group row mb-0">
     	<div class="col text-center">

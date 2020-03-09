@@ -16,6 +16,8 @@ return [
     'failed' => 'These credentials do not match our records.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 	'registro' => 'Register',
-	'entrar' => 'Login'
+	'entrar' => 'Login',
+	'dalos' => 'Clinic Dalos',
+	'google' => 'Login with Google:',
 
 ];
