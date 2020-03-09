@@ -39,7 +39,7 @@ class CitasController extends Controller
         	return view('clinica.citas.create-citas', compact('medicos','pacientes'));
 		}else{
 			if($lang == 'es'){
-				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para crear nuevas citas.');	
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para crear nuevas citas.');	
 			}else{
 				Session::flash('mensaje_autorizacion', 'Your account does not have permission to create new appointments.');	
 			}
@@ -111,7 +111,7 @@ class CitasController extends Controller
 			return view('clinica.citas.edit-citas', compact('cita','medicos','pacientes'));
 		}else{
 			if($lang == 'es'){
-				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no está autorizada para editar citas.');	
+				Session::flash('mensaje_autorizacion', 'Su cuenta de usuario no estรก autorizada para editar citas.');	
 			}else{
 				Session::flash('mensaje_autorizacion', 'Your account does not have permission to edit appointments.');	
 			}
